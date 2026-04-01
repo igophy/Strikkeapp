@@ -21,6 +21,12 @@ header {
     position: relative;
 }
 
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.3rem;
+}
+
 header h1 {
     font-size: 1.8rem;
     letter-spacing: 1px;
@@ -301,6 +307,105 @@ h2 {
     font-weight: bold;
 }
 
+/* Strikkeekspert chat */
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-height: 350px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+}
+
+.chat-bubble {
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 85%;
+    word-wrap: break-word;
+}
+
+.chat-bot {
+    background: white;
+    color: #4a3728;
+    align-self: flex-start;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    border-bottom-left-radius: 4px;
+}
+
+.chat-user {
+    background: linear-gradient(135deg, #c97b63, #a85d4a);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-bubble a {
+    color: inherit;
+    font-weight: bold;
+}
+
+.chat-bubble ul {
+    margin: 0.3rem 0 0 1rem;
+    padding: 0;
+}
+
+.chat-bubble li {
+    margin-bottom: 0.15rem;
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-input-row input {
+    flex: 1;
+    padding: 0.7rem;
+    border: 2px solid #d4c4b5;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: white;
+    color: #4a3728;
+}
+
+.chat-input-row input:focus {
+    outline: none;
+    border-color: #c97b63;
+}
+
+.chat-send {
+    padding: 0.7rem 1.2rem;
+    background: linear-gradient(135deg, #c97b63, #a85d4a);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.chat-send:active {
+    transform: scale(0.96);
+}
+
+.youtube-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: #c0392b;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
 footer {
     text-align: center;
     padding: 1rem;
@@ -484,6 +589,30 @@ body.dark .result .detail {
 body.dark footer {
     border-top-color: #2a2a4a;
     color: #706050;
+}
+
+body.dark .chat-bot {
+    background: #16213e;
+    color: #e0d6cc;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .chat-user {
+    background: linear-gradient(135deg, #d4956a, #a85d4a);
+}
+
+body.dark .chat-input-row input {
+    border-color: #2a2a4a;
+    background: #16213e;
+    color: #e0d6cc;
+}
+
+body.dark .chat-input-row input:focus {
+    border-color: #d4956a;
+}
+
+body.dark .chat-send {
+    background: linear-gradient(135deg, #d4956a, #a85d4a);
 }
 
 body.dark .whats-new-overlay {

@@ -8,18 +8,19 @@
 </head>
 <body>
     <header>
+        <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; v0.6</p>
+        <p class="subtitle">Din digitale strikkeassistent &middot; v0.7</p>
         <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Bytt mørk/lys modus"></button>
     </header>
 
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box">
-            <strong>Nytt i v0.6!</strong>
+            <strong>Nytt i v0.7!</strong>
             <ul>
-                <li>Mørkmodus for strikking i sofakroken</li>
-                <li>Tellerne huskes mellom besøk</li>
-                <li>Tastaturstøtte med piltaster</li>
+                <li>Strikkeekspert - spør om teknikker!</li>
+                <li>YouTube-søk for strikkevideoer</li>
+                <li>Lenker til kjente strikkesider</li>
             </ul>
             <button id="closeWhatsNew" class="whats-new-close">OK, forstått!</button>
         </div>
@@ -27,8 +28,9 @@
 
     <nav>
         <button class="nav-btn active" data-tab="teller">Masketeller</button>
-        <button class="nav-btn" data-tab="oykning">Beregn økning</button>
-        <button class="nav-btn" data-tab="felling">Beregn felling</button>
+        <button class="nav-btn" data-tab="oykning">Økning</button>
+        <button class="nav-btn" data-tab="felling">Felling</button>
+        <button class="nav-btn" data-tab="ekspert">Strikkeekspert</button>
     </nav>
 
     <main>
@@ -96,6 +98,20 @@
             <button class="btn-calculate" id="beregnFelling">Beregn</button>
 
             <div id="fellingResultat" class="result hidden"></div>
+        </section>
+        <!-- Strikkeekspert -->
+        <section id="ekspert" class="tab-content">
+            <h2>Strikkeekspert</h2>
+            <p class="description">Spør meg om strikking!</p>
+
+            <div id="chatMessages" class="chat-messages">
+                <div class="chat-bubble chat-bot">Hei! Jeg er strikkeeksperten. Spør meg om teknikker, masker, forkortelser eller tips!</div>
+            </div>
+
+            <div class="chat-input-row">
+                <input type="text" id="chatInput" placeholder="Skriv et spørsmål..." autocomplete="off">
+                <button id="chatSend" class="chat-send">Spør</button>
+            </div>
         </section>
     </main>
 
