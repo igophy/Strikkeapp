@@ -11,17 +11,16 @@
     <header>
         <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; v0.8</p>
+        <p class="subtitle">Din digitale strikkeassistent &middot; v0.9</p>
         <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Bytt mørk/lys modus"></button>
     </header>
 
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box">
-            <strong>Nytt i v0.8!</strong>
+            <strong>Nytt i v0.9!</strong>
             <ul>
-                <li>Ny startside med fliser</li>
-                <li>Strikkefasthets-kalkulator</li>
-                <li>Garnforbruk-kalkulator</li>
+                <li>Garnalternativ &mdash; finn erstatningsgarn</li>
+                <li>Garnforbruk justert for pinnestørrelse</li>
             </ul>
             <button id="closeWhatsNew" class="whats-new-close">OK, forstått!</button>
         </div>
@@ -50,6 +49,10 @@
                 <button class="tile" data-page="garn">
                     <span class="tile-icon">~</span>
                     <span class="tile-label">Garnforbruk</span>
+                </button>
+                <button class="tile" data-page="garnalternativ">
+                    <span class="tile-icon">&#8644;</span>
+                    <span class="tile-label">Garnalternativ</span>
                 </button>
                 <button class="tile" data-page="ekspert">
                     <span class="tile-icon">?</span>
@@ -173,9 +176,85 @@
                 <label for="garnLengde">Meter per nøste:</label>
                 <input type="number" id="garnLengde" min="1" inputmode="numeric" placeholder="f.eks. 100">
             </div>
+            <div class="form-group">
+                <label for="pinnestorrelse">Pinnestørrelse (mm):</label>
+                <select id="pinnestorrelse">
+                    <option value="">Velg pinnestørrelse...</option>
+                    <option value="2.5">2.5 mm</option>
+                    <option value="3">3 mm</option>
+                    <option value="3.5">3.5 mm</option>
+                    <option value="4">4 mm</option>
+                    <option value="4.5">4.5 mm</option>
+                    <option value="5">5 mm</option>
+                    <option value="5.5">5.5 mm</option>
+                    <option value="6">6 mm</option>
+                    <option value="7">7 mm</option>
+                    <option value="8">8 mm</option>
+                    <option value="10">10 mm</option>
+                    <option value="12">12 mm</option>
+                </select>
+            </div>
 
             <button class="btn-calculate" id="beregnGarn">Beregn</button>
             <div id="garnResultat" class="result hidden"></div>
+        </section>
+
+        <!-- Garnalternativ -->
+        <section id="garnalternativ" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Garnalternativ</h2>
+            <p class="description">Finn erstatningsgarn som passer til oppskriften din.</p>
+
+            <div class="garnalt-mode-toggle">
+                <button class="garnalt-tab active" data-mode="liste">Velg fra liste</button>
+                <button class="garnalt-tab" data-mode="manuell">Angi manuelt</button>
+            </div>
+
+            <div id="garnaltListe" class="garnalt-panel">
+                <div class="form-group">
+                    <label for="garnVelger">Garnet i oppskriften:</label>
+                    <select id="garnVelger">
+                        <option value="">Velg garn...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="garnaltManuell" class="garnalt-panel hidden">
+                <div class="form-group">
+                    <label for="manuellKategori">Garntykkelse:</label>
+                    <select id="manuellKategori">
+                        <option value="">Velg tykkelse...</option>
+                        <option value="fingering">Fingering / tynt (pinne 2.5–3.5)</option>
+                        <option value="sport">Sport / DK (pinne 3.5–4.5)</option>
+                        <option value="aran">Aran / worsted (pinne 4.5–5.5)</option>
+                        <option value="bulky">Bulky / tykt (pinne 6+)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="manuellFiber">Fibertype:</label>
+                    <select id="manuellFiber">
+                        <option value="">Velg fiber...</option>
+                        <option value="ull">Ull</option>
+                        <option value="merinoull">Merinoull</option>
+                        <option value="bomull">Bomull</option>
+                        <option value="alpakka">Alpakka</option>
+                        <option value="akryl">Akryl</option>
+                        <option value="blanding">Blanding</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="manuellMeter">Meter per 50g:</label>
+                    <input type="number" id="manuellMeter" min="1" inputmode="numeric" placeholder="f.eks. 175">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="antallNoster">Antall nøster i oppskriften (valgfritt):</label>
+                <input type="number" id="antallNoster" min="1" inputmode="numeric" placeholder="f.eks. 5">
+            </div>
+
+            <button class="btn-calculate" id="beregnGarnalt">Finn alternativer</button>
+            <div id="garnaltResultat" class="result hidden"></div>
         </section>
 
         <!-- Strikkeekspert -->
@@ -197,7 +276,7 @@
 
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
-        <p class="version">v0.8</p>
+        <p class="version">v0.9</p>
     </footer>
 
     <div id="updateBanner" class="update-banner hidden">

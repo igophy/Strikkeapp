@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '0.8';
+const APP_VERSION = '0.9';
 
 // --- Mørkmodus ---
 const DARK_MODE_KEY = 'inges-strikkehjelp-darkmode';
@@ -238,6 +238,7 @@ const garnEstimat = {
 document.getElementById('beregnGarn').addEventListener('click', () => {
     const type = document.getElementById('prosjektType').value;
     const meterPerNoste = parseInt(document.getElementById('garnLengde').value);
+    const pinne = parseFloat(document.getElementById('pinnestorrelse').value);
     const resultat = document.getElementById('garnResultat');
 
     if (!type) {
@@ -250,13 +251,273 @@ document.getElementById('beregnGarn').addEventListener('click', () => {
     }
 
     const prosjekt = garnEstimat[type];
-    const antallNoster = Math.ceil(prosjekt.meter / meterPerNoste);
+    let justerMeter = prosjekt.meter;
+
+    // Juster basert på pinnestørrelse (4mm er baseline)
+    if (pinne) {
+        if (pinne <= 3) {
+            justerMeter = Math.round(prosjekt.meter * 1.25);
+        } else if (pinne <= 3.5) {
+            justerMeter = Math.round(prosjekt.meter * 1.15);
+        } else if (pinne <= 4.5) {
+            justerMeter = prosjekt.meter;
+        } else if (pinne <= 5.5) {
+            justerMeter = Math.round(prosjekt.meter * 0.9);
+        } else if (pinne <= 7) {
+            justerMeter = Math.round(prosjekt.meter * 0.8);
+        } else {
+            justerMeter = Math.round(prosjekt.meter * 0.7);
+        }
+    }
+
+    const antallNoster = Math.ceil(justerMeter / meterPerNoste);
 
     let html = `<h3>Resultat</h3>`;
-    html += `<p class="instruction"><strong>${prosjekt.navn}</strong> trenger ca. <strong>${prosjekt.meter} meter</strong> garn.</p>`;
+    html += `<p class="instruction"><strong>${prosjekt.navn}</strong> trenger ca. <strong>${justerMeter} meter</strong> garn.</p>`;
+    if (pinne && justerMeter !== prosjekt.meter) {
+        html += `<p class="detail">(Justert fra ${prosjekt.meter} m for pinne ${pinne} mm)</p>`;
+    }
     html += `<p class="instruction">Med ${meterPerNoste} m/nøste trenger du: <strong>${antallNoster} nøster</strong></p>`;
     html += `<p class="detail">Tips: Kjøp gjerne 1 ekstra nøste for sikkerhets skyld. Estimatene er omtrentlige og varierer med garntykkelse og mønster.</p>`;
 
+    visResultat(resultat, html);
+});
+
+// --- Garndatabase ---
+const GARN_DATABASE = [
+    // Sandnes Garn
+    { id: 'sg-smart', navn: 'Smart', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['ull'], meterPer50g: 100, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Superwash, maskinvaskbar' },
+    { id: 'sg-peer-gynt', navn: 'Peer Gynt', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['ull'], meterPer50g: 91, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Norsk ull, krymper i vask' },
+    { id: 'sg-sisu', navn: 'Sisu', merke: 'Sandnes Garn', kategori: 'fingering', fiber: ['ull'], meterPer50g: 175, pinne: [2.5, 3.5], maskerPer10cm: 28, info: 'Sokkegarn, slitesterkt' },
+    { id: 'sg-tynn-merinoull', navn: 'Tynn Merinoull', merke: 'Sandnes Garn', kategori: 'fingering', fiber: ['merinoull'], meterPer50g: 175, pinne: [2.5, 3], maskerPer10cm: 28, info: 'Mykt, superwash' },
+    { id: 'sg-alpakka', navn: 'Alpakka', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['alpakka'], meterPer50g: 110, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Ren alpakka, mykt' },
+    { id: 'sg-babyull-lanett', navn: 'Babyull Lanett', merke: 'Sandnes Garn', kategori: 'fingering', fiber: ['merinoull'], meterPer50g: 175, pinne: [2.5, 3], maskerPer10cm: 27, info: 'Superwash, perfekt til barn' },
+    { id: 'sg-double-sunday', navn: 'Double Sunday', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['merinoull'], meterPer50g: 108, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Populært genser-garn' },
+    { id: 'sg-tynn-silk-mohair', navn: 'Tynn Silk Mohair', merke: 'Sandnes Garn', kategori: 'fingering', fiber: ['mohair', 'silke'], meterPer50g: 212, pinne: [3, 4], maskerPer10cm: 25, info: 'Brukes ofte dobbelt eller med annet garn' },
+    { id: 'sg-duo', navn: 'Duo', merke: 'Sandnes Garn', kategori: 'aran', fiber: ['ull', 'bomull'], meterPer50g: 65, pinne: [4.5, 5.5], maskerPer10cm: 18, info: 'Ull/bomull-blanding' },
+    { id: 'sg-mandarin-petit', navn: 'Mandarin Petit', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['bomull'], meterPer50g: 150, pinne: [3, 3.5], maskerPer10cm: 24, info: 'Ren bomull, sommergarn' },
+    { id: 'sg-line', navn: 'Line', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['bomull', 'lin'], meterPer50g: 100, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Bomull/lin, sommerplagg' },
+    { id: 'sg-kos', navn: 'KOS', merke: 'Sandnes Garn', kategori: 'aran', fiber: ['alpakka', 'ull', 'mohair'], meterPer50g: 85, pinne: [4.5, 5.5], maskerPer10cm: 17, info: 'Luftig og varmt' },
+    // DROPS
+    { id: 'dr-karisma', navn: 'Karisma', merke: 'DROPS', kategori: 'sport', fiber: ['ull'], meterPer50g: 100, pinne: [4, 4.5], maskerPer10cm: 21, info: 'Superwash, mange farger' },
+    { id: 'dr-merino-extra-fine', navn: 'Merino Extra Fine', merke: 'DROPS', kategori: 'sport', fiber: ['merinoull'], meterPer50g: 105, pinne: [3.5, 4], maskerPer10cm: 21, info: 'Superwash merino' },
+    { id: 'dr-nepal', navn: 'Nepal', merke: 'DROPS', kategori: 'aran', fiber: ['ull'], meterPer50g: 75, pinne: [5, 5.5], maskerPer10cm: 17, info: 'Tykt, varmt, feltbart' },
+    { id: 'dr-alpaca', navn: 'Alpaca', merke: 'DROPS', kategori: 'sport', fiber: ['alpakka'], meterPer50g: 167, pinne: [3.5, 4], maskerPer10cm: 23, info: 'Lett alpakka' },
+    { id: 'dr-baby-merino', navn: 'Baby Merino', merke: 'DROPS', kategori: 'sport', fiber: ['merinoull'], meterPer50g: 175, pinne: [3, 3.5], maskerPer10cm: 24, info: 'Superwash, baby-mykt' },
+    { id: 'dr-fabel', navn: 'Fabel', merke: 'DROPS', kategori: 'fingering', fiber: ['ull'], meterPer50g: 205, pinne: [2.5, 3], maskerPer10cm: 26, info: 'Sokkegarn, superwash' },
+    { id: 'dr-air', navn: 'Air', merke: 'DROPS', kategori: 'bulky', fiber: ['alpakka', 'ull'], meterPer50g: 68, pinne: [6, 7], maskerPer10cm: 13, info: 'Lett og luftig, tykt garn' },
+    { id: 'dr-andes', navn: 'Andes', merke: 'DROPS', kategori: 'bulky', fiber: ['ull', 'alpakka'], meterPer50g: 48, pinne: [6, 7], maskerPer10cm: 13, info: 'Veldig tykt og varmt' },
+    { id: 'dr-cotton-merino', navn: 'Cotton Merino', merke: 'DROPS', kategori: 'sport', fiber: ['bomull', 'merinoull'], meterPer50g: 110, pinne: [3.5, 4], maskerPer10cm: 21, info: 'Bomull/merino-blanding' },
+    { id: 'dr-muskat', navn: 'Muskat', merke: 'DROPS', kategori: 'sport', fiber: ['bomull'], meterPer50g: 100, pinne: [3.5, 4], maskerPer10cm: 20, info: 'Ren mercerisert bomull' },
+    { id: 'dr-kid-silk', navn: 'Kid-Silk', merke: 'DROPS', kategori: 'fingering', fiber: ['mohair', 'silke'], meterPer50g: 200, pinne: [3, 4.5], maskerPer10cm: 24, info: 'Mohair/silke, luftig' },
+    // Rauma
+    { id: 'ra-finull', navn: 'Finull', merke: 'Rauma', kategori: 'fingering', fiber: ['ull'], meterPer50g: 175, pinne: [2.5, 3], maskerPer10cm: 27, info: 'Tradisjonell norsk ull' },
+    { id: 'ra-strikkegarn', navn: 'Strikkegarn 3-tråds', merke: 'Rauma', kategori: 'sport', fiber: ['ull'], meterPer50g: 105, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Klassisk norsk strikkegarn' },
+    { id: 'ra-vamsegarn', navn: 'Vamsegarn', merke: 'Rauma', kategori: 'aran', fiber: ['ull'], meterPer50g: 80, pinne: [4.5, 5], maskerPer10cm: 18, info: 'Tykt, for vamser og kofter' },
+    { id: 'ra-plötulopi', navn: 'Plötulopi', merke: 'Rauma', kategori: 'bulky', fiber: ['ull'], meterPer50g: 100, pinne: [6, 8], maskerPer10cm: 12, info: 'Islandsk ull, strikkes dobbelt' },
+    // Gjestal
+    { id: 'gj-janus', navn: 'Janus', merke: 'Gjestal', kategori: 'sport', fiber: ['ull'], meterPer50g: 100, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Superwash, norsk ull' },
+    { id: 'gj-vestlandsull', navn: 'Vestlandsull', merke: 'Gjestal', kategori: 'aran', fiber: ['ull'], meterPer50g: 75, pinne: [4.5, 5.5], maskerPer10cm: 17, info: 'Norsk ull, tradisjonell' },
+    // Du Store Alpakka
+    { id: 'dsa-sterk', navn: 'Sterk', merke: 'Du Store Alpakka', kategori: 'sport', fiber: ['merinoull', 'alpakka'], meterPer50g: 150, pinne: [3, 3.5], maskerPer10cm: 24, info: 'Merino/alpakka, superwash' },
+    { id: 'dsa-dreamline', navn: 'Dreamline Sky', merke: 'Du Store Alpakka', kategori: 'sport', fiber: ['alpakka', 'merinoull', 'nylon'], meterPer50g: 112, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Myk alpakka-blanding' },
+    // Hillesvåg
+    { id: 'hv-tinde', navn: 'Tinde', merke: 'Hillesvåg', kategori: 'sport', fiber: ['ull'], meterPer50g: 100, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Pelsull, norsk' },
+    { id: 'hv-vilje', navn: 'Vilje', merke: 'Hillesvåg', kategori: 'fingering', fiber: ['ull'], meterPer50g: 175, pinne: [2.5, 3], maskerPer10cm: 27, info: 'Norsk pelsull, holdbart' },
+    // Viking
+    { id: 'vi-nordlys', navn: 'Nordlys', merke: 'Viking', kategori: 'fingering', fiber: ['ull'], meterPer50g: 210, pinne: [2.5, 3], maskerPer10cm: 28, info: 'Sokkegarn, selvmønstrende' },
+    { id: 'vi-sportsragg', navn: 'Sportsragg', merke: 'Viking', kategori: 'fingering', fiber: ['ull', 'akryl'], meterPer50g: 175, pinne: [3, 3.5], maskerPer10cm: 26, info: 'Slitesterkt sokkegarn' },
+    // Schachenmayr
+    { id: 'sm-bravo', navn: 'Bravo', merke: 'Schachenmayr', kategori: 'sport', fiber: ['akryl'], meterPer50g: 133, pinne: [3, 4], maskerPer10cm: 22, info: 'Akryl, maskinvaskbar' },
+    { id: 'sm-regia', navn: 'Regia 4-tråds', merke: 'Schachenmayr', kategori: 'fingering', fiber: ['ull', 'nylon'], meterPer50g: 210, pinne: [2.5, 3], maskerPer10cm: 30, info: 'Populært sokkegarn' },
+    // Lana Grossa
+    { id: 'lg-cool-wool', navn: 'Cool Wool', merke: 'Lana Grossa', kategori: 'sport', fiber: ['merinoull'], meterPer50g: 160, pinne: [3, 3.5], maskerPer10cm: 24, info: 'Superwash merino' },
+    // Malabrigo
+    { id: 'mb-rios', navn: 'Rios', merke: 'Malabrigo', kategori: 'aran', fiber: ['merinoull'], meterPer50g: 96, pinne: [4.5, 5], maskerPer10cm: 18, info: 'Superwash, håndfarget' },
+    { id: 'mb-mechita', navn: 'Mechita', merke: 'Malabrigo', kategori: 'fingering', fiber: ['merinoull'], meterPer50g: 175, pinne: [2.5, 3.5], maskerPer10cm: 26, info: 'Superwash, singles' },
+];
+
+// --- Garnalternativ ---
+function byggGarnVelger() {
+    const select = document.getElementById('garnVelger');
+    const merker = {};
+    for (const g of GARN_DATABASE) {
+        if (!merker[g.merke]) merker[g.merke] = [];
+        merker[g.merke].push(g);
+    }
+    for (const merke of Object.keys(merker).sort()) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = merke;
+        for (const g of merker[merke]) {
+            const opt = document.createElement('option');
+            opt.value = g.id;
+            opt.textContent = `${g.navn} (${g.kategori}, ${g.meterPer50g} m/50g)`;
+            optgroup.appendChild(opt);
+        }
+        select.appendChild(optgroup);
+    }
+}
+
+function finnGarn(id) {
+    return GARN_DATABASE.find(g => g.id === id);
+}
+
+function matchGarn(kilde) {
+    const resultater = [];
+    for (const g of GARN_DATABASE) {
+        if (g.id === kilde.id) continue;
+        if (g.kategori !== kilde.kategori) continue;
+
+        let score = 0;
+
+        // Meterdiff (maks 40 poeng)
+        const meterDiff = Math.abs(g.meterPer50g - kilde.meterPer50g);
+        score += Math.max(0, 40 - meterDiff * 0.8);
+
+        // Fiberoverlapp (15 poeng per match)
+        const felles = g.fiber.filter(f => kilde.fiber.includes(f));
+        score += felles.length * 15;
+
+        // Fasthetsdiff (maks 20 poeng)
+        const fastDiff = Math.abs(g.maskerPer10cm - kilde.maskerPer10cm);
+        score += Math.max(0, 20 - fastDiff * 5);
+
+        // Pinnediff (maks 10 poeng)
+        const pinneDiff = Math.abs(g.pinne[0] - kilde.pinne[0]);
+        score += Math.max(0, 10 - pinneDiff * 4);
+
+        if (score >= 20) {
+            resultater.push({ garn: g, score });
+        }
+    }
+    resultater.sort((a, b) => b.score - a.score);
+    return resultater.slice(0, 8);
+}
+
+function matchGarnManuell(kategori, fiber, meterPer50g) {
+    const kilde = { id: '', kategori, fiber: [fiber], meterPer50g, maskerPer10cm: 0, pinne: [0, 0] };
+
+    // Estimer fasthet og pinne fra kategori
+    if (kategori === 'fingering') { kilde.maskerPer10cm = 27; kilde.pinne = [2.5, 3.5]; }
+    else if (kategori === 'sport') { kilde.maskerPer10cm = 22; kilde.pinne = [3.5, 4]; }
+    else if (kategori === 'aran') { kilde.maskerPer10cm = 18; kilde.pinne = [4.5, 5.5]; }
+    else if (kategori === 'bulky') { kilde.maskerPer10cm = 13; kilde.pinne = [6, 8]; }
+
+    return matchGarn(kilde);
+}
+
+function matchKvalitet(score) {
+    if (score >= 60) return { klasse: 'match-god', tekst: 'Godt alternativ' };
+    if (score >= 40) return { klasse: 'match-ok', tekst: 'OK alternativ' };
+    return { klasse: 'match-mulig', tekst: 'Mulig alternativ' };
+}
+
+function lagGarnKort(match, kildeGarn, antallNoster) {
+    const g = match.garn;
+    const kval = matchKvalitet(match.score);
+
+    let html = `<div class="garn-kort ${kval.klasse}">`;
+    html += `<div class="garn-kort-header">`;
+    html += `<strong>${g.merke} ${g.navn}</strong>`;
+    html += `<span class="match-badge">${kval.tekst}</span>`;
+    html += `</div>`;
+    html += `<div class="garn-kort-detaljer">`;
+    html += `<span class="garn-egenskap">${g.meterPer50g} m/50g</span>`;
+    html += `<span class="garn-egenskap">Pinne ${g.pinne[0]}–${g.pinne[1]}</span>`;
+    html += `<span class="garn-egenskap">${g.fiber.join(', ')}</span>`;
+    html += `<span class="garn-egenskap">${g.maskerPer10cm} m/10cm</span>`;
+    html += `</div>`;
+
+    // Tips
+    const tips = [];
+    if (kildeGarn && antallNoster && kildeGarn.meterPer50g !== g.meterPer50g) {
+        const totalMeter = antallNoster * kildeGarn.meterPer50g;
+        const nyeNoster = Math.ceil(totalMeter / g.meterPer50g);
+        tips.push(`Du trenger ca. <strong>${nyeNoster} nøster</strong> (${totalMeter} m totalt)`);
+    }
+    if (kildeGarn) {
+        const fastDiff = Math.abs(g.maskerPer10cm - kildeGarn.maskerPer10cm);
+        if (fastDiff >= 2) tips.push('Strikk en prøvelapp! Fastheten kan avvike.');
+        const harFellesFiber = g.fiber.some(f => kildeGarn.fiber.includes(f));
+        if (!harFellesFiber) tips.push('Annen fibertype — kan gi annet utseende og følelse.');
+    }
+    if (g.info) tips.push(g.info);
+
+    if (tips.length > 0) {
+        html += `<div class="garn-kort-tips">`;
+        for (const tip of tips) html += `<p>${tip}</p>`;
+        html += `</div>`;
+    }
+
+    html += `</div>`;
+    return html;
+}
+
+// Bygg dropdown ved oppstart
+byggGarnVelger();
+
+// Mode toggle
+document.querySelectorAll('.garnalt-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.garnalt-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const mode = tab.dataset.mode;
+        document.getElementById('garnaltListe').classList.toggle('hidden', mode !== 'liste');
+        document.getElementById('garnaltManuell').classList.toggle('hidden', mode !== 'manuell');
+    });
+});
+
+// Beregn-knapp
+document.getElementById('beregnGarnalt').addEventListener('click', () => {
+    const resultat = document.getElementById('garnaltResultat');
+    const antallNoster = parseInt(document.getElementById('antallNoster').value) || 0;
+    const erListeModus = document.querySelector('.garnalt-tab.active').dataset.mode === 'liste';
+
+    let treff = [];
+    let kildeGarn = null;
+
+    if (erListeModus) {
+        const valgtId = document.getElementById('garnVelger').value;
+        if (!valgtId) {
+            visResultat(resultat, '<p class="error">Velg et garn fra listen.</p>');
+            return;
+        }
+        kildeGarn = finnGarn(valgtId);
+        treff = matchGarn(kildeGarn);
+    } else {
+        const kategori = document.getElementById('manuellKategori').value;
+        const fiber = document.getElementById('manuellFiber').value;
+        const meter = parseInt(document.getElementById('manuellMeter').value);
+
+        if (!kategori) {
+            visResultat(resultat, '<p class="error">Velg garntykkelse.</p>');
+            return;
+        }
+        if (!fiber) {
+            visResultat(resultat, '<p class="error">Velg fibertype.</p>');
+            return;
+        }
+        if (!meter) {
+            visResultat(resultat, '<p class="error">Fyll inn meter per 50g.</p>');
+            return;
+        }
+        kildeGarn = { fiber: [fiber], meterPer50g: meter, maskerPer10cm: 0 };
+        if (kategori === 'fingering') kildeGarn.maskerPer10cm = 27;
+        else if (kategori === 'sport') kildeGarn.maskerPer10cm = 22;
+        else if (kategori === 'aran') kildeGarn.maskerPer10cm = 18;
+        else if (kategori === 'bulky') kildeGarn.maskerPer10cm = 13;
+        treff = matchGarnManuell(kategori, fiber, meter);
+    }
+
+    if (treff.length === 0) {
+        visResultat(resultat, '<h3>Ingen treff</h3><p>Fant ingen gode alternativer i databasen. Prøv å justere søket.</p>');
+        return;
+    }
+
+    let html = `<h3>Fant ${treff.length} alternativ${treff.length > 1 ? 'er' : ''}</h3>`;
+    for (const m of treff) {
+        html += lagGarnKort(m, kildeGarn, antallNoster);
+    }
     visResultat(resultat, html);
 });
 
