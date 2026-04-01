@@ -1,0 +1,292 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: #faf5f0;
+    color: #4a3728;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: linear-gradient(135deg, #c97b63, #a85d4a);
+    color: white;
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-style: italic;
+    opacity: 0.9;
+    margin-top: 0.3rem;
+    font-size: 0.95rem;
+}
+
+nav {
+    display: flex;
+    background-color: #f0e6dc;
+    border-bottom: 2px solid #d4c4b5;
+}
+
+.nav-btn {
+    flex: 1;
+    padding: 0.8rem 0.5rem;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: #7a6355;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+}
+
+.nav-btn:hover {
+    background-color: #e8dcd0;
+}
+
+.nav-btn.active {
+    color: #a85d4a;
+    font-weight: bold;
+    border-bottom-color: #a85d4a;
+    background-color: #faf5f0;
+}
+
+main {
+    flex: 1;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+    color: #5a3e2e;
+}
+
+.description {
+    color: #8a7565;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Masketeller */
+.counter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.counter {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.counter label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: #5a3e2e;
+}
+
+.counter-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.btn-counter {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #c97b63;
+    background: white;
+    color: #c97b63;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-counter:hover {
+    background-color: #c97b63;
+    color: white;
+}
+
+.btn-counter:active {
+    transform: scale(0.93);
+}
+
+.counter-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    min-width: 80px;
+    color: #4a3728;
+}
+
+.btn-reset {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #d4c4b5;
+    background: #f0e6dc;
+    color: #7a6355;
+    font-family: inherit;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-reset:hover {
+    background: #e0d0c0;
+}
+
+/* Beregningsskjema */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.7rem;
+    border: 2px solid #d4c4b5;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: white;
+    color: #4a3728;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #c97b63;
+}
+
+.btn-calculate {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    background: linear-gradient(135deg, #c97b63, #a85d4a);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-calculate:hover {
+    opacity: 0.9;
+}
+
+.btn-calculate:active {
+    transform: scale(0.98);
+}
+
+/* Resultat */
+.result {
+    margin-top: 1.2rem;
+    padding: 1.2rem;
+    background: white;
+    border-radius: 12px;
+    border-left: 4px solid #c97b63;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    line-height: 1.6;
+}
+
+.result h3 {
+    color: #a85d4a;
+    margin-bottom: 0.5rem;
+}
+
+.result .instruction {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+}
+
+.result .detail {
+    font-size: 0.9rem;
+    color: #8a7565;
+}
+
+.result.hidden {
+    display: none;
+}
+
+.error {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: #b0a090;
+    font-style: italic;
+    font-size: 0.85rem;
+    border-top: 1px solid #e8dcd0;
+}
+
+@media (min-width: 600px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    .nav-btn {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    main {
+        padding: 2rem 1.5rem;
+    }
+
+    .counter-group {
+        flex-direction: row;
+    }
+
+    .counter {
+        flex: 1;
+    }
+}
