@@ -18,13 +18,7 @@ header {
     color: white;
     text-align: center;
     padding: 1.5rem 1rem;
-}
-
-.header-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
+    position: relative;
 }
 
 header h1 {
@@ -33,21 +27,41 @@ header h1 {
 }
 
 .dark-mode-toggle {
-    padding: 0.3rem 0.7rem;
-    border: 1.5px solid rgba(255, 255, 255, 0.7);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    font-family: inherit;
-    font-size: 0.75rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
     cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
+    transition: all 0.3s;
     touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+}
+
+.dark-mode-toggle::after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: inset 8px -2px 0 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.3s;
+}
+
+body.dark .dark-mode-toggle::after {
+    box-shadow: inset 0 0 0 0 transparent;
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .dark-mode-toggle:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .subtitle {
@@ -296,75 +310,76 @@ footer {
     border-top: 1px solid #e8dcd0;
 }
 
-.version {
-    font-size: 0.7rem;
-    margin-top: 0.3rem;
-    opacity: 0.6;
-    font-style: normal;
-}
-
-/* Hva er nytt */
-.whats-new {
+/* Hva er nytt - overlay */
+.whats-new-overlay {
     position: fixed;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-    width: calc(100% - 2rem);
-    max-width: 400px;
-    animation: slideUp 0.3s ease-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
 }
 
-.whats-new.hidden {
+.whats-new-overlay.hidden {
     display: none;
 }
 
-.whats-new-content {
+.whats-new-box {
     background: white;
-    border-radius: 12px;
-    padding: 1rem 1.2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border-left: 4px solid #c97b63;
-    font-size: 0.85rem;
-    line-height: 1.5;
+    border-radius: 16px;
+    padding: 1.5rem;
+    max-width: 340px;
+    width: 100%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border-top: 4px solid #c97b63;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    animation: popIn 0.25s ease-out;
 }
 
-.whats-new-content strong {
+.whats-new-box strong {
     color: #a85d4a;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
+    display: block;
+    margin-bottom: 0.3rem;
 }
 
-.whats-new-content ul {
-    margin: 0.4rem 0 0.8rem 1.2rem;
+.whats-new-box ul {
+    margin: 0.4rem 0 1rem 1.2rem;
     padding: 0;
 }
 
-.whats-new-content li {
-    margin-bottom: 0.15rem;
+.whats-new-box li {
+    margin-bottom: 0.2rem;
 }
 
 .whats-new-close {
     display: block;
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.7rem;
     background: linear-gradient(135deg, #c97b63, #a85d4a);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-family: inherit;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: bold;
     cursor: pointer;
     touch-action: manipulation;
 }
 
-.whats-new-close:hover {
-    opacity: 0.9;
+.whats-new-close:active {
+    transform: scale(0.97);
 }
 
-@keyframes slideUp {
-    from { transform: translateX(-50%) translateY(100%); opacity: 0; }
-    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+@keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 /* --- Mørkmodus --- */
@@ -471,14 +486,18 @@ body.dark footer {
     color: #706050;
 }
 
-body.dark .whats-new-content {
+body.dark .whats-new-overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+body.dark .whats-new-box {
     background: #16213e;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    border-left-color: #d4956a;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    border-top-color: #d4956a;
     color: #e0d6cc;
 }
 
-body.dark .whats-new-content strong {
+body.dark .whats-new-box strong {
     color: #d4956a;
 }
 
