@@ -77,36 +77,6 @@ body.dark .dark-mode-toggle::after {
     font-size: 0.95rem;
 }
 
-nav {
-    display: flex;
-    background-color: #f0e6dc;
-    border-bottom: 2px solid #d4c4b5;
-}
-
-.nav-btn {
-    flex: 1;
-    padding: 0.8rem 0.5rem;
-    border: none;
-    background: none;
-    font-family: inherit;
-    font-size: 0.85rem;
-    color: #7a6355;
-    cursor: pointer;
-    transition: all 0.2s;
-    border-bottom: 3px solid transparent;
-}
-
-.nav-btn:hover {
-    background-color: #e8dcd0;
-}
-
-.nav-btn.active {
-    color: #a85d4a;
-    font-weight: bold;
-    border-bottom-color: #a85d4a;
-    background-color: #faf5f0;
-}
-
 main {
     flex: 1;
     max-width: 500px;
@@ -115,12 +85,111 @@ main {
     padding: 1.5rem 1rem;
 }
 
-.tab-content {
+/* Sidenavigasjon */
+.page {
     display: none;
 }
 
-.tab-content.active {
+.page.active {
     display: block;
+}
+
+/* Flis-layout */
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+}
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.3rem 0.5rem;
+    background: white;
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    touch-action: manipulation;
+}
+
+.tile:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.13);
+    transform: translateY(-2px);
+}
+
+.tile:active {
+    transform: scale(0.97);
+}
+
+.tile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c97b63, #a85d4a);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.tile-label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #5a3e2e;
+}
+
+/* Tilbake-knapp */
+.btn-back {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.4rem 0.9rem;
+    background: none;
+    border: 1.5px solid #d4c4b5;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    color: #7a6355;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: all 0.2s;
+}
+
+.btn-back::before {
+    content: '\2190 ';
+}
+
+.btn-back:hover {
+    background: #f0e6dc;
+}
+
+/* Select-felt */
+.form-group select {
+    width: 100%;
+    padding: 0.7rem;
+    border: 2px solid #d4c4b5;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: white;
+    color: #4a3728;
+    transition: border-color 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a6355' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #c97b63;
 }
 
 h2 {
@@ -482,6 +551,59 @@ footer {
     transform: scale(0.97);
 }
 
+/* Oppdateringsbanner */
+.update-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #c97b63, #a85d4a);
+    color: white;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    font-family: 'Georgia', serif;
+    font-size: 0.9rem;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    animation: slideUpBanner 0.3s ease-out;
+}
+
+.update-banner.hidden {
+    display: none;
+}
+
+.update-btn {
+    padding: 0.35rem 1rem;
+    background: white;
+    color: #a85d4a;
+    border: none;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.update-btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes slideUpBanner {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.version {
+    font-size: 0.7rem;
+    margin-top: 0.3rem;
+    opacity: 0.6;
+    font-style: normal;
+}
+
 @keyframes popIn {
     from { transform: scale(0.9); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
@@ -497,23 +619,41 @@ body.dark header {
     background: linear-gradient(135deg, #5a3a30, #3d2520);
 }
 
-body.dark nav {
-    background-color: #16213e;
-    border-bottom-color: #2a2a4a;
+body.dark .tile {
+    background: #16213e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-body.dark .nav-btn {
+body.dark .tile:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .tile-icon {
+    background: linear-gradient(135deg, #d4956a, #a85d4a);
+}
+
+body.dark .tile-label {
+    color: #e0c8b0;
+}
+
+body.dark .btn-back {
+    border-color: #2a2a4a;
     color: #a09585;
 }
 
-body.dark .nav-btn:hover {
-    background-color: #1a1a3a;
+body.dark .btn-back:hover {
+    background: #16213e;
 }
 
-body.dark .nav-btn.active {
-    color: #d4956a;
-    border-bottom-color: #d4956a;
-    background-color: #1a1a2e;
+body.dark .form-group select {
+    border-color: #2a2a4a;
+    background-color: #16213e;
+    color: #e0d6cc;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a09585' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+}
+
+body.dark .form-group select:focus {
+    border-color: #d4956a;
 }
 
 body.dark h2 {
@@ -615,6 +755,15 @@ body.dark .chat-send {
     background: linear-gradient(135deg, #d4956a, #a85d4a);
 }
 
+body.dark .update-banner {
+    background: linear-gradient(135deg, #d4956a, #a85d4a);
+}
+
+body.dark .update-btn {
+    background: #16213e;
+    color: #d4956a;
+}
+
 body.dark .whats-new-overlay {
     background: rgba(0, 0, 0, 0.6);
 }
@@ -635,13 +784,12 @@ body.dark .whats-new-box strong {
         font-size: 2.2rem;
     }
 
-    .nav-btn {
-        font-size: 1rem;
-        padding: 1rem;
-    }
-
     main {
         padding: 2rem 1.5rem;
+    }
+
+    .tile-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .counter-group {

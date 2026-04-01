@@ -1,0 +1,17 @@
+{
+    "name": "Inges strikkehjelp",
+    "short_name": "Strikkehjelp",
+    "description": "Din digitale strikkeassistent",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#faf5f0",
+    "theme_color": "#a85d4a",
+    "icons": [
+        {
+            "src": "logo.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        }
+    ]
+}

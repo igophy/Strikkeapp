@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '0.7';
+const APP_VERSION = '0.8';
 
 // --- Mørkmodus ---
 const DARK_MODE_KEY = 'inges-strikkehjelp-darkmode';
@@ -7,7 +7,6 @@ const darkToggle = document.getElementById('darkModeToggle');
 
 function settMorkModus(aktiv) {
     document.body.classList.toggle('dark', aktiv);
-    darkToggle.textContent = aktiv ? 'Lys' : 'Mørk';
     localStorage.setItem(DARK_MODE_KEY, aktiv ? 'on' : 'off');
 }
 
@@ -36,18 +35,21 @@ whatsNew.addEventListener('click', (e) => {
     if (e.target === whatsNew) lukkWhatsNew();
 });
 
-// --- Tab-navigasjon ---
-const navButtons = document.querySelectorAll('.nav-btn');
-const tabContents = document.querySelectorAll('.tab-content');
+// --- Side-navigasjon (fliser) ---
+const allPages = document.querySelectorAll('.page');
 
-navButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        navButtons.forEach(b => b.classList.remove('active'));
-        tabContents.forEach(t => t.classList.remove('active'));
+function visSide(id) {
+    allPages.forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+}
 
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-    });
+document.querySelectorAll('.tile').forEach(tile => {
+    tile.addEventListener('click', () => visSide(tile.dataset.page));
+});
+
+document.querySelectorAll('.btn-back').forEach(btn => {
+    btn.addEventListener('click', () => visSide(btn.dataset.page));
 });
 
 // --- Masketeller med localStorage ---
@@ -93,8 +95,9 @@ document.getElementById('resetCounters').addEventListener('click', () => {
 
 // --- Tastaturstøtte for tellere ---
 document.addEventListener('keydown', (e) => {
-    const aktivTab = document.querySelector('.tab-content.active');
-    if (aktivTab.id !== 'teller') return;
+    const aktivSide = document.querySelector('.page.active');
+    if (!aktivSide || aktivSide.id !== 'teller') return;
+    if (document.activeElement.tagName === 'INPUT') return;
 
     if (e.key === 'ArrowUp') {
         e.preventDefault();
@@ -194,6 +197,68 @@ function visResultat(element, html) {
     element.innerHTML = html;
     element.classList.remove('hidden');
 }
+
+// --- Strikkefasthets-kalkulator ---
+document.getElementById('beregnFasthet').addEventListener('click', () => {
+    const masker = parseFloat(document.getElementById('provMasker').value);
+    const bredde = parseFloat(document.getElementById('provCm').value);
+    const onsket = parseFloat(document.getElementById('onsketCm').value);
+    const resultat = document.getElementById('fasthetResultat');
+
+    if (!masker || !bredde || !onsket) {
+        visResultat(resultat, '<p class="error">Vennligst fyll inn alle tre feltene.</p>');
+        return;
+    }
+
+    const maskerPerCm = masker / bredde;
+    const maskerPer10cm = maskerPerCm * 10;
+    const totalMasker = Math.round(maskerPerCm * onsket);
+
+    let html = `<h3>Resultat</h3>`;
+    html += `<p class="instruction">Din strikkefasthet: <strong>${maskerPer10cm.toFixed(1)} masker per 10 cm</strong></p>`;
+    html += `<p class="instruction">For ${onsket} cm bredde trenger du: <strong>${totalMasker} masker</strong></p>`;
+    html += `<p class="detail">(${maskerPerCm.toFixed(2)} masker per cm)</p>`;
+
+    visResultat(resultat, html);
+});
+
+// --- Garnforbruk-kalkulator ---
+const garnEstimat = {
+    skjerf:       { meter: 200,  navn: 'Skjerf' },
+    lue:          { meter: 100,  navn: 'Lue' },
+    votter:       { meter: 150,  navn: 'Votter (par)' },
+    sokker:       { meter: 200,  navn: 'Sokker (par)' },
+    genser_barn:  { meter: 500,  navn: 'Genser barn' },
+    genser_dame:  { meter: 800,  navn: 'Genser dame' },
+    genser_herre: { meter: 1000, navn: 'Genser herre' },
+    sjal:         { meter: 400,  navn: 'Sjal' },
+    teppe:        { meter: 600,  navn: 'Babyteppe' }
+};
+
+document.getElementById('beregnGarn').addEventListener('click', () => {
+    const type = document.getElementById('prosjektType').value;
+    const meterPerNoste = parseInt(document.getElementById('garnLengde').value);
+    const resultat = document.getElementById('garnResultat');
+
+    if (!type) {
+        visResultat(resultat, '<p class="error">Velg en prosjekttype.</p>');
+        return;
+    }
+    if (!meterPerNoste) {
+        visResultat(resultat, '<p class="error">Fyll inn meter per nøste.</p>');
+        return;
+    }
+
+    const prosjekt = garnEstimat[type];
+    const antallNoster = Math.ceil(prosjekt.meter / meterPerNoste);
+
+    let html = `<h3>Resultat</h3>`;
+    html += `<p class="instruction"><strong>${prosjekt.navn}</strong> trenger ca. <strong>${prosjekt.meter} meter</strong> garn.</p>`;
+    html += `<p class="instruction">Med ${meterPerNoste} m/nøste trenger du: <strong>${antallNoster} nøster</strong></p>`;
+    html += `<p class="detail">Tips: Kjøp gjerne 1 ekstra nøste for sikkerhets skyld. Estimatene er omtrentlige og varierer med garntykkelse og mønster.</p>`;
+
+    visResultat(resultat, html);
+});
 
 // --- Strikkeekspert ---
 const kunnskapsbase = [

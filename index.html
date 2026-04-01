@@ -5,37 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inges strikkehjelp</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <header>
         <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; v0.7</p>
+        <p class="subtitle">Din digitale strikkeassistent &middot; v0.8</p>
         <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Bytt mørk/lys modus"></button>
     </header>
 
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box">
-            <strong>Nytt i v0.7!</strong>
+            <strong>Nytt i v0.8!</strong>
             <ul>
-                <li>Strikkeekspert - spør om teknikker!</li>
-                <li>YouTube-søk for strikkevideoer</li>
-                <li>Lenker til kjente strikkesider</li>
+                <li>Ny startside med fliser</li>
+                <li>Strikkefasthets-kalkulator</li>
+                <li>Garnforbruk-kalkulator</li>
             </ul>
             <button id="closeWhatsNew" class="whats-new-close">OK, forstått!</button>
         </div>
     </div>
 
-    <nav>
-        <button class="nav-btn active" data-tab="teller">Masketeller</button>
-        <button class="nav-btn" data-tab="oykning">Økning</button>
-        <button class="nav-btn" data-tab="felling">Felling</button>
-        <button class="nav-btn" data-tab="ekspert">Strikkeekspert</button>
-    </nav>
-
     <main>
+        <!-- Startside med fliser -->
+        <section id="hjem" class="page active">
+            <div class="tile-grid">
+                <button class="tile" data-page="teller">
+                    <span class="tile-icon">123</span>
+                    <span class="tile-label">Masketeller</span>
+                </button>
+                <button class="tile" data-page="oykning">
+                    <span class="tile-icon">+</span>
+                    <span class="tile-label">Beregn økning</span>
+                </button>
+                <button class="tile" data-page="felling">
+                    <span class="tile-icon">&minus;</span>
+                    <span class="tile-label">Beregn felling</span>
+                </button>
+                <button class="tile" data-page="fasthet">
+                    <span class="tile-icon">cm</span>
+                    <span class="tile-label">Strikkefasthet</span>
+                </button>
+                <button class="tile" data-page="garn">
+                    <span class="tile-icon">~</span>
+                    <span class="tile-label">Garnforbruk</span>
+                </button>
+                <button class="tile" data-page="ekspert">
+                    <span class="tile-icon">?</span>
+                    <span class="tile-label">Strikkeekspert</span>
+                </button>
+            </div>
+        </section>
+
         <!-- Masketeller -->
-        <section id="teller" class="tab-content active">
+        <section id="teller" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
             <h2>Masketeller</h2>
             <p class="description">Hold tellingen på maskene og radene dine.</p>
 
@@ -62,8 +87,9 @@
             <button class="btn-reset" id="resetCounters">Nullstill tellere</button>
         </section>
 
-        <!-- Hoyning -->
-        <section id="oykning" class="tab-content">
+        <!-- Økning -->
+        <section id="oykning" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
             <h2>Beregn økning</h2>
             <p class="description">Regn ut jevn fordeling av økninger over et antall masker.</p>
 
@@ -77,12 +103,12 @@
             </div>
 
             <button class="btn-calculate" id="beregnOykning">Beregn</button>
-
             <div id="oykningResultat" class="result hidden"></div>
         </section>
 
         <!-- Felling -->
-        <section id="felling" class="tab-content">
+        <section id="felling" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
             <h2>Beregn felling</h2>
             <p class="description">Regn ut jevn fordeling av fellinger over et antall masker.</p>
 
@@ -96,11 +122,65 @@
             </div>
 
             <button class="btn-calculate" id="beregnFelling">Beregn</button>
-
             <div id="fellingResultat" class="result hidden"></div>
         </section>
+
+        <!-- Strikkefasthet -->
+        <section id="fasthet" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Strikkefasthet</h2>
+            <p class="description">Regn ut masker og rader fra prøvelappen din.</p>
+
+            <div class="form-group">
+                <label for="provMasker">Masker i prøvelappen:</label>
+                <input type="number" id="provMasker" min="1" inputmode="numeric" placeholder="f.eks. 22">
+            </div>
+            <div class="form-group">
+                <label for="provCm">Bredde på prøvelappen (cm):</label>
+                <input type="number" id="provCm" min="0.1" step="0.1" inputmode="decimal" placeholder="f.eks. 10">
+            </div>
+            <div class="form-group">
+                <label for="onsketCm">Ønsket bredde (cm):</label>
+                <input type="number" id="onsketCm" min="0.1" step="0.1" inputmode="decimal" placeholder="f.eks. 50">
+            </div>
+
+            <button class="btn-calculate" id="beregnFasthet">Beregn</button>
+            <div id="fasthetResultat" class="result hidden"></div>
+        </section>
+
+        <!-- Garnforbruk -->
+        <section id="garn" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Garnforbruk</h2>
+            <p class="description">Estimer hvor mye garn du trenger.</p>
+
+            <div class="form-group">
+                <label for="prosjektType">Type prosjekt:</label>
+                <select id="prosjektType">
+                    <option value="">Velg prosjekt...</option>
+                    <option value="skjerf">Skjerf</option>
+                    <option value="lue">Lue</option>
+                    <option value="votter">Votter (par)</option>
+                    <option value="sokker">Sokker (par)</option>
+                    <option value="genser_barn">Genser barn</option>
+                    <option value="genser_dame">Genser dame</option>
+                    <option value="genser_herre">Genser herre</option>
+                    <option value="sjal">Sjal</option>
+                    <option value="teppe">Babyteppe</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="garnLengde">Meter per nøste:</label>
+                <input type="number" id="garnLengde" min="1" inputmode="numeric" placeholder="f.eks. 100">
+            </div>
+
+            <button class="btn-calculate" id="beregnGarn">Beregn</button>
+            <div id="garnResultat" class="result hidden"></div>
+        </section>
+
         <!-- Strikkeekspert -->
-        <section id="ekspert" class="tab-content">
+        <section id="ekspert" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
             <h2>Strikkeekspert</h2>
             <p class="description">Spør meg om strikking!</p>
 
@@ -117,9 +197,31 @@
 
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
-        <p class="version">v0.7</p>
+        <p class="version">v0.8</p>
     </footer>
 
+    <div id="updateBanner" class="update-banner hidden">
+        Ny versjon tilgjengelig!
+        <button id="updateBtn" class="update-btn">Oppdater</button>
+    </div>
+
     <script src="app.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').then(reg => {
+            reg.addEventListener('updatefound', () => {
+                const nySW = reg.installing;
+                nySW.addEventListener('statechange', () => {
+                    if (nySW.state === 'installed' && navigator.serviceWorker.controller) {
+                        document.getElementById('updateBanner').classList.remove('hidden');
+                    }
+                });
+            });
+        });
+        document.getElementById('updateBtn').addEventListener('click', () => {
+            window.location.reload();
+        });
+    }
+    </script>
 </body>
 </html>
