@@ -22,7 +22,7 @@
         <!-- Masketeller -->
         <section id="teller" class="tab-content active">
             <h2>Masketeller</h2>
-            <p class="description">Hold tellingen på maskene og pinnene dine.</p>
+            <p class="description">Hold tellingen på maskene og radene dine.</p>
 
             <div class="counter-group">
                 <div class="counter">
@@ -54,11 +54,11 @@
 
             <div class="form-group">
                 <label for="oykningStart">Antall masker nå:</label>
-                <input type="number" id="oykningStart" min="1" placeholder="f.eks. 80">
+                <input type="number" id="oykningStart" min="1" inputmode="numeric" placeholder="f.eks. 80">
             </div>
             <div class="form-group">
                 <label for="oykningMal">Ønsket antall masker:</label>
-                <input type="number" id="oykningMal" min="1" placeholder="f.eks. 100">
+                <input type="number" id="oykningMal" min="1" inputmode="numeric" placeholder="f.eks. 100">
             </div>
 
             <button class="btn-calculate" id="beregnOykning">Beregn</button>
@@ -73,11 +73,11 @@
 
             <div class="form-group">
                 <label for="fellingStart">Antall masker nå:</label>
-                <input type="number" id="fellingStart" min="1" placeholder="f.eks. 100">
+                <input type="number" id="fellingStart" min="1" inputmode="numeric" placeholder="f.eks. 100">
             </div>
             <div class="form-group">
                 <label for="fellingMal">Ønsket antall masker:</label>
-                <input type="number" id="fellingMal" min="1" placeholder="f.eks. 80">
+                <input type="number" id="fellingMal" min="1" inputmode="numeric" placeholder="f.eks. 80">
             </div>
 
             <button class="btn-calculate" id="beregnFelling">Beregn</button>
@@ -88,6 +88,7 @@
 
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
+        <p class="version">v0.4</p>
     </footer>
 
     <script src="app.js"></script>

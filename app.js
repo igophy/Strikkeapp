@@ -14,8 +14,21 @@ navButtons.forEach(btn => {
     });
 });
 
-// --- Masketeller ---
-const counters = { masker: 0, rader: 0 };
+// --- Masketeller med localStorage ---
+const STORAGE_KEY = 'inges-strikkehjelp-tellere';
+
+function lagreTellere() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(counters));
+}
+
+function hentTellere() {
+    const lagret = localStorage.getItem(STORAGE_KEY);
+    return lagret ? JSON.parse(lagret) : { masker: 0, rader: 0 };
+}
+
+const counters = hentTellere();
+document.getElementById('masker').textContent = counters.masker;
+document.getElementById('rader').textContent = counters.rader;
 
 document.querySelectorAll('.btn-counter').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -26,14 +39,48 @@ document.querySelectorAll('.btn-counter').forEach(btn => {
             counters[target] = Math.max(0, counters[target] - 1);
         }
         document.getElementById(target).textContent = counters[target];
+        lagreTellere();
     });
 });
 
+// --- Nullstilling med bekreftelse ---
 document.getElementById('resetCounters').addEventListener('click', () => {
+    if (counters.masker === 0 && counters.rader === 0) return;
+    if (!confirm('Er du sikker på at du vil nullstille tellerne?')) return;
+
     counters.masker = 0;
     counters.rader = 0;
     document.getElementById('masker').textContent = '0';
     document.getElementById('rader').textContent = '0';
+    lagreTellere();
+});
+
+// --- Tastaturstøtte for tellere ---
+document.addEventListener('keydown', (e) => {
+    const aktivTab = document.querySelector('.tab-content.active');
+    if (aktivTab.id !== 'teller') return;
+
+    if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        counters.masker++;
+        document.getElementById('masker').textContent = counters.masker;
+        lagreTellere();
+    } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        counters.masker = Math.max(0, counters.masker - 1);
+        document.getElementById('masker').textContent = counters.masker;
+        lagreTellere();
+    } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        counters.rader++;
+        document.getElementById('rader').textContent = counters.rader;
+        lagreTellere();
+    } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        counters.rader = Math.max(0, counters.rader - 1);
+        document.getElementById('rader').textContent = counters.rader;
+        lagreTellere();
+    }
 });
 
 // --- Beregn økning ---
