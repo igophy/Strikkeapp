@@ -15,7 +15,7 @@ navButtons.forEach(btn => {
 });
 
 // --- Masketeller ---
-const counters = { masker: 0, pinner: 0 };
+const counters = { masker: 0, rader: 0 };
 
 document.querySelectorAll('.btn-counter').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -31,9 +31,9 @@ document.querySelectorAll('.btn-counter').forEach(btn => {
 
 document.getElementById('resetCounters').addEventListener('click', () => {
     counters.masker = 0;
-    counters.pinner = 0;
+    counters.rader = 0;
     document.getElementById('masker').textContent = '0';
-    document.getElementById('pinner').textContent = '0';
+    document.getElementById('rader').textContent = '0';
 });
 
 // --- Beregn økning ---
