@@ -8,9 +8,24 @@
 </head>
 <body>
     <header>
-        <h1>Inges strikkehjelp</h1>
+        <div class="header-row">
+            <h1>Inges strikkehjelp</h1>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Bytt til mørk modus">Mørk</button>
+        </div>
         <p class="subtitle">Din digitale strikkeassistent</p>
     </header>
+
+    <div id="whatsNew" class="whats-new hidden">
+        <div class="whats-new-content">
+            <strong>Nytt i v0.5!</strong>
+            <ul>
+                <li>Mørkmodus for strikking i sofakroken</li>
+                <li>Tellerne huskes mellom besøk</li>
+                <li>Tastaturstøtte med piltaster</li>
+            </ul>
+            <button id="closeWhatsNew" class="whats-new-close">OK, forstått!</button>
+        </div>
+    </div>
 
     <nav>
         <button class="nav-btn active" data-tab="teller">Masketeller</button>
@@ -88,7 +103,7 @@
 
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
-        <p class="version">v0.4</p>
+        <p class="version">v0.5</p>
     </footer>
 
     <script src="app.js"></script>

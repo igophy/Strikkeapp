@@ -1,4 +1,35 @@
 // Inges strikkehjelp - app.js
+const APP_VERSION = '0.5';
+
+// --- Mørkmodus ---
+const DARK_MODE_KEY = 'inges-strikkehjelp-darkmode';
+const darkToggle = document.getElementById('darkModeToggle');
+
+function settMorkModus(aktiv) {
+    document.body.classList.toggle('dark', aktiv);
+    darkToggle.textContent = aktiv ? 'Lys' : 'Mørk';
+    localStorage.setItem(DARK_MODE_KEY, aktiv ? 'on' : 'off');
+}
+
+settMorkModus(localStorage.getItem(DARK_MODE_KEY) === 'on');
+
+darkToggle.addEventListener('click', () => {
+    settMorkModus(!document.body.classList.contains('dark'));
+});
+
+// --- Hva er nytt ---
+const VERSION_KEY = 'inges-strikkehjelp-sett-versjon';
+const whatsNew = document.getElementById('whatsNew');
+const settVersjon = localStorage.getItem(VERSION_KEY);
+
+if (settVersjon !== APP_VERSION) {
+    whatsNew.classList.remove('hidden');
+}
+
+document.getElementById('closeWhatsNew').addEventListener('click', () => {
+    whatsNew.classList.add('hidden');
+    localStorage.setItem(VERSION_KEY, APP_VERSION);
+});
 
 // --- Tab-navigasjon ---
 const navButtons = document.querySelectorAll('.nav-btn');

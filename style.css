@@ -20,9 +20,34 @@ header {
     padding: 1.5rem 1rem;
 }
 
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
 header h1 {
     font-size: 1.8rem;
     letter-spacing: 1px;
+}
+
+.dark-mode-toggle {
+    padding: 0.3rem 0.7rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-family: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    touch-action: manipulation;
+}
+
+.dark-mode-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .subtitle {
@@ -276,6 +301,185 @@ footer {
     margin-top: 0.3rem;
     opacity: 0.6;
     font-style: normal;
+}
+
+/* Hva er nytt */
+.whats-new {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: calc(100% - 2rem);
+    max-width: 400px;
+    animation: slideUp 0.3s ease-out;
+}
+
+.whats-new.hidden {
+    display: none;
+}
+
+.whats-new-content {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-left: 4px solid #c97b63;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.whats-new-content strong {
+    color: #a85d4a;
+    font-size: 0.95rem;
+}
+
+.whats-new-content ul {
+    margin: 0.4rem 0 0.8rem 1.2rem;
+    padding: 0;
+}
+
+.whats-new-content li {
+    margin-bottom: 0.15rem;
+}
+
+.whats-new-close {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    background: linear-gradient(135deg, #c97b63, #a85d4a);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.whats-new-close:hover {
+    opacity: 0.9;
+}
+
+@keyframes slideUp {
+    from { transform: translateX(-50%) translateY(100%); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+/* --- Mørkmodus --- */
+body.dark {
+    background-color: #1a1a2e;
+    color: #e0d6cc;
+}
+
+body.dark header {
+    background: linear-gradient(135deg, #5a3a30, #3d2520);
+}
+
+body.dark nav {
+    background-color: #16213e;
+    border-bottom-color: #2a2a4a;
+}
+
+body.dark .nav-btn {
+    color: #a09585;
+}
+
+body.dark .nav-btn:hover {
+    background-color: #1a1a3a;
+}
+
+body.dark .nav-btn.active {
+    color: #d4956a;
+    border-bottom-color: #d4956a;
+    background-color: #1a1a2e;
+}
+
+body.dark h2 {
+    color: #e0c8b0;
+}
+
+body.dark .description {
+    color: #a09585;
+}
+
+body.dark .counter {
+    background: #16213e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .counter label {
+    color: #e0c8b0;
+}
+
+body.dark .counter-value {
+    color: #e0d6cc;
+}
+
+body.dark .btn-counter {
+    border-color: #d4956a;
+    background: #16213e;
+    color: #d4956a;
+}
+
+body.dark .btn-counter:hover {
+    background-color: #d4956a;
+    color: #1a1a2e;
+}
+
+body.dark .btn-reset {
+    border-color: #2a2a4a;
+    background: #16213e;
+    color: #a09585;
+}
+
+body.dark .btn-reset:hover {
+    background: #1a1a3a;
+}
+
+body.dark .form-group input {
+    border-color: #2a2a4a;
+    background: #16213e;
+    color: #e0d6cc;
+}
+
+body.dark .form-group input:focus {
+    border-color: #d4956a;
+}
+
+body.dark .btn-calculate {
+    background: linear-gradient(135deg, #d4956a, #a85d4a);
+}
+
+body.dark .result {
+    background: #16213e;
+    border-left-color: #d4956a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .result h3 {
+    color: #d4956a;
+}
+
+body.dark .result .detail {
+    color: #a09585;
+}
+
+body.dark footer {
+    border-top-color: #2a2a4a;
+    color: #706050;
+}
+
+body.dark .whats-new-content {
+    background: #16213e;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border-left-color: #d4956a;
+    color: #e0d6cc;
+}
+
+body.dark .whats-new-content strong {
+    color: #d4956a;
 }
 
 @media (min-width: 600px) {
