@@ -135,6 +135,7 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: manipulation;
 }
 
 .btn-counter:hover {
@@ -165,6 +166,7 @@ h2 {
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.2s;
+    touch-action: manipulation;
 }
 
 .btn-reset:hover {
@@ -214,6 +216,7 @@ h2 {
     font-weight: bold;
     cursor: pointer;
     transition: opacity 0.2s;
+    touch-action: manipulation;
 }
 
 .btn-calculate:hover {
