@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inges strikkehjelp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Inges strikkehjelp</h1>
+        <p class="subtitle">Din digitale strikkeassistent</p>
+    </header>
+
+    <nav>
+        <button class="nav-btn active" data-tab="teller">Masketeller</button>
+        <button class="nav-btn" data-tab="oykning">Beregn hoyning</button>
+        <button class="nav-btn" data-tab="felling">Beregn felling</button>
+    </nav>
+
+    <main>
+        <!-- Masketeller -->
+        <section id="teller" class="tab-content active">
+            <h2>Masketeller</h2>
+            <p class="description">Hold tellingen på maskene og pinnene dine.</p>
+
+            <div class="counter-group">
+                <div class="counter">
+                    <label>Masker</label>
+                    <div class="counter-controls">
+                        <button class="btn-counter btn-minus" data-target="masker">-</button>
+                        <span id="masker" class="counter-value">0</span>
+                        <button class="btn-counter btn-plus" data-target="masker">+</button>
+                    </div>
+                </div>
+
+                <div class="counter">
+                    <label>Pinner (rader)</label>
+                    <div class="counter-controls">
+                        <button class="btn-counter btn-minus" data-target="pinner">-</button>
+                        <span id="pinner" class="counter-value">0</span>
+                        <button class="btn-counter btn-plus" data-target="pinner">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-reset" id="resetCounters">Nullstill tellere</button>
+        </section>
+
+        <!-- Hoyning -->
+        <section id="oykning" class="tab-content">
+            <h2>Beregn hoyning</h2>
+            <p class="description">Regn ut jevn fordeling av økninger over et antall masker.</p>
+
+            <div class="form-group">
+                <label for="oykningStart">Antall masker nå:</label>
+                <input type="number" id="oykningStart" min="1" placeholder="f.eks. 80">
+            </div>
+            <div class="form-group">
+                <label for="oykningMal">Ønsket antall masker:</label>
+                <input type="number" id="oykningMal" min="1" placeholder="f.eks. 100">
+            </div>
+
+            <button class="btn-calculate" id="beregnOykning">Beregn</button>
+
+            <div id="oykningResultat" class="result hidden"></div>
+        </section>
+
+        <!-- Felling -->
+        <section id="felling" class="tab-content">
+            <h2>Beregn felling</h2>
+            <p class="description">Regn ut jevn fordeling av fellinger over et antall masker.</p>
+
+            <div class="form-group">
+                <label for="fellingStart">Antall masker nå:</label>
+                <input type="number" id="fellingStart" min="1" placeholder="f.eks. 100">
+            </div>
+            <div class="form-group">
+                <label for="fellingMal">Ønsket antall masker:</label>
+                <input type="number" id="fellingMal" min="1" placeholder="f.eks. 80">
+            </div>
+
+            <button class="btn-calculate" id="beregnFelling">Beregn</button>
+
+            <div id="fellingResultat" class="result hidden"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Inges strikkehjelp &mdash; God strikking!</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
