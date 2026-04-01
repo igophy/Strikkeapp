@@ -1,4 +1,4 @@
-const CACHE_NAME = 'inges-strikkehjelp-v0.9';
+const CACHE_NAME = 'inges-strikkehjelp-v0.9.1';
 const ASSETS = [
     './',
     './index.html',

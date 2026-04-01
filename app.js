@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '0.9';
+const APP_VERSION = '0.9.1';
 
 // --- Mørkmodus ---
 const DARK_MODE_KEY = 'inges-strikkehjelp-darkmode';
@@ -274,8 +274,15 @@ document.getElementById('beregnGarn').addEventListener('click', () => {
 
     let html = `<h3>Resultat</h3>`;
     html += `<p class="instruction"><strong>${prosjekt.navn}</strong> trenger ca. <strong>${justerMeter} meter</strong> garn.</p>`;
-    if (pinne && justerMeter !== prosjekt.meter) {
-        html += `<p class="detail">(Justert fra ${prosjekt.meter} m for pinne ${pinne} mm)</p>`;
+    if (pinne) {
+        const faktor = justerMeter / prosjekt.meter;
+        const prosent = Math.round((faktor - 1) * 100);
+        if (prosent === 0) {
+            html += `<p class="detail">Pinne ${pinne} mm er standard for denne typen &mdash; ingen justering.</p>`;
+        } else {
+            const retning = prosent > 0 ? 'mer' : 'mindre';
+            html += `<p class="detail">Justert for pinne ${pinne} mm: ${Math.abs(prosent)}% ${retning} garn enn standard (${prosjekt.meter} m).</p>`;
+        }
     }
     html += `<p class="instruction">Med ${meterPerNoste} m/nøste trenger du: <strong>${antallNoster} nøster</strong></p>`;
     html += `<p class="detail">Tips: Kjøp gjerne 1 ekstra nøste for sikkerhets skyld. Estimatene er omtrentlige og varierer med garntykkelse og mønster.</p>`;
@@ -457,21 +464,17 @@ function lagGarnKort(match, kildeGarn, antallNoster) {
 byggGarnVelger();
 
 // Mode toggle
-document.querySelectorAll('.garnalt-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-        document.querySelectorAll('.garnalt-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const mode = tab.dataset.mode;
-        document.getElementById('garnaltListe').classList.toggle('hidden', mode !== 'liste');
-        document.getElementById('garnaltManuell').classList.toggle('hidden', mode !== 'manuell');
-    });
+document.getElementById('garnaltModus').addEventListener('change', (e) => {
+    const mode = e.target.value;
+    document.getElementById('garnaltListe').classList.toggle('hidden', mode !== 'liste');
+    document.getElementById('garnaltManuell').classList.toggle('hidden', mode !== 'manuell');
 });
 
 // Beregn-knapp
 document.getElementById('beregnGarnalt').addEventListener('click', () => {
     const resultat = document.getElementById('garnaltResultat');
     const antallNoster = parseInt(document.getElementById('antallNoster').value) || 0;
-    const erListeModus = document.querySelector('.garnalt-tab.active').dataset.mode === 'liste';
+    const erListeModus = document.getElementById('garnaltModus').value === 'liste';
 
     let treff = [];
     let kildeGarn = null;
