@@ -1,9 +1,10 @@
-const CACHE_NAME = 'inges-strikkehjelp-v0.9.1';
+const CACHE_NAME = 'inges-strikkehjelp-v1.0';
 const ASSETS = [
     './',
     './index.html',
     './style.css',
     './app.js',
+    './strikketips.json',
     './logo.svg'
 ];
 
