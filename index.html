@@ -11,13 +11,13 @@
     <header>
         <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; v0.9</p>
+        <p class="subtitle">Din digitale strikkeassistent &middot; v0.9.1</p>
         <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Bytt mørk/lys modus"></button>
     </header>
 
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box">
-            <strong>Nytt i v0.9!</strong>
+            <strong>Nytt i v0.9.1!</strong>
             <ul>
                 <li>Garnalternativ &mdash; finn erstatningsgarn</li>
                 <li>Garnforbruk justert for pinnestørrelse</li>
@@ -205,9 +205,12 @@
             <h2>Garnalternativ</h2>
             <p class="description">Finn erstatningsgarn som passer til oppskriften din.</p>
 
-            <div class="garnalt-mode-toggle">
-                <button class="garnalt-tab active" data-mode="liste">Velg fra liste</button>
-                <button class="garnalt-tab" data-mode="manuell">Angi manuelt</button>
+            <div class="form-group">
+                <label for="garnaltModus">Hvordan vil du søke?</label>
+                <select id="garnaltModus">
+                    <option value="liste">Velg garn fra liste</option>
+                    <option value="manuell">Angi egenskaper manuelt</option>
+                </select>
             </div>
 
             <div id="garnaltListe" class="garnalt-panel">
@@ -276,7 +279,7 @@
 
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
-        <p class="version">v0.9</p>
+        <p class="version">v0.9.1</p>
     </footer>
 
     <div id="updateBanner" class="update-banner hidden">
