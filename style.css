@@ -779,35 +779,7 @@ body.dark .whats-new-box strong {
     color: #d4956a;
 }
 
-/* Garnalternativ - mode toggle */
-.garnalt-mode-toggle {
-    display: flex;
-    gap: 0;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 2px solid #d4c4b5;
-}
-
-.garnalt-tab {
-    flex: 1;
-    padding: 0.6rem;
-    border: none;
-    background: white;
-    font-family: inherit;
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #7a6355;
-    cursor: pointer;
-    transition: all 0.2s;
-    touch-action: manipulation;
-}
-
-.garnalt-tab.active {
-    background: linear-gradient(135deg, #c97b63, #a85d4a);
-    color: white;
-}
-
+/* Garnalternativ */
 .garnalt-panel.hidden {
     display: none;
 }
@@ -901,20 +873,6 @@ body.dark .whats-new-box strong {
 }
 
 /* Dark mode - garnalternativ */
-body.dark .garnalt-mode-toggle {
-    border-color: #2a2a4a;
-}
-
-body.dark .garnalt-tab {
-    background: #16213e;
-    color: #a09585;
-}
-
-body.dark .garnalt-tab.active {
-    background: linear-gradient(135deg, #d4956a, #a85d4a);
-    color: white;
-}
-
 body.dark .garn-kort {
     background: #1a1a2e;
 }
