@@ -54,24 +54,23 @@
             </div>
         </section>
 
-        <!-- Mine prosjekter -->
+        <!-- === NY: Mine prosjekter === -->
         <section id="prosjekter" class="page">
             <button class="btn-back" data-page="hjem">Tilbake</button>
             <h2>Mine prosjekter</h2>
             <button id="nyProsjektBtn" class="btn-calculate">+ Nytt prosjekt</button>
-            
             <div id="prosjektListe" class="prosjekt-liste"></div>
         </section>
 
-        <!-- Prosjekt detalj / redigering -->
+        <!-- === NY: Prosjekt detalj === -->
         <section id="prosjektDetalj" class="page">
             <button class="btn-back" data-page="prosjekter">Tilbake til prosjekter</button>
-            <h2 id="prosjektTittel"></h2>
+            <h2 id="prosjektTittel">Prosjekt</h2>
             
             <div class="prosjekt-form">
                 <div class="form-group">
-                    <label>Prosjektnavn</label>
-                    <input type="text" id="prosjektNavn" placeholder="F.eks. Blå genser til meg">
+                    <label>Navn</label>
+                    <input type="text" id="prosjektNavn" placeholder="F.eks. Blå genser">
                 </div>
                 <div class="form-group">
                     <label>Type</label>
@@ -81,7 +80,6 @@
                         <option value="sokker">Sokker</option>
                         <option value="votter">Votter</option>
                         <option value="sjal">Sjal</option>
-                        <option value="teppe">Teppe</option>
                         <option value="annet">Annet</option>
                     </select>
                 </div>
@@ -94,23 +92,24 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Ønsket lengde (cm)</label>
-                    <input type="number" id="prosjektLengde" placeholder="f.eks. 60">
+                    <label>Masker nå</label>
+                    <input type="number" id="prosjektMasker" value="0">
+                </div>
+                <div class="form-group">
+                    <label>Rader nå</label>
+                    <input type="number" id="prosjektRader" value="0">
                 </div>
                 <div class="form-group">
                     <label>Notater</label>
-                    <textarea id="prosjektNotater" rows="4" placeholder="Tips, garn brukt, oppskrift-link..."></textarea>
+                    <textarea id="prosjektNotater" rows="3" placeholder="Garn, oppskrift, tips..."></textarea>
                 </div>
             </div>
 
             <button id="lagreProsjektBtn" class="btn-calculate">Lagre prosjekt</button>
-            <button id="slettProsjektBtn" class="btn-reset" style="margin-top: 0.5rem; background:#c0392b; color:white;">Slett prosjekt</button>
+            <button id="slettProsjektBtn" class="btn-reset" style="margin-top:0.5rem;background:#c0392b;color:white;">Slett prosjekt</button>
         </section>
 
-        <!-- Resten av de gamle sidene beholdes uendret (teller, oykning, felling osv.) -->
-        <!-- ... (jeg har beholdt alle de andre seksjonene som før) ... -->
-
-        <!-- Masketeller (oppdatert med prosjektkobling) -->
+        <!-- Masketeller (liten oppdatering) -->
         <section id="teller" class="page">
             <button class="btn-back" data-page="hjem">Tilbake</button>
             <h2>Masketeller</h2>
@@ -136,17 +135,16 @@
             </div>
 
             <button class="btn-reset" id="resetCounters">Nullstill tellere</button>
-            <button id="velgProsjektForTeller" class="btn-calculate" style="margin-top: 0.8rem;">Velg prosjekt for telling</button>
         </section>
 
         <!-- De andre sidene (oykning, felling, fasthet, garn, garnalternativ, ekspert) er uendret -->
-        <!-- ... (de er beholdt identisk som i originalen) ... -->
+        <!-- Behold alle de andre <section id="..."> som du allerede hadde -->
 
     </main>
 
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
-        <p class="version">v1.1 • Prosjektsporing lagt til</p>
+        <p class="version">v1.1 • Prosjektsporing</p>
     </footer>
 
     <script src="app.js"></script>
