@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '0.9.1';
+const APP_VERSION = '1.0';
 
 // --- Mørkmodus ---
 const DARK_MODE_KEY = 'inges-strikkehjelp-darkmode';
@@ -525,80 +525,46 @@ document.getElementById('beregnGarnalt').addEventListener('click', () => {
 });
 
 // --- Strikkeekspert ---
-const kunnskapsbase = [
-    {
-        nøkkelord: ['rett', 'rettmaske', 'rett maske', 'strikke rett'],
-        svar: 'Rett maske (r) er grunnmasken i strikking. Stikk pinnen inn foran fra venstre, legg tråden rundt og trekk gjennom. Alle retter gir glattstrikk på rettsiden.'
-    },
-    {
-        nøkkelord: ['vrang', 'vrangmaske', 'vrang maske', 'strikke vrang'],
-        svar: 'Vrang maske (vr) er motsatt av rett. Tråden holdes foran arbeidet, stikk pinnen inn bakfra høyre til venstre, legg tråden rundt og trekk gjennom.'
-    },
-    {
-        nøkkelord: ['legg opp', 'legge opp masker', 'opplegning', 'slå opp'],
-        svar: 'Å legge opp masker er å lage den første raden. Vanligste metoder:<ul><li><strong>Tommelfinger-metoden</strong> &mdash; gir en elastisk kant</li><li><strong>Kabelopplegning</strong> &mdash; gir en fast, pen kant</li><li><strong>Løkkeopplegning</strong> &mdash; enklest, men kan bli løs</li></ul>'
-    },
-    {
-        nøkkelord: ['felle', 'felling', 'minke', 'minske', 'fell sammen'],
-        svar: 'Vanlige fellinger:<ul><li><strong>Fell 2 rett sammen (f2rs)</strong> &mdash; høyrehellende felling</li><li><strong>Surpassé (surp)</strong> &mdash; venstrehellende felling, løft 1 maske over</li><li><strong>Fell 3 sammen</strong> &mdash; dobbel felling for raskere minking</li></ul>'
-    },
-    {
-        nøkkelord: ['øk', 'øke', 'økning', 'øke masker'],
-        svar: 'Vanlige økninger:<ul><li><strong>Kast (k)</strong> &mdash; lager et hull, brukes i hullmønster</li><li><strong>Løft (løft)</strong> &mdash; usynlig økning fra tverrtråden</li><li><strong>Strikk i forkant og bakkant</strong> &mdash; enkel økning uten hull</li></ul>'
-    },
-    {
-        nøkkelord: ['strikkefasthet', 'fasthet', 'prøvelapp', 'gauge'],
-        svar: 'Strikkefasthet forteller hvor mange masker og rader du får per 10 cm. Strikk alltid en prøvelapp! Har du for mange masker, bruk tykkere pinner. For få masker, bruk tynnere pinner.'
-    },
-    {
-        nøkkelord: ['flette', 'flettemønster', 'kabelstrikk', 'flettepinne'],
-        svar: 'Flettemønster lages ved å bytte rekkefølge på masker med en flettepinne (hjelpepinne). Sett masker på flettepinnen, strikk neste masker, og strikk så maskene fra flettepinnen.'
-    },
-    {
-        nøkkelord: ['rundstrikk', 'rundpinne', 'rundt', 'i rundgang'],
-        svar: 'Rundstrikk gjøres med rundpinner eller strømpepinner. Fordelen er at du alltid ser rettsiden og slipper å strikke vrangrader. Pass på at arbeidet ikke vris når du slutter ringen!'
-    },
-    {
-        nøkkelord: ['sokk', 'sokker', 'hæl', 'hælfelling'],
-        svar: 'Sokker strikkes vanligvis ovenfra og ned med strømpepinner:<ul><li>Legg opp og strikk vrangbord</li><li>Strikk rett til hælen</li><li>Strikk hæl med forkortede rader</li><li>Ta opp masker langs hælklaffen</li><li>Mink til foten og fell av ved tåen</li></ul>'
-    },
-    {
-        nøkkelord: ['fell av', 'felle av', 'avslutt', 'avfelling'],
-        svar: 'For å felle av: Strikk 2 masker, løft den første over den andre. Strikk 1 ny, løft igjen. Gjenta til 1 maske gjenstår, klipp tråden og trekk gjennom.'
-    },
-    {
-        nøkkelord: ['garn', 'garntykkelse', 'garnvalg', 'ull', 'bomull', 'akryl'],
-        svar: 'Vanlige garntykkelser:<ul><li><strong>Tynt/fingering</strong> &mdash; sokker, sjal (pinne 2.5-3.5)</li><li><strong>Sport/DK</strong> &mdash; gensere, tilbehør (pinne 3.5-4.5)</li><li><strong>Aran/worsted</strong> &mdash; gensere, votter (pinne 4.5-5.5)</li><li><strong>Bulky/tykt</strong> &mdash; raskt prosjekt (pinne 6+)</li></ul>Ull er varmt og elastisk, bomull er kjølig og fast, akryl er billig og vaskbart.'
-    },
-    {
-        nøkkelord: ['forkortelse', 'forkortelser', 'hva betyr'],
-        svar: 'Vanlige forkortelser i strikkemønster:<ul><li><strong>r</strong> = rett</li><li><strong>vr</strong> = vrang</li><li><strong>k</strong> = kast (omslag)</li><li><strong>f2rs</strong> = fell 2 rett sammen</li><li><strong>surp</strong> = surpassé</li><li><strong>sm</strong> = slingre-/slyng-maske</li><li><strong>gl</strong> = glatt (rett på rett, vrang på vrang)</li></ul>'
-    },
-    {
-        nøkkelord: ['votter', 'vott', 'tommel'],
-        svar: 'Votter strikkes med strømpepinner. Legg opp masker, strikk vrangbord, deretter glattstrikk. Sett av masker for tommelen på en tråd. Strikk ferdig hånden, fell av på toppen, og strikk tommelen til slutt.'
-    },
-    {
-        nøkkelord: ['lue', 'topplue', 'strikke lue'],
-        svar: 'Enkel lue: Legg opp ca. 80-100 masker på rundpinne (avhengig av garntykkelse). Strikk vrangbord (2 rett, 2 vrang) i 5-7 cm, deretter glattstrikk til ønsket lengde. Fell jevnt til ca. 8 masker gjenstår, trekk tråden gjennom.'
-    },
-    {
-        nøkkelord: ['mønster', 'diagram', 'lese mønster', 'oppskrift'],
-        svar: 'I et strikkediagram leses rettrader fra høyre til venstre, og vrangrader fra venstre til høyre. Ved rundstrikk leses alle rader fra høyre til venstre. Hvert symbol representerer en maske eller teknikk.'
-    },
-    {
-        nøkkelord: ['hei', 'hallo', 'heisann', 'hjelp'],
-        svar: 'Hei! Jeg kan hjelpe deg med strikkespørsmål. Prøv å spørre om f.eks.:<ul><li>Rett og vrang masker</li><li>Økning og felling</li><li>Forkortelser i mønster</li><li>Sokker, votter eller lue</li><li>Garnvalg</li></ul>Eller skriv et emne, så søker jeg også på YouTube!'
-    },
-    {
-        nøkkelord: ['lenker', 'sider', 'nettside', 'strikkesider', 'ressurser', 'inspirasjon'],
-        svar: 'Her er nyttige strikkesider:<ul><li><a href="https://www.ravelry.com" target="_blank">Ravelry</a> &mdash; verdens største strikkefellesskap med tusenvis av gratis mønster</li><li><a href="https://www.sandnesgarn.no" target="_blank">Sandnes Garn</a> &mdash; norske oppskrifter og garn</li><li><a href="https://www.drops-design.com" target="_blank">DROPS Design</a> &mdash; gratis oppskrifter på norsk</li><li><a href="https://www.strikkeoppskrift.no" target="_blank">Strikkeoppskrift.no</a> &mdash; norske oppskrifter</li><li><a href="https://www.knittinghelp.com" target="_blank">KnittingHelp</a> &mdash; videoer og teknikker (engelsk)</li></ul>'
-    }
-];
+let kunnskapsbase = [];
+fetch('./strikketips.json')
+    .then(r => r.json())
+    .then(data => {
+        kunnskapsbase = data;
+        visHurtigvalg(standardHurtigvalg);
+    });
 
 const chatMessages = document.getElementById('chatMessages');
 const chatInput = document.getElementById('chatInput');
 const chatSend = document.getElementById('chatSend');
+const chatQuickReplies = document.getElementById('chatQuickReplies');
+
+const standardHurtigvalg = [
+    'Masker og teknikk', 'Prosjekter', 'Garnvalg',
+    'Forkortelser', 'Lenker'
+];
+
+// Tilstandsmaskin for oppfølging
+let samtaleTilstand = { ventePå: null, kildeId: null, valg: null };
+
+// Levenshtein-avstand for fuzzy matching
+function levenshtein(a, b) {
+    const m = a.length, n = b.length;
+    if (m === 0) return n;
+    if (n === 0) return m;
+    const d = Array.from({ length: m + 1 }, (_, i) => [i]);
+    for (let j = 1; j <= n; j++) d[0][j] = j;
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+            d[i][j] = Math.min(
+                d[i - 1][j] + 1,
+                d[i][j - 1] + 1,
+                d[i - 1][j - 1] + cost
+            );
+        }
+    }
+    return d[m][n];
+}
 
 function leggTilMelding(tekst, type) {
     const bubble = document.createElement('div');
@@ -608,30 +574,84 @@ function leggTilMelding(tekst, type) {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-function finnSvar(spørsmål) {
-    const ord = spørsmål.toLowerCase();
+function finnSvar(input) {
+    const ord = input.toLowerCase().trim();
+    if (!ord || kunnskapsbase.length === 0) return null;
 
     let bestMatch = null;
     let bestScore = 0;
 
     for (const tema of kunnskapsbase) {
+        let score = 0;
+
+        // 1. Regex-match
+        if (tema.regex) {
+            for (const mønster of tema.regex) {
+                try {
+                    const re = new RegExp(mønster, 'i');
+                    if (re.test(ord)) score += 10;
+                } catch (e) {}
+            }
+        }
+
+        // 2. Eksakt nøkkelord-match
         for (const nøkkel of tema.nøkkelord) {
             if (ord.includes(nøkkel)) {
-                const score = nøkkel.length;
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestMatch = tema;
+                score += nøkkel.length;
+            }
+        }
+
+        // 3. Fuzzy matching (fallback)
+        if (score === 0) {
+            const inputOrd = ord.split(/\s+/);
+            for (const iOrd of inputOrd) {
+                if (iOrd.length < 4) continue;
+                for (const nøkkel of tema.nøkkelord) {
+                    const nøkkelOrd = nøkkel.split(/\s+/);
+                    for (const nOrd of nøkkelOrd) {
+                        if (nOrd.length < 4) continue;
+                        const avstand = levenshtein(iOrd, nOrd);
+                        const terskel = nOrd.length >= 7 ? 2 : 1;
+                        if (avstand <= terskel && avstand > 0) {
+                            score += 5;
+                        }
+                    }
                 }
             }
+        }
+
+        if (score > bestScore && score >= 3) {
+            bestScore = score;
+            bestMatch = tema;
         }
     }
 
     return bestMatch;
 }
 
+function finnEmneMedId(id) {
+    return kunnskapsbase.find(t => t.id === id) || null;
+}
+
 function lagYouTubeLenke(søk) {
     const query = encodeURIComponent('strikking ' + søk);
     return `<a class="youtube-link" href="https://www.youtube.com/results?search_query=${query}" target="_blank">Søk på YouTube</a>`;
+}
+
+function visHurtigvalg(valg) {
+    chatQuickReplies.innerHTML = '';
+    if (!valg || valg.length === 0) return;
+    for (const v of valg) {
+        const tekst = typeof v === 'string' ? v : v.tekst;
+        const btn = document.createElement('button');
+        btn.className = 'chat-quick-btn';
+        btn.textContent = tekst;
+        btn.addEventListener('click', () => {
+            chatInput.value = tekst;
+            håndterSpørsmål();
+        });
+        chatQuickReplies.appendChild(btn);
+    }
 }
 
 function håndterSpørsmål() {
@@ -640,18 +660,52 @@ function håndterSpørsmål() {
 
     leggTilMelding(spørsmål, 'user');
     chatInput.value = '';
+    chatQuickReplies.innerHTML = '';
+
+    // Sjekk tilstandsmaskin — venter vi på oppfølgingssvar?
+    if (samtaleTilstand.ventePå && samtaleTilstand.valg) {
+        const inputLower = spørsmål.toLowerCase();
+        for (const v of samtaleTilstand.valg) {
+            if (inputLower.includes(v.tekst.toLowerCase()) || levenshtein(inputLower, v.tekst.toLowerCase()) <= 2) {
+                const mål = finnEmneMedId(v.målId);
+                samtaleTilstand = { ventePå: null, kildeId: null, valg: null };
+                if (mål) {
+                    leggTilMelding(mål.svar + '<br>' + lagYouTubeLenke(v.tekst), 'bot');
+                    if (mål.oppfølging) {
+                        leggTilMelding(mål.oppfølging.spørsmål, 'bot');
+                        samtaleTilstand = { ventePå: mål.id, kildeId: mål.id, valg: mål.oppfølging.valg };
+                        visHurtigvalg(mål.oppfølging.valg);
+                    } else {
+                        visHurtigvalg(mål.hurtigvalg || standardHurtigvalg);
+                    }
+                    return;
+                }
+            }
+        }
+        // Ingen match på oppfølging — nullstill og søk normalt
+        samtaleTilstand = { ventePå: null, kildeId: null, valg: null };
+    }
 
     const match = finnSvar(spørsmål);
 
     if (match) {
         leggTilMelding(match.svar + '<br>' + lagYouTubeLenke(spørsmål), 'bot');
+
+        if (match.oppfølging) {
+            leggTilMelding(match.oppfølging.spørsmål, 'bot');
+            samtaleTilstand = { ventePå: match.id, kildeId: match.id, valg: match.oppfølging.valg };
+            visHurtigvalg(match.oppfølging.valg);
+        } else {
+            visHurtigvalg(match.hurtigvalg || standardHurtigvalg);
+        }
     } else {
         leggTilMelding(
             'Det har jeg ikke svar på ennå, men prøv å søke her:'
             + '<br>' + lagYouTubeLenke(spørsmål)
-            + '<br><br>Prøv å spørre om: masker, felling, økning, garn, sokker, votter, lue, forkortelser, eller skriv <strong>lenker</strong> for nyttige strikkesider.',
+            + '<br><br>Eller velg et emne nedenfor:',
             'bot'
         );
+        visHurtigvalg(standardHurtigvalg);
     }
 }
 
