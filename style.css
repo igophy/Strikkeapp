@@ -475,6 +475,36 @@ h2 {
     font-weight: bold;
 }
 
+/* Quick replies */
+.chat-quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.chat-quick-btn {
+    padding: 0.4rem 0.8rem;
+    border: 1.5px solid #c97b63;
+    border-radius: 20px;
+    background: white;
+    color: #a85d4a;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: all 0.15s;
+}
+
+.chat-quick-btn:hover {
+    background: #c97b63;
+    color: white;
+}
+
+.chat-quick-btn:active {
+    transform: scale(0.95);
+}
+
 footer {
     text-align: center;
     padding: 1rem;
@@ -753,6 +783,17 @@ body.dark .chat-input-row input:focus {
 
 body.dark .chat-send {
     background: linear-gradient(135deg, #d4956a, #a85d4a);
+}
+
+body.dark .chat-quick-btn {
+    border-color: #d4956a;
+    background: #16213e;
+    color: #d4956a;
+}
+
+body.dark .chat-quick-btn:hover {
+    background: #d4956a;
+    color: #1a1a2e;
 }
 
 body.dark .update-banner {
