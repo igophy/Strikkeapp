@@ -61,7 +61,21 @@ function lagreTellere() {
 
 function hentTellere() {
     const lagret = localStorage.getItem(STORAGE_KEY);
-    return lagret ? JSON.parse(lagret) : { masker: 0, rader: 0 };
+    if (!lagret) return { masker: 0, rader: 0 };
+
+    try {
+        const parsed = JSON.parse(lagret);
+        const masker = Number.isInteger(parsed?.masker) && parsed.masker >= 0 ? parsed.masker : 0;
+        const rader = Number.isInteger(parsed?.rader) && parsed.rader >= 0 ? parsed.rader : 0;
+        return { masker, rader };
+    } catch {
+        return { masker: 0, rader: 0 };
+    }
+}
+
+function hentPositivtTall(id) {
+    const value = Number.parseFloat(document.getElementById(id).value);
+    return Number.isFinite(value) && value > 0 ? value : null;
 }
 
 const counters = hentTellere();
@@ -124,11 +138,11 @@ document.addEventListener('keydown', (e) => {
 
 // --- Beregn økning ---
 document.getElementById('beregnOykning').addEventListener('click', () => {
-    const start = parseInt(document.getElementById('oykningStart').value);
-    const mal = parseInt(document.getElementById('oykningMal').value);
+    const start = hentPositivtTall('oykningStart');
+    const mal = hentPositivtTall('oykningMal');
     const resultat = document.getElementById('oykningResultat');
 
-    if (!start || !mal) {
+    if (start === null || mal === null) {
         visResultat(resultat, '<p class="error">Vennligst fyll inn begge feltene.</p>');
         return;
     }
@@ -144,11 +158,11 @@ document.getElementById('beregnOykning').addEventListener('click', () => {
 
 // --- Beregn felling ---
 document.getElementById('beregnFelling').addEventListener('click', () => {
-    const start = parseInt(document.getElementById('fellingStart').value);
-    const mal = parseInt(document.getElementById('fellingMal').value);
+    const start = hentPositivtTall('fellingStart');
+    const mal = hentPositivtTall('fellingMal');
     const resultat = document.getElementById('fellingResultat');
 
-    if (!start || !mal) {
+    if (start === null || mal === null) {
         visResultat(resultat, '<p class="error">Vennligst fyll inn begge feltene.</p>');
         return;
     }
@@ -200,12 +214,12 @@ function visResultat(element, html) {
 
 // --- Strikkefasthets-kalkulator ---
 document.getElementById('beregnFasthet').addEventListener('click', () => {
-    const masker = parseFloat(document.getElementById('provMasker').value);
-    const bredde = parseFloat(document.getElementById('provCm').value);
-    const onsket = parseFloat(document.getElementById('onsketCm').value);
+    const masker = hentPositivtTall('provMasker');
+    const bredde = hentPositivtTall('provCm');
+    const onsket = hentPositivtTall('onsketCm');
     const resultat = document.getElementById('fasthetResultat');
 
-    if (!masker || !bredde || !onsket) {
+    if (masker === null || bredde === null || onsket === null) {
         visResultat(resultat, '<p class="error">Vennligst fyll inn alle tre feltene.</p>');
         return;
     }
@@ -237,7 +251,7 @@ const garnEstimat = {
 
 document.getElementById('beregnGarn').addEventListener('click', () => {
     const type = document.getElementById('prosjektType').value;
-    const meterPerNoste = parseInt(document.getElementById('garnLengde').value);
+    const meterPerNoste = hentPositivtTall('garnLengde');
     const pinne = parseFloat(document.getElementById('pinnestorrelse').value);
     const resultat = document.getElementById('garnResultat');
 
@@ -245,7 +259,7 @@ document.getElementById('beregnGarn').addEventListener('click', () => {
         visResultat(resultat, '<p class="error">Velg en prosjekttype.</p>');
         return;
     }
-    if (!meterPerNoste) {
+    if (meterPerNoste === null) {
         visResultat(resultat, '<p class="error">Fyll inn meter per nøste.</p>');
         return;
     }
@@ -531,6 +545,11 @@ fetch('./strikketips.json')
     .then(data => {
         kunnskapsbase = data;
         visHurtigvalg(standardHurtigvalg);
+    })
+    .catch(() => {
+        kunnskapsbase = [];
+        visHurtigvalg(standardHurtigvalg);
+        leggTilMelding('System', 'Kunne ikke laste strikketips akkurat nå. Prøv igjen senere.');
     });
 
 const chatMessages = document.getElementById('chatMessages');
