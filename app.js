@@ -74,12 +74,16 @@ function hentTellere() {
 }
 
 function hentPositivtTall(id) {
-    const value = Number.parseFloat(document.getElementById(id).value);
+    const element = document.getElementById(id);
+    if (!element) return null;
+    const value = Number.parseFloat(element.value);
     return Number.isFinite(value) && value > 0 ? value : null;
 }
 
 function hentPositivtHeltall(id) {
-    const raw = document.getElementById(id).value.trim();
+    const element = document.getElementById(id);
+    if (!element) return null;
+    const raw = element.value.trim();
     if (!raw) return null;
     const value = Number(raw);
     return Number.isInteger(value) && value > 0 ? value : null;
