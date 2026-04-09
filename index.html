@@ -11,17 +11,17 @@
     <header>
         <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; v1.1</p>
+        <p class="subtitle">Din digitale strikkeassistent &middot; v1.2</p>
         <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Bytt mørk/lys modus"></button>
     </header>
 
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box">
-            <strong>Nytt i v1.1!</strong>
+            <strong>Nytt i v1.2!</strong>
             <ul>
-                <li>Husker sist brukte side</li>
-                <li>Raskere appfølelse med vibrasjon og bedre knapper</li>
-                <li>Enklere installasjon på mobil og ryddigere ekspert-chat</li>
+                <li>Ny Garnalternativ-funksjon med søk og smart matching</li>
+                <li>Forklaring, advarsler og nøsteberegning</li>
+                <li>Bedre struktur for videre utvidelse av garndatabasen</li>
             </ul>
             <button id="closeWhatsNew" class="whats-new-close">OK, forstått!</button>
         </div>
@@ -200,66 +200,66 @@
             <div id="garnResultat" class="result hidden"></div>
         </section>
 
+        
         <!-- Garnalternativ -->
         <section id="garnalternativ" class="page">
             <button class="btn-back" data-page="hjem">Tilbake</button>
             <h2>Garnalternativ</h2>
-            <p class="description">Finn erstatningsgarn som passer til oppskriften din.</p>
+            <p class="description">Finn smarte og praktiske garnbytter med forklaring, advarsler og nøsteberegning.</p>
 
-            <div class="form-group">
-                <label for="garnaltModus">Hvordan vil du søke?</label>
-                <select id="garnaltModus">
-                    <option value="liste">Velg garn fra liste</option>
-                    <option value="manuell">Angi egenskaper manuelt</option>
-                </select>
-            </div>
+            <div class="garnalt-layout">
+                <div class="garnalt-card">
+                    <h3 class="section-title">1. Finn originalgarn</h3>
+                    <div class="form-group">
+                        <label for="garnSearch">Søk etter garnnavn eller merke:</label>
+                        <input type="text" id="garnSearch" autocomplete="off" placeholder="f.eks. Peer Gynt, Drops Air, Sunday">
+                    </div>
+                    <div id="garnSearchResults" class="garn-search-results hidden"></div>
+                    <div id="selectedYarnCard" class="selected-yarn-card hidden"></div>
+                </div>
 
-            <div id="garnaltListe" class="garnalt-panel">
-                <div class="form-group">
-                    <label for="garnVelger">Garnet i oppskriften:</label>
-                    <select id="garnVelger">
-                        <option value="">Velg garn...</option>
-                    </select>
+                <div class="garnalt-card">
+                    <div class="section-title-row">
+                        <h3 class="section-title">2. Tilpass søket</h3>
+                        <button id="toggleAdvancedFilters" class="btn-secondary" type="button">Vis flere valg</button>
+                    </div>
+
+                    <div class="filter-grid">
+                        <label class="check-chip"><input type="checkbox" id="filterOnlyNorway" checked> Kun garn i norsk base</label>
+                        <label class="check-chip"><input type="checkbox" id="filterNaturalOnly"> Kun naturfiber</label>
+                        <label class="check-chip"><input type="checkbox" id="filterAvoidMohair"> Unngå mohair</label>
+                        <label class="check-chip"><input type="checkbox" id="filterAvoidAlpaca"> Unngå alpakka</label>
+                    </div>
+
+                    <div id="advancedFilters" class="advanced-filters hidden">
+                        <div class="filter-grid">
+                            <label class="check-chip"><input type="checkbox" id="filterSuperwash"> Kun superwash</label>
+                            <label class="check-chip"><input type="checkbox" id="filterLessFluffy"> Mindre fluffy</label>
+                            <label class="check-chip"><input type="checkbox" id="filterSofter"> Mykere alternativ</label>
+                            <label class="check-chip"><input type="checkbox" id="filterSummer"> Passer til sommerplagg</label>
+                            <label class="check-chip"><input type="checkbox" id="filterBaby"> Babyvennlig</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="garnalt-card">
+                    <h3 class="section-title">3. Beregn garnmengde</h3>
+                    <div class="form-group">
+                        <label for="antallNoster">Antall nøster i oppskriften:</label>
+                        <input type="number" id="antallNoster" min="1" inputmode="numeric" placeholder="f.eks. 8">
+                    </div>
+                    <p class="small-muted">Hvis du fyller inn antall nøster, regner appen ut ca. hvor mange nøster du trenger av alternativet.</p>
+                </div>
+
+                <div class="garnalt-actions">
+                    <button class="btn-calculate" id="beregnGarnalt">Finn smarte garnalternativer</button>
+                    <button class="btn-secondary" id="nullstillGarnalt" type="button">Nullstill</button>
                 </div>
             </div>
 
-            <div id="garnaltManuell" class="garnalt-panel hidden">
-                <div class="form-group">
-                    <label for="manuellKategori">Garntykkelse:</label>
-                    <select id="manuellKategori">
-                        <option value="">Velg tykkelse...</option>
-                        <option value="fingering">Fingering / tynt (pinne 2.5–3.5)</option>
-                        <option value="sport">Sport / DK (pinne 3.5–4.5)</option>
-                        <option value="aran">Aran / worsted (pinne 4.5–5.5)</option>
-                        <option value="bulky">Bulky / tykt (pinne 6+)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="manuellFiber">Fibertype:</label>
-                    <select id="manuellFiber">
-                        <option value="">Velg fiber...</option>
-                        <option value="ull">Ull</option>
-                        <option value="merinoull">Merinoull</option>
-                        <option value="bomull">Bomull</option>
-                        <option value="alpakka">Alpakka</option>
-                        <option value="akryl">Akryl</option>
-                        <option value="blanding">Blanding</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="manuellMeter">Meter per 50g:</label>
-                    <input type="number" id="manuellMeter" min="1" inputmode="numeric" placeholder="f.eks. 175">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="antallNoster">Antall nøster i oppskriften (valgfritt):</label>
-                <input type="number" id="antallNoster" min="1" inputmode="numeric" placeholder="f.eks. 5">
-            </div>
-
-            <button class="btn-calculate" id="beregnGarnalt">Finn alternativer</button>
             <div id="garnaltResultat" class="result hidden"></div>
         </section>
+
 
         <!-- Strikkeekspert -->
         <section id="ekspert" class="page">
@@ -286,7 +286,7 @@
 
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
-        <p class="version">v1.1</p>
+        <p class="version">v1.2</p>
     </footer>
 
     <div id="installBanner" class="update-banner hidden">
@@ -302,6 +302,7 @@
         <button id="updateBtn" class="update-btn">Oppdater</button>
     </div>
 
+    <script src="yarn-data.js"></script>
     <script src="app.js"></script>
     <script>
     let deferredInstallPrompt = null;

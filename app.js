@@ -338,241 +338,502 @@ document.getElementById('beregnGarn').addEventListener('click', () => {
     visResultat(resultat, html);
 });
 
-// --- Garndatabase ---
-const GARN_DATABASE = [
-    // Sandnes Garn
-    { id: 'sg-smart', navn: 'Smart', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['ull'], meterPer50g: 100, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Superwash, maskinvaskbar' },
-    { id: 'sg-peer-gynt', navn: 'Peer Gynt', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['ull'], meterPer50g: 91, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Norsk ull, krymper i vask' },
-    { id: 'sg-sisu', navn: 'Sisu', merke: 'Sandnes Garn', kategori: 'fingering', fiber: ['ull'], meterPer50g: 175, pinne: [2.5, 3.5], maskerPer10cm: 28, info: 'Sokkegarn, slitesterkt' },
-    { id: 'sg-tynn-merinoull', navn: 'Tynn Merinoull', merke: 'Sandnes Garn', kategori: 'fingering', fiber: ['merinoull'], meterPer50g: 175, pinne: [2.5, 3], maskerPer10cm: 28, info: 'Mykt, superwash' },
-    { id: 'sg-alpakka', navn: 'Alpakka', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['alpakka'], meterPer50g: 110, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Ren alpakka, mykt' },
-    { id: 'sg-babyull-lanett', navn: 'Babyull Lanett', merke: 'Sandnes Garn', kategori: 'fingering', fiber: ['merinoull'], meterPer50g: 175, pinne: [2.5, 3], maskerPer10cm: 27, info: 'Superwash, perfekt til barn' },
-    { id: 'sg-double-sunday', navn: 'Double Sunday', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['merinoull'], meterPer50g: 108, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Populært genser-garn' },
-    { id: 'sg-tynn-silk-mohair', navn: 'Tynn Silk Mohair', merke: 'Sandnes Garn', kategori: 'fingering', fiber: ['mohair', 'silke'], meterPer50g: 212, pinne: [3, 4], maskerPer10cm: 25, info: 'Brukes ofte dobbelt eller med annet garn' },
-    { id: 'sg-duo', navn: 'Duo', merke: 'Sandnes Garn', kategori: 'aran', fiber: ['ull', 'bomull'], meterPer50g: 65, pinne: [4.5, 5.5], maskerPer10cm: 18, info: 'Ull/bomull-blanding' },
-    { id: 'sg-mandarin-petit', navn: 'Mandarin Petit', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['bomull'], meterPer50g: 150, pinne: [3, 3.5], maskerPer10cm: 24, info: 'Ren bomull, sommergarn' },
-    { id: 'sg-line', navn: 'Line', merke: 'Sandnes Garn', kategori: 'sport', fiber: ['bomull', 'lin'], meterPer50g: 100, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Bomull/lin, sommerplagg' },
-    { id: 'sg-kos', navn: 'KOS', merke: 'Sandnes Garn', kategori: 'aran', fiber: ['alpakka', 'ull', 'mohair'], meterPer50g: 85, pinne: [4.5, 5.5], maskerPer10cm: 17, info: 'Luftig og varmt' },
-    // DROPS
-    { id: 'dr-karisma', navn: 'Karisma', merke: 'DROPS', kategori: 'sport', fiber: ['ull'], meterPer50g: 100, pinne: [4, 4.5], maskerPer10cm: 21, info: 'Superwash, mange farger' },
-    { id: 'dr-merino-extra-fine', navn: 'Merino Extra Fine', merke: 'DROPS', kategori: 'sport', fiber: ['merinoull'], meterPer50g: 105, pinne: [3.5, 4], maskerPer10cm: 21, info: 'Superwash merino' },
-    { id: 'dr-nepal', navn: 'Nepal', merke: 'DROPS', kategori: 'aran', fiber: ['ull'], meterPer50g: 75, pinne: [5, 5.5], maskerPer10cm: 17, info: 'Tykt, varmt, feltbart' },
-    { id: 'dr-alpaca', navn: 'Alpaca', merke: 'DROPS', kategori: 'sport', fiber: ['alpakka'], meterPer50g: 167, pinne: [3.5, 4], maskerPer10cm: 23, info: 'Lett alpakka' },
-    { id: 'dr-baby-merino', navn: 'Baby Merino', merke: 'DROPS', kategori: 'sport', fiber: ['merinoull'], meterPer50g: 175, pinne: [3, 3.5], maskerPer10cm: 24, info: 'Superwash, baby-mykt' },
-    { id: 'dr-fabel', navn: 'Fabel', merke: 'DROPS', kategori: 'fingering', fiber: ['ull'], meterPer50g: 205, pinne: [2.5, 3], maskerPer10cm: 26, info: 'Sokkegarn, superwash' },
-    { id: 'dr-air', navn: 'Air', merke: 'DROPS', kategori: 'bulky', fiber: ['alpakka', 'ull'], meterPer50g: 68, pinne: [6, 7], maskerPer10cm: 13, info: 'Lett og luftig, tykt garn' },
-    { id: 'dr-andes', navn: 'Andes', merke: 'DROPS', kategori: 'bulky', fiber: ['ull', 'alpakka'], meterPer50g: 48, pinne: [6, 7], maskerPer10cm: 13, info: 'Veldig tykt og varmt' },
-    { id: 'dr-cotton-merino', navn: 'Cotton Merino', merke: 'DROPS', kategori: 'sport', fiber: ['bomull', 'merinoull'], meterPer50g: 110, pinne: [3.5, 4], maskerPer10cm: 21, info: 'Bomull/merino-blanding' },
-    { id: 'dr-muskat', navn: 'Muskat', merke: 'DROPS', kategori: 'sport', fiber: ['bomull'], meterPer50g: 100, pinne: [3.5, 4], maskerPer10cm: 20, info: 'Ren mercerisert bomull' },
-    { id: 'dr-kid-silk', navn: 'Kid-Silk', merke: 'DROPS', kategori: 'fingering', fiber: ['mohair', 'silke'], meterPer50g: 200, pinne: [3, 4.5], maskerPer10cm: 24, info: 'Mohair/silke, luftig' },
-    // Rauma
-    { id: 'ra-finull', navn: 'Finull', merke: 'Rauma', kategori: 'fingering', fiber: ['ull'], meterPer50g: 175, pinne: [2.5, 3], maskerPer10cm: 27, info: 'Tradisjonell norsk ull' },
-    { id: 'ra-strikkegarn', navn: 'Strikkegarn 3-tråds', merke: 'Rauma', kategori: 'sport', fiber: ['ull'], meterPer50g: 105, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Klassisk norsk strikkegarn' },
-    { id: 'ra-vamsegarn', navn: 'Vamsegarn', merke: 'Rauma', kategori: 'aran', fiber: ['ull'], meterPer50g: 80, pinne: [4.5, 5], maskerPer10cm: 18, info: 'Tykt, for vamser og kofter' },
-    { id: 'ra-plötulopi', navn: 'Plötulopi', merke: 'Rauma', kategori: 'bulky', fiber: ['ull'], meterPer50g: 100, pinne: [6, 8], maskerPer10cm: 12, info: 'Islandsk ull, strikkes dobbelt' },
-    // Gjestal
-    { id: 'gj-janus', navn: 'Janus', merke: 'Gjestal', kategori: 'sport', fiber: ['ull'], meterPer50g: 100, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Superwash, norsk ull' },
-    { id: 'gj-vestlandsull', navn: 'Vestlandsull', merke: 'Gjestal', kategori: 'aran', fiber: ['ull'], meterPer50g: 75, pinne: [4.5, 5.5], maskerPer10cm: 17, info: 'Norsk ull, tradisjonell' },
-    // Du Store Alpakka
-    { id: 'dsa-sterk', navn: 'Sterk', merke: 'Du Store Alpakka', kategori: 'sport', fiber: ['merinoull', 'alpakka'], meterPer50g: 150, pinne: [3, 3.5], maskerPer10cm: 24, info: 'Merino/alpakka, superwash' },
-    { id: 'dsa-dreamline', navn: 'Dreamline Sky', merke: 'Du Store Alpakka', kategori: 'sport', fiber: ['alpakka', 'merinoull', 'nylon'], meterPer50g: 112, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Myk alpakka-blanding' },
-    // Hillesvåg
-    { id: 'hv-tinde', navn: 'Tinde', merke: 'Hillesvåg', kategori: 'sport', fiber: ['ull'], meterPer50g: 100, pinne: [3.5, 4], maskerPer10cm: 22, info: 'Pelsull, norsk' },
-    { id: 'hv-vilje', navn: 'Vilje', merke: 'Hillesvåg', kategori: 'fingering', fiber: ['ull'], meterPer50g: 175, pinne: [2.5, 3], maskerPer10cm: 27, info: 'Norsk pelsull, holdbart' },
-    // Viking
-    { id: 'vi-nordlys', navn: 'Nordlys', merke: 'Viking', kategori: 'fingering', fiber: ['ull'], meterPer50g: 210, pinne: [2.5, 3], maskerPer10cm: 28, info: 'Sokkegarn, selvmønstrende' },
-    { id: 'vi-sportsragg', navn: 'Sportsragg', merke: 'Viking', kategori: 'fingering', fiber: ['ull', 'akryl'], meterPer50g: 175, pinne: [3, 3.5], maskerPer10cm: 26, info: 'Slitesterkt sokkegarn' },
-    // Schachenmayr
-    { id: 'sm-bravo', navn: 'Bravo', merke: 'Schachenmayr', kategori: 'sport', fiber: ['akryl'], meterPer50g: 133, pinne: [3, 4], maskerPer10cm: 22, info: 'Akryl, maskinvaskbar' },
-    { id: 'sm-regia', navn: 'Regia 4-tråds', merke: 'Schachenmayr', kategori: 'fingering', fiber: ['ull', 'nylon'], meterPer50g: 210, pinne: [2.5, 3], maskerPer10cm: 30, info: 'Populært sokkegarn' },
-    // Lana Grossa
-    { id: 'lg-cool-wool', navn: 'Cool Wool', merke: 'Lana Grossa', kategori: 'sport', fiber: ['merinoull'], meterPer50g: 160, pinne: [3, 3.5], maskerPer10cm: 24, info: 'Superwash merino' },
-    // Malabrigo
-    { id: 'mb-rios', navn: 'Rios', merke: 'Malabrigo', kategori: 'aran', fiber: ['merinoull'], meterPer50g: 96, pinne: [4.5, 5], maskerPer10cm: 18, info: 'Superwash, håndfarget' },
-    { id: 'mb-mechita', navn: 'Mechita', merke: 'Malabrigo', kategori: 'fingering', fiber: ['merinoull'], meterPer50g: 175, pinne: [2.5, 3.5], maskerPer10cm: 26, info: 'Superwash, singles' },
+// --- Garndatabase v2 ---
+const GARN_DATABASE = Array.isArray(window.YARN_DATABASE) ? window.YARN_DATABASE : [];
+
+function slugify(text) {
+    return String(text || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9æøå\s-]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function getFiberKeys(yarn) {
+    return Object.keys(yarn.fibers || {});
+}
+
+function fiberLabel(fiber) {
+    const labels = {
+        wool: 'ull',
+        merino: 'merino',
+        alpaca: 'alpakka',
+        mohair: 'mohair',
+        silk: 'silke',
+        cotton: 'bomull',
+        linen: 'lin',
+        viscose: 'viskose',
+        bamboo: 'bambus',
+        polyamide: 'polyamid',
+        nylon: 'nylon',
+        acrylic: 'akryl',
+        polyester: 'polyester'
+    };
+    return labels[fiber] || fiber;
+}
+
+function prettifyBestFor(tag) {
+    const labels = {
+        sweaters: 'gensere',
+        cardigans: 'jakker',
+        kids: 'barn',
+        baby: 'baby',
+        socks: 'sokker',
+        colorwork: 'fargestrikk',
+        texture: 'strukturstrikk',
+        tops: 'topper',
+        summer: 'sommerplagg',
+        cozy: 'varme plagg',
+        lightweight: 'lette plagg',
+        everyday: 'hverdagsplagg',
+        traditional: 'tradisjonelle plagg',
+        outerwear: 'ytterplagg',
+        home: 'interiør',
+        shawls: 'sjal',
+        heldTogether: 'følgetråd'
+    };
+    return labels[tag] || tag;
+}
+
+function needleText(yarn) {
+    if (!yarn.needle || yarn.needle.length < 2) return '–';
+    return yarn.needle[0] === yarn.needle[1] ? `${yarn.needle[0]} mm` : `${yarn.needle[0]}–${yarn.needle[1]} mm`;
+}
+
+function buildSearchIndex(yarn) {
+    return slugify([
+        yarn.name,
+        yarn.brand,
+        ...(yarn.aliases || []),
+        ...getFiberKeys(yarn).map(fiberLabel)
+    ].join(' '));
+}
+
+const FILTER_IDS = [
+    'filterOnlyNorway',
+    'filterNaturalOnly',
+    'filterAvoidMohair',
+    'filterAvoidAlpaca',
+    'filterSuperwash',
+    'filterLessFluffy',
+    'filterSofter',
+    'filterSummer',
+    'filterBaby'
 ];
 
-// --- Garnalternativ ---
-function byggGarnVelger() {
-    const select = document.getElementById('garnVelger');
-    const merker = {};
-    for (const g of GARN_DATABASE) {
-        if (!merker[g.merke]) merker[g.merke] = [];
-        merker[g.merke].push(g);
-    }
-    for (const merke of Object.keys(merker).sort()) {
-        const optgroup = document.createElement('optgroup');
-        optgroup.label = merke;
-        for (const g of merker[merke]) {
-            const opt = document.createElement('option');
-            opt.value = g.id;
-            opt.textContent = `${g.navn} (${g.kategori}, ${g.meterPer50g} m/50g)`;
-            optgroup.appendChild(opt);
-        }
-        select.appendChild(optgroup);
-    }
+function getSelectedFilters() {
+    return {
+        onlyNorway: document.getElementById('filterOnlyNorway').checked,
+        naturalOnly: document.getElementById('filterNaturalOnly').checked,
+        avoidMohair: document.getElementById('filterAvoidMohair').checked,
+        avoidAlpaca: document.getElementById('filterAvoidAlpaca').checked,
+        superwash: document.getElementById('filterSuperwash').checked,
+        lessFluffy: document.getElementById('filterLessFluffy').checked,
+        softer: document.getElementById('filterSofter').checked,
+        summer: document.getElementById('filterSummer').checked,
+        baby: document.getElementById('filterBaby').checked,
+    };
 }
 
-function finnGarn(id) {
-    return GARN_DATABASE.find(g => g.id === id);
+function isNaturalFiber(fiber) {
+    return ['wool', 'merino', 'alpaca', 'mohair', 'silk', 'cotton', 'linen', 'viscose', 'bamboo'].includes(fiber);
 }
 
-function matchGarn(kilde) {
-    const resultater = [];
-    for (const g of GARN_DATABASE) {
-        if (g.id === kilde.id) continue;
-        if (g.kategori !== kilde.kategori) continue;
-
-        let score = 0;
-
-        // Meterdiff (maks 40 poeng)
-        const meterDiff = Math.abs(g.meterPer50g - kilde.meterPer50g);
-        score += Math.max(0, 40 - meterDiff * 0.8);
-
-        // Fiberoverlapp (15 poeng per match)
-        const felles = g.fiber.filter(f => kilde.fiber.includes(f));
-        score += felles.length * 15;
-
-        // Fasthetsdiff (maks 20 poeng)
-        const fastDiff = Math.abs(g.maskerPer10cm - kilde.maskerPer10cm);
-        score += Math.max(0, 20 - fastDiff * 5);
-
-        // Pinnediff (maks 10 poeng)
-        const pinneDiff = Math.abs(g.pinne[0] - kilde.pinne[0]);
-        score += Math.max(0, 10 - pinneDiff * 4);
-
-        if (score >= 20) {
-            resultater.push({ garn: g, score });
-        }
-    }
-    resultater.sort((a, b) => b.score - a.score);
-    return resultater.slice(0, 8);
+function passesHardFilters(yarn, filters) {
+    const fibers = getFiberKeys(yarn);
+    if (filters.onlyNorway && yarn.availableInNorway === false) return false;
+    if (filters.naturalOnly && fibers.some(f => !isNaturalFiber(f))) return false;
+    if (filters.avoidMohair && fibers.includes('mohair')) return false;
+    if (filters.avoidAlpaca && fibers.includes('alpaca')) return false;
+    if (filters.superwash && !yarn.superwash) return false;
+    if (filters.summer && !yarn.bestFor?.includes('summer') && yarn.warmth > 2) return false;
+    if (filters.baby && !yarn.bestFor?.includes('baby') && yarn.softness < 4) return false;
+    return true;
 }
 
-function matchGarnManuell(kategori, fiber, meterPer50g) {
-    const kilde = { id: '', kategori, fiber: [fiber], meterPer50g, maskerPer10cm: 0, pinne: [0, 0] };
-
-    // Estimer fasthet og pinne fra kategori
-    if (kategori === 'fingering') { kilde.maskerPer10cm = 27; kilde.pinne = [2.5, 3.5]; }
-    else if (kategori === 'sport') { kilde.maskerPer10cm = 22; kilde.pinne = [3.5, 4]; }
-    else if (kategori === 'aran') { kilde.maskerPer10cm = 18; kilde.pinne = [4.5, 5.5]; }
-    else if (kategori === 'bulky') { kilde.maskerPer10cm = 13; kilde.pinne = [6, 8]; }
-
-    return matchGarn(kilde);
+function metricScore(diff, maxDiff, weight) {
+    const ratio = Math.min(diff / maxDiff, 1);
+    return Math.max(0, weight * (1 - ratio));
 }
 
-function matchKvalitet(score) {
-    if (score >= 60) return { klasse: 'match-god', tekst: 'Godt alternativ' };
-    if (score >= 40) return { klasse: 'match-ok', tekst: 'OK alternativ' };
-    return { klasse: 'match-mulig', tekst: 'Mulig alternativ' };
+function categoryDistance(a, b) {
+    const order = ['lace', 'fingering', 'sport', 'dk', 'aran', 'bulky', 'super_bulky'];
+    const ai = order.indexOf(a);
+    const bi = order.indexOf(b);
+    if (ai === -1 || bi === -1) return 1;
+    return Math.abs(ai - bi);
 }
 
-function lagGarnKort(match, kildeGarn, antallNoster) {
-    const g = match.garn;
-    const kval = matchKvalitet(match.score);
-
-    let html = `<div class="garn-kort ${kval.klasse}">`;
-    html += `<div class="garn-kort-header">`;
-    html += `<strong>${g.merke} ${g.navn}</strong>`;
-    html += `<span class="match-badge">${kval.tekst}</span>`;
-    html += `</div>`;
-    html += `<div class="garn-kort-detaljer">`;
-    html += `<span class="garn-egenskap">${g.meterPer50g} m/50g</span>`;
-    html += `<span class="garn-egenskap">Pinne ${g.pinne[0]}–${g.pinne[1]}</span>`;
-    html += `<span class="garn-egenskap">${g.fiber.join(', ')}</span>`;
-    html += `<span class="garn-egenskap">${g.maskerPer10cm} m/10cm</span>`;
-    html += `</div>`;
-
-    // Tips
-    const tips = [];
-    if (kildeGarn && antallNoster && kildeGarn.meterPer50g !== g.meterPer50g) {
-        const totalMeter = antallNoster * kildeGarn.meterPer50g;
-        const nyeNoster = Math.ceil(totalMeter / g.meterPer50g);
-        tips.push(`Du trenger ca. <strong>${nyeNoster} nøster</strong> (${totalMeter} m totalt)`);
+function fiberSimilarity(a, b) {
+    const aKeys = getFiberKeys(a);
+    const bKeys = getFiberKeys(b);
+    if (!aKeys.length || !bKeys.length) return 0;
+    let overlap = 0;
+    for (const key of aKeys) {
+        if (bKeys.includes(key)) overlap += Math.min(a.fibers[key] || 0, b.fibers[key] || 0);
     }
-    if (kildeGarn) {
-        const fastDiff = Math.abs(g.maskerPer10cm - kildeGarn.maskerPer10cm);
-        if (fastDiff >= 2) tips.push('Strikk en prøvelapp! Fastheten kan avvike.');
-        const harFellesFiber = g.fiber.some(f => kildeGarn.fiber.includes(f));
-        if (!harFellesFiber) tips.push('Annen fibertype — kan gi annet utseende og følelse.');
-    }
-    if (g.info) tips.push(g.info);
-
-    if (tips.length > 0) {
-        html += `<div class="garn-kort-tips">`;
-        for (const tip of tips) html += `<p>${tip}</p>`;
-        html += `</div>`;
-    }
-
-    html += `</div>`;
-    return html;
+    return Math.min(overlap / 100, 1);
 }
 
-// Bygg dropdown ved oppstart
-byggGarnVelger();
+function practicalUseSimilarity(a, b) {
+    const aa = new Set(a.bestFor || []);
+    const bb = new Set(b.bestFor || []);
+    if (!aa.size || !bb.size) return 0;
+    let overlap = 0;
+    for (const val of aa) if (bb.has(val)) overlap += 1;
+    return overlap / Math.max(aa.size, bb.size);
+}
 
-// Mode toggle
-document.getElementById('garnaltModus').addEventListener('change', (e) => {
-    const mode = e.target.value;
-    document.getElementById('garnaltListe').classList.toggle('hidden', mode !== 'liste');
-    document.getElementById('garnaltManuell').classList.toggle('hidden', mode !== 'manuell');
-});
-
-// Beregn-knapp
-document.getElementById('beregnGarnalt').addEventListener('click', () => {
-    vibrer(10);
-    const resultat = document.getElementById('garnaltResultat');
-    const antallNoster = parseInt(document.getElementById('antallNoster').value) || 0;
-    const erListeModus = document.getElementById('garnaltModus').value === 'liste';
-
-    let treff = [];
-    let kildeGarn = null;
-
-    if (erListeModus) {
-        const valgtId = document.getElementById('garnVelger').value;
-        if (!valgtId) {
-            visResultat(resultat, '<p class="error">Velg et garn fra listen.</p>');
-            return;
-        }
-        kildeGarn = finnGarn(valgtId);
-        treff = matchGarn(kildeGarn);
-    } else {
-        const kategori = document.getElementById('manuellKategori').value;
-        const fiber = document.getElementById('manuellFiber').value;
-        const meter = parseInt(document.getElementById('manuellMeter').value);
-
-        if (!kategori) {
-            visResultat(resultat, '<p class="error">Velg garntykkelse.</p>');
-            return;
-        }
-        if (!fiber) {
-            visResultat(resultat, '<p class="error">Velg fibertype.</p>');
-            return;
-        }
-        if (!meter) {
-            visResultat(resultat, '<p class="error">Fyll inn meter per 50g.</p>');
-            return;
-        }
-        kildeGarn = { fiber: [fiber], meterPer50g: meter, maskerPer10cm: 0 };
-        if (kategori === 'fingering') kildeGarn.maskerPer10cm = 27;
-        else if (kategori === 'sport') kildeGarn.maskerPer10cm = 22;
-        else if (kategori === 'aran') kildeGarn.maskerPer10cm = 18;
-        else if (kategori === 'bulky') kildeGarn.maskerPer10cm = 13;
-        treff = matchGarnManuell(kategori, fiber, meter);
+function buildWarnings(source, candidate) {
+    const warnings = [];
+    if (Math.abs(candidate.halo - source.halo) >= 2) {
+        if (candidate.halo > source.halo) warnings.push('Mer fluffy enn originalen — uttrykket blir mykere og mindre definert.');
+        else warnings.push('Mindre fluffy enn originalen — plagget kan få et fastere uttrykk.');
     }
+    if (Math.abs(candidate.drape - source.drape) >= 2) warnings.push('Har et annet fall enn originalen.');
+    if (Math.abs(candidate.elasticity - source.elasticity) >= 2) warnings.push('Har en annen elastisitet og kan oppføre seg ulikt i bruk.');
+    if (candidate.structure !== source.structure) warnings.push(`Annen konstruksjon (${candidate.structure}) enn originalen.`);
+    const sourceFibers = getFiberKeys(source);
+    const candidateFibers = getFiberKeys(candidate);
+    if (!candidateFibers.some(f => sourceFibers.includes(f))) warnings.push('Helt annen fibertype enn originalen.');
+    return warnings.slice(0, 3);
+}
 
-    if (treff.length === 0) {
-        visResultat(resultat, '<h3>Ingen treff</h3><p>Fant ingen gode alternativer i databasen. Prøv å justere søket.</p>');
+function explainMatch(source, candidate, warnings) {
+    const lines = [];
+    const gaugeDiff = Math.abs((candidate.gauge || 0) - (source.gauge || 0));
+    const meterDiff = Math.abs(candidate.metersPerSkein - source.metersPerSkein);
+    if (gaugeDiff <= 1) lines.push('Ligner godt i praktisk strikkefasthet.');
+    else if (gaugeDiff <= 2) lines.push('Ganske nær strikkefasthet, men prøvelapp anbefales.');
+    if (meterDiff <= 15) lines.push('Har lignende løpelengde per nøste.');
+    if (candidate.structure === source.structure) lines.push('Har lignende oppbygging og oppfører seg likt i plagget.');
+    else if (candidate.texture === source.texture) lines.push('Har ganske likt uttrykk i ferdig plagg.');
+    if (fiberSimilarity(source, candidate) >= 0.5) lines.push('Deler mye av samme fiberprofil.');
+    if (practicalUseSimilarity(source, candidate) >= 0.4) lines.push(`Passer godt til ${prettifyBestFor((candidate.bestFor || [])[0] || 'plagg')}.`);
+    if (!lines.length) lines.push('Kan fungere, men skiller seg mer fra originalen enn toppresultatene.');
+    if (warnings.length) lines.push('Prøvelapp anbefales før du starter.');
+    return lines.slice(0, 4);
+}
+
+function calculateYarnNeed(source, candidate, originalSkeins) {
+    if (!originalSkeins || !source?.metersPerSkein || !candidate?.metersPerSkein) return null;
+    const totalMeters = originalSkeins * source.metersPerSkein;
+    const rawSkeins = totalMeters / candidate.metersPerSkein;
+    const risk = Math.abs(candidate.halo - source.halo) >= 2 || candidate.structure !== source.structure;
+    return {
+        totalMeters,
+        skeins: Math.ceil(rawSkeins),
+        recommendedSkeins: Math.ceil(rawSkeins + (risk ? 0.75 : 0.25)),
+        approx: risk
+    };
+}
+
+function gradeMatch(score) {
+    if (score >= 85) return { label: 'Svært godt alternativ', className: 'match-god' };
+    if (score >= 70) return { label: 'Godt alternativ', className: 'match-god' };
+    if (score >= 55) return { label: 'Brukbart med justering', className: 'match-ok' };
+    return { label: 'Mer usikkert valg', className: 'match-mulig' };
+}
+
+function scoreCandidate(source, candidate, filters) {
+    const gaugeScore = metricScore(Math.abs((candidate.gauge || 0) - (source.gauge || 0)), 6, 25);
+    const meterScore = metricScore(Math.abs(candidate.metersPerSkein - source.metersPerSkein), Math.max(source.metersPerSkein * 0.5, 30), 20);
+    const structureScore = candidate.structure === source.structure ? 15 : candidate.texture === source.texture ? 9 : 3;
+    const fiberScore = 15 * fiberSimilarity(source, candidate);
+    const useScore = 10 * practicalUseSimilarity(source, candidate);
+    const haloScore = metricScore(Math.abs(candidate.halo - source.halo), 5, 5);
+    const behaviorDiff = (
+        Math.abs(candidate.elasticity - source.elasticity) +
+        Math.abs(candidate.drape - source.drape) +
+        Math.abs(candidate.firmness - source.firmness)
+    ) / 3;
+    const behaviorScore = metricScore(behaviorDiff, 5, 5);
+    const needleScore = metricScore(Math.abs((candidate.needle || [0])[0] - (source.needle || [0])[0]), 3, 3);
+
+    let score = gaugeScore + meterScore + structureScore + fiberScore + useScore + haloScore + behaviorScore + needleScore;
+    const dist = categoryDistance(source.weight, candidate.weight);
+    if (dist > 1) score -= 12;
+    if (filters.lessFluffy && candidate.halo > source.halo) score -= 8;
+    if (filters.softer && candidate.softness >= source.softness) score += 4;
+    if (filters.summer && candidate.bestFor?.includes('summer')) score += 4;
+    if (filters.baby && candidate.bestFor?.includes('baby')) score += 4;
+    return Math.max(0, Math.min(100, Math.round(score)));
+}
+
+function renderSelectedYarn(yarn) {
+    const card = document.getElementById('selectedYarnCard');
+    if (!yarn) {
+        card.classList.add('hidden');
+        card.innerHTML = '';
         return;
     }
+    const fibers = getFiberKeys(yarn).map(key => `${fiberLabel(key)} ${yarn.fibers[key]}%`).join(', ');
+    const usage = (yarn.bestFor || []).slice(0, 3).map(prettifyBestFor).join(', ');
+    card.innerHTML = `
+        <div class="selected-yarn-header">
+            <div>
+                <strong>${yarn.brand} ${yarn.name}</strong>
+                <p>${fibers}</p>
+            </div>
+            <span class="match-badge neutral">${(yarn.weight || '').toUpperCase()}</span>
+        </div>
+        <div class="garn-kort-detaljer">
+            <span class="garn-egenskap">${yarn.metersPerSkein} m / ${yarn.gramsPerSkein} g</span>
+            <span class="garn-egenskap">Strikkefasthet ${yarn.gauge} m/10 cm</span>
+            <span class="garn-egenskap">Pinne ${needleText(yarn)}</span>
+            <span class="garn-egenskap">Best til ${usage || 'mange plagg'}</span>
+        </div>
+        <p class="selected-yarn-note">${(yarn.notes || [''])[0]}</p>
+    `;
+    card.classList.remove('hidden');
+}
 
-    let html = `<h3>Fant ${treff.length} alternativ${treff.length > 1 ? 'er' : ''}</h3>`;
-    for (const m of treff) {
-        html += lagGarnKort(m, kildeGarn, antallNoster);
+function searchYarns(query) {
+    const q = slugify(query);
+    if (!q) return [];
+    return GARN_DATABASE
+        .map(yarn => {
+            const haystack = buildSearchIndex(yarn);
+            let score = 0;
+            if (haystack.startsWith(q)) score += 120;
+            if (haystack.includes(q)) score += 60;
+            for (const alias of (yarn.aliases || [])) {
+                const aliasNorm = slugify(alias);
+                if (aliasNorm.startsWith(q)) score += 80;
+                if (aliasNorm.includes(q)) score += 20;
+            }
+            if (slugify(yarn.brand).includes(q)) score += 15;
+            if (slugify(yarn.name).includes(q)) score += 30;
+            return { yarn, score };
+        })
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score || a.yarn.brand.localeCompare(b.yarn.brand))
+        .slice(0, 8)
+        .map(item => item.yarn);
+}
+
+function renderSearchResults(results) {
+    const box = document.getElementById('garnSearchResults');
+    if (!results.length) {
+        box.classList.add('hidden');
+        box.innerHTML = '';
+        return;
     }
-    visResultat(resultat, html);
-});
+    box.innerHTML = results.map(yarn => `
+        <button type="button" class="garn-search-item" data-yarn-id="${yarn.id}">
+            <strong>${yarn.brand} ${yarn.name}</strong>
+            <span>${yarn.metersPerSkein} m / ${yarn.gramsPerSkein} g · ${fiberLabel(getFiberKeys(yarn)[0] || '')}</span>
+        </button>
+    `).join('');
+    box.classList.remove('hidden');
+}
 
+function getSelectedYarn() {
+    const selectedId = document.getElementById('garnSearch').dataset.selectedId;
+    return GARN_DATABASE.find(y => y.id === selectedId) || null;
+}
+
+function saveGarnAltState() {
+    const selected = getSelectedYarn();
+    const state = {
+        selectedId: selected?.id || '',
+        skeins: document.getElementById('antallNoster').value || '',
+        filters: getSelectedFilters()
+    };
+    localStorage.setItem('garnalternativ-state', JSON.stringify(state));
+}
+
+function restoreGarnAltState() {
+    try {
+        const raw = localStorage.getItem('garnalternativ-state');
+        if (!raw) return;
+        const state = JSON.parse(raw);
+        if (state.selectedId) {
+            const yarn = GARN_DATABASE.find(y => y.id === state.selectedId);
+            if (yarn) {
+                const input = document.getElementById('garnSearch');
+                input.value = `${yarn.brand} ${yarn.name}`;
+                input.dataset.selectedId = yarn.id;
+                renderSelectedYarn(yarn);
+            }
+        }
+        if (state.skeins) document.getElementById('antallNoster').value = state.skeins;
+        if (state.filters) {
+            document.getElementById('filterOnlyNorway').checked = !!state.filters.onlyNorway;
+            document.getElementById('filterNaturalOnly').checked = !!state.filters.naturalOnly;
+            document.getElementById('filterAvoidMohair').checked = !!state.filters.avoidMohair;
+            document.getElementById('filterAvoidAlpaca').checked = !!state.filters.avoidAlpaca;
+            document.getElementById('filterSuperwash').checked = !!state.filters.superwash;
+            document.getElementById('filterLessFluffy').checked = !!state.filters.lessFluffy;
+            document.getElementById('filterSofter').checked = !!state.filters.softer;
+            document.getElementById('filterSummer').checked = !!state.filters.summer;
+            document.getElementById('filterBaby').checked = !!state.filters.baby;
+        }
+    } catch (_) {}
+}
+
+function buildResultCard(candidate, source, filters, originalSkeins) {
+    const score = scoreCandidate(source, candidate, filters);
+    const grade = gradeMatch(score);
+    const warnings = buildWarnings(source, candidate);
+    const explanations = explainMatch(source, candidate, warnings);
+    const calculation = calculateYarnNeed(source, candidate, originalSkeins);
+    const fibers = getFiberKeys(candidate).map(key => fiberLabel(key)).join(', ');
+    return `
+        <article class="garn-kort ${grade.className}">
+            <div class="garn-kort-header">
+                <div>
+                    <strong>${candidate.brand} ${candidate.name}</strong>
+                    <p class="small-muted">${candidate.metersPerSkein} m / ${candidate.gramsPerSkein} g · ${fibers}</p>
+                </div>
+                <span class="match-badge">${grade.label}</span>
+            </div>
+
+            <div class="garn-kort-detaljer">
+                <span class="garn-egenskap">${candidate.weight.toUpperCase()}</span>
+                <span class="garn-egenskap">Pinne ${needleText(candidate)}</span>
+                <span class="garn-egenskap">${candidate.gauge} m/10 cm</span>
+                <span class="garn-egenskap">${candidate.structure}</span>
+            </div>
+
+            <div class="garn-kort-tips">
+                ${explanations.map(line => `<p>${line}</p>`).join('')}
+            </div>
+
+            ${calculation ? `
+                <div class="garn-estimate-box">
+                    <strong>Beregning</strong>
+                    <p>Oppskriften bruker ca. <strong>${calculation.totalMeters} meter</strong>.</p>
+                    <p>Du trenger omtrent <strong>${calculation.skeins} nøster</strong> av dette garnet.</p>
+                    <p>Trygg anbefaling: <strong>${calculation.recommendedSkeins} nøster</strong>${calculation.approx ? ' fordi dette garnet oppfører seg litt annerledes.' : '.'}</p>
+                </div>
+            ` : ''}
+
+            ${warnings.length ? `
+                <div class="warning-box">
+                    ${warnings.map(w => `<p>⚠️ ${w}</p>`).join('')}
+                </div>
+            ` : ''}
+
+            <p class="small-muted">${(candidate.notes || []).slice(0, 2).join(' ')}</p>
+        </article>
+    `;
+}
+
+function findAlternatives(source, filters) {
+    return GARN_DATABASE
+        .filter(candidate => candidate.id !== source.id)
+        .filter(candidate => passesHardFilters(candidate, filters))
+        .map(candidate => ({ candidate, score: scoreCandidate(source, candidate, filters) }))
+        .filter(item => item.score >= 40)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 8)
+        .map(item => item.candidate);
+}
+
+function renderGarnAltResults(source, alternatives, filters, originalSkeins) {
+    const result = document.getElementById('garnaltResultat');
+    if (!alternatives.length) {
+        visResultat(result, '<h3>Ingen gode treff</h3><p>Prøv å fjerne noen filtre eller velg et annet originalgarn.</p>');
+        return;
+    }
+    const html = `
+        <div class="result-header">
+            <h3>Beste praktiske alternativer til ${source.brand} ${source.name}</h3>
+            <p class="small-muted">Sortert etter hvor godt garnet fungerer i praksis, ikke bare teknisk likhet.</p>
+        </div>
+        ${alternatives.map(candidate => buildResultCard(candidate, source, filters, originalSkeins)).join('')}
+    `;
+    visResultat(result, html);
+}
+
+function setupGarnAlternativ() {
+    const searchInput = document.getElementById('garnSearch');
+    const searchResults = document.getElementById('garnSearchResults');
+    const toggleAdvanced = document.getElementById('toggleAdvancedFilters');
+    const advancedFilters = document.getElementById('advancedFilters');
+    const findButton = document.getElementById('beregnGarnalt');
+    const resetButton = document.getElementById('nullstillGarnalt');
+
+    searchInput.addEventListener('input', () => {
+        searchInput.dataset.selectedId = '';
+        renderSelectedYarn(null);
+        renderSearchResults(searchYarns(searchInput.value));
+    });
+
+    searchInput.addEventListener('focus', () => {
+        renderSearchResults(searchYarns(searchInput.value));
+    });
+
+    searchResults.addEventListener('click', (e) => {
+        const button = e.target.closest('[data-yarn-id]');
+        if (!button) return;
+        const yarn = GARN_DATABASE.find(item => item.id === button.dataset.yarnId);
+        if (!yarn) return;
+        searchInput.value = `${yarn.brand} ${yarn.name}`;
+        searchInput.dataset.selectedId = yarn.id;
+        renderSelectedYarn(yarn);
+        renderSearchResults([]);
+        saveGarnAltState();
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('#garnSearch') && !e.target.closest('#garnSearchResults')) {
+            renderSearchResults([]);
+        }
+    });
+
+    toggleAdvanced.addEventListener('click', () => {
+        advancedFilters.classList.toggle('hidden');
+        toggleAdvanced.textContent = advancedFilters.classList.contains('hidden') ? 'Vis flere valg' : 'Skjul flere valg';
+    });
+
+    findButton.addEventListener('click', () => {
+        vibrer(10);
+        const source = getSelectedYarn();
+        if (!source) {
+            visResultat(document.getElementById('garnaltResultat'), '<p class="error">Velg et originalgarn først.</p>');
+            return;
+        }
+        const originalSkeins = parseInt(document.getElementById('antallNoster').value, 10) || 0;
+        const filters = getSelectedFilters();
+        const alternatives = findAlternatives(source, filters);
+        renderGarnAltResults(source, alternatives, filters, originalSkeins);
+        saveGarnAltState();
+    });
+
+    resetButton.addEventListener('click', () => {
+        searchInput.value = '';
+        searchInput.dataset.selectedId = '';
+        document.getElementById('antallNoster').value = '';
+        document.getElementById('garnaltResultat').classList.add('hidden');
+        document.getElementById('garnaltResultat').innerHTML = '';
+        renderSelectedYarn(null);
+        renderSearchResults([]);
+        document.getElementById('filterOnlyNorway').checked = true;
+        FILTER_IDS.slice(1).forEach(id => { document.getElementById(id).checked = false; });
+        saveGarnAltState();
+    });
+
+    [...document.querySelectorAll('#garnalternativ input')].forEach(el => {
+        el.addEventListener('change', saveGarnAltState);
+    });
+
+    if (searchInput) {
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const source = getSelectedYarn();
+                if (source) document.getElementById('beregnGarnalt').click();
+            }
+        });
+    }
+
+    restoreGarnAltState();
+}
+
+setupGarnAlternativ();
 
 
 // --- Tastaturstøtte for kalkulatorer ---
