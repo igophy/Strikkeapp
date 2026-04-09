@@ -1,11 +1,12 @@
-const CACHE_NAME = 'inges-strikkehjelp-v1.0';
+const CACHE_NAME = 'inges-strikkehjelp-v1.1';
 const ASSETS = [
     './',
     './index.html',
     './style.css',
     './app.js',
     './strikketips.json',
-    './logo.svg'
+    './logo.svg',
+    './manifest.json'
 ];
 
 // Installer: cache alle filer

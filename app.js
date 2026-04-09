@@ -1,5 +1,6 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.0';
+const APP_VERSION = '1.1';
+const PAGE_KEY = 'inges-strikkehjelp-lastpage';
 
 // --- Mørkmodus ---
 const DARK_MODE_KEY = 'inges-strikkehjelp-darkmode';
@@ -12,9 +13,16 @@ function settMorkModus(aktiv) {
 
 settMorkModus(localStorage.getItem(DARK_MODE_KEY) === 'on');
 
-darkToggle.addEventListener('click', () => {
-    settMorkModus(!document.body.classList.contains('dark'));
-});
+function vibrer(ms = 10) {
+    if (navigator.vibrate) navigator.vibrate(ms);
+}
+
+if (darkToggle) {
+    darkToggle.addEventListener('click', () => {
+        vibrer(8);
+        settMorkModus(!document.body.classList.contains('dark'));
+    });
+}
 
 // --- Hva er nytt ---
 const VERSION_KEY = 'inges-strikkehjelp-sett-versjon';
@@ -39,18 +47,38 @@ whatsNew.addEventListener('click', (e) => {
 const allPages = document.querySelectorAll('.page');
 
 function visSide(id) {
+    const side = document.getElementById(id);
+    if (!side) return;
     allPages.forEach(p => p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+    side.classList.add('active');
+    localStorage.setItem(PAGE_KEY, id);
+
+    document.querySelectorAll('.tile').forEach(tile => {
+        const aktiv = tile.dataset.page === id;
+        tile.setAttribute('aria-current', aktiv ? 'page' : 'false');
+    });
+
     window.scrollTo(0, 0);
 }
 
 document.querySelectorAll('.tile').forEach(tile => {
-    tile.addEventListener('click', () => visSide(tile.dataset.page));
+    tile.addEventListener('click', () => {
+        vibrer(10);
+        visSide(tile.dataset.page);
+    });
 });
 
 document.querySelectorAll('.btn-back').forEach(btn => {
-    btn.addEventListener('click', () => visSide(btn.dataset.page));
+    btn.addEventListener('click', () => {
+        vibrer(8);
+        visSide(btn.dataset.page);
+    });
 });
+
+const sistBruktSide = localStorage.getItem(PAGE_KEY);
+if (sistBruktSide && document.getElementById(sistBruktSide)) {
+    visSide(sistBruktSide);
+}
 
 // --- Masketeller med localStorage ---
 const STORAGE_KEY = 'inges-strikkehjelp-tellere';
@@ -84,6 +112,7 @@ document.getElementById('rader').textContent = counters.rader;
 
 document.querySelectorAll('.btn-counter').forEach(btn => {
     btn.addEventListener('click', () => {
+        vibrer(8);
         const target = btn.dataset.target;
         if (btn.classList.contains('btn-plus')) {
             counters[target]++;
@@ -97,6 +126,7 @@ document.querySelectorAll('.btn-counter').forEach(btn => {
 
 // --- Nullstilling med bekreftelse ---
 document.getElementById('resetCounters').addEventListener('click', () => {
+    vibrer(12);
     if (counters.masker === 0 && counters.rader === 0) return;
     if (!confirm('Er du sikker på at du vil nullstille tellerne?')) return;
 
@@ -138,6 +168,7 @@ document.addEventListener('keydown', (e) => {
 
 // --- Beregn økning ---
 document.getElementById('beregnOykning').addEventListener('click', () => {
+    vibrer(10);
     const start = hentPositivtTall('oykningStart');
     const mal = hentPositivtTall('oykningMal');
     const resultat = document.getElementById('oykningResultat');
@@ -158,6 +189,7 @@ document.getElementById('beregnOykning').addEventListener('click', () => {
 
 // --- Beregn felling ---
 document.getElementById('beregnFelling').addEventListener('click', () => {
+    vibrer(10);
     const start = hentPositivtTall('fellingStart');
     const mal = hentPositivtTall('fellingMal');
     const resultat = document.getElementById('fellingResultat');
@@ -214,6 +246,7 @@ function visResultat(element, html) {
 
 // --- Strikkefasthets-kalkulator ---
 document.getElementById('beregnFasthet').addEventListener('click', () => {
+    vibrer(10);
     const masker = hentPositivtTall('provMasker');
     const bredde = hentPositivtTall('provCm');
     const onsket = hentPositivtTall('onsketCm');
@@ -250,6 +283,7 @@ const garnEstimat = {
 };
 
 document.getElementById('beregnGarn').addEventListener('click', () => {
+    vibrer(10);
     const type = document.getElementById('prosjektType').value;
     const meterPerNoste = hentPositivtTall('garnLengde');
     const pinne = parseFloat(document.getElementById('pinnestorrelse').value);
@@ -486,6 +520,7 @@ document.getElementById('garnaltModus').addEventListener('change', (e) => {
 
 // Beregn-knapp
 document.getElementById('beregnGarnalt').addEventListener('click', () => {
+    vibrer(10);
     const resultat = document.getElementById('garnaltResultat');
     const antallNoster = parseInt(document.getElementById('antallNoster').value) || 0;
     const erListeModus = document.getElementById('garnaltModus').value === 'liste';
@@ -538,6 +573,30 @@ document.getElementById('beregnGarnalt').addEventListener('click', () => {
     visResultat(resultat, html);
 });
 
+
+
+// --- Tastaturstøtte for kalkulatorer ---
+[
+    ['oykningStart', 'beregnOykning'],
+    ['oykningMal', 'beregnOykning'],
+    ['fellingStart', 'beregnFelling'],
+    ['fellingMal', 'beregnFelling'],
+    ['provMasker', 'beregnFasthet'],
+    ['provCm', 'beregnFasthet'],
+    ['onsketCm', 'beregnFasthet'],
+    ['garnLengde', 'beregnGarn'],
+    ['manuellMeter', 'beregnGarnalt'],
+    ['antallNoster', 'beregnGarnalt']
+].forEach(([inputId, buttonId]) => {
+    const felt = document.getElementById(inputId);
+    const knapp = document.getElementById(buttonId);
+    if (felt && knapp) {
+        felt.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') knapp.click();
+        });
+    }
+});
+
 // --- Strikkeekspert ---
 let kunnskapsbase = [];
 fetch('./strikketips.json')
@@ -556,6 +615,7 @@ const chatMessages = document.getElementById('chatMessages');
 const chatInput = document.getElementById('chatInput');
 const chatSend = document.getElementById('chatSend');
 const chatQuickReplies = document.getElementById('chatQuickReplies');
+const chatReset = document.getElementById('chatReset');
 
 const standardHurtigvalg = [
     'Masker og teknikk', 'Prosjekter', 'Garnvalg',
@@ -593,8 +653,12 @@ function leggTilMelding(tekst, type) {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
+function normaliser(tekst) {
+    return tekst.toLowerCase().trim();
+}
+
 function finnSvar(input) {
-    const ord = input.toLowerCase().trim();
+    const ord = normaliser(input);
     if (!ord || kunnskapsbase.length === 0) return null;
 
     let bestMatch = null;
@@ -683,7 +747,7 @@ function håndterSpørsmål() {
 
     // Sjekk tilstandsmaskin — venter vi på oppfølgingssvar?
     if (samtaleTilstand.ventePå && samtaleTilstand.valg) {
-        const inputLower = spørsmål.toLowerCase();
+        const inputLower = normaliser(spørsmål);
         for (const v of samtaleTilstand.valg) {
             if (inputLower.includes(v.tekst.toLowerCase()) || levenshtein(inputLower, v.tekst.toLowerCase()) <= 2) {
                 const mål = finnEmneMedId(v.målId);
@@ -728,7 +792,25 @@ function håndterSpørsmål() {
     }
 }
 
-chatSend.addEventListener('click', håndterSpørsmål);
+function nullstillChat() {
+    chatMessages.innerHTML = '<div class="chat-bubble chat-bot">Hei! Jeg er strikkeeksperten. Spør meg om teknikker, masker, forkortelser eller tips!</div>';
+    chatInput.value = '';
+    samtaleTilstand = { ventePå: null, kildeId: null, valg: null };
+    visHurtigvalg(standardHurtigvalg);
+}
+
+chatSend.addEventListener('click', () => {
+    vibrer(8);
+    håndterSpørsmål();
+});
+
+if (chatReset) {
+    chatReset.addEventListener('click', () => {
+        vibrer(12);
+        nullstillChat();
+    });
+}
+
 chatInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') håndterSpørsmål();
 });

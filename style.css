@@ -971,3 +971,121 @@ body.dark .garn-kort-tips p {
         flex: 1;
     }
 }
+
+
+/* v1.1 forbedringer */
+html {
+    scroll-behavior: smooth;
+}
+
+button,
+input,
+select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.tile,
+.btn-back,
+.btn-counter,
+.btn-reset,
+.btn-calculate,
+.chat-send,
+.chat-quick-btn,
+.update-btn,
+.btn-secondary {
+    min-height: 44px;
+}
+
+.page.active {
+    animation: fadeInUp 0.18s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tile {
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
+}
+
+.tile:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+}
+
+.tile[aria-current="page"] {
+    outline: 2px solid rgba(169, 93, 74, 0.35);
+}
+
+.chat-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.75rem;
+}
+
+.btn-secondary {
+    border: 1.5px solid #d4c4b5;
+    background: white;
+    color: #6d5548;
+    border-radius: 999px;
+    padding: 0.55rem 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: #f5ece5;
+}
+
+.btn-secondary-light {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.35);
+    color: white;
+}
+
+.banner-actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.7rem;
+    flex-wrap: wrap;
+}
+
+:focus-visible {
+    outline: 3px solid rgba(201, 123, 99, 0.45);
+    outline-offset: 2px;
+}
+
+body.dark {
+    background:
+        radial-gradient(circle at top, rgba(72, 54, 44, 0.35), transparent 35%),
+        #181412;
+    color: #f5ede7;
+}
+
+body.dark main {
+    color: #f5ede7;
+}
+
+body.dark .tile {
+    background: #2a211d;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+}
+
+body.dark .counter,
+body.dark .result,
+body.dark .garn-kort,
+body.dark .whats-new-box {
+    box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+}
+
+body.dark .btn-secondary {
+    background: #2b221e;
+    color: #f5ede7;
+    border-color: #5f4a40;
+}
+
+body.dark .btn-secondary:hover {
+    background: #382d28;
+}
