@@ -11,17 +11,17 @@
     <header>
         <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; v1.0</p>
+        <p class="subtitle">Din digitale strikkeassistent &middot; v1.1</p>
         <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Bytt mørk/lys modus"></button>
     </header>
 
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box">
-            <strong>Nytt i v1.0!</strong>
+            <strong>Nytt i v1.1!</strong>
             <ul>
-                <li>Smartere strikkeekspert med fuzzy matching</li>
-                <li>Oppfølgingsspørsmål og hurtigvalg-knapper</li>
-                <li>25 strikketemaer (8 nye)</li>
+                <li>Husker sist brukte side</li>
+                <li>Raskere appfølelse med vibrasjon og bedre knapper</li>
+                <li>Enklere installasjon på mobil og ryddigere ekspert-chat</li>
             </ul>
             <button id="closeWhatsNew" class="whats-new-close">OK, forstått!</button>
         </div>
@@ -273,6 +273,10 @@
 
             <div id="chatQuickReplies" class="chat-quick-replies"></div>
 
+            <div class="chat-actions">
+                <button id="chatReset" class="btn-secondary">Nullstill chat</button>
+            </div>
+
             <div class="chat-input-row">
                 <input type="text" id="chatInput" placeholder="Skriv et spørsmål..." autocomplete="off">
                 <button id="chatSend" class="chat-send">Spør</button>
@@ -282,8 +286,16 @@
 
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
-        <p class="version">v1.0</p>
+        <p class="version">v1.1</p>
     </footer>
+
+    <div id="installBanner" class="update-banner hidden">
+        Installer appen på mobilen din
+        <div class="banner-actions">
+            <button id="installBtn" class="update-btn">Installer</button>
+            <button id="dismissInstallBtn" class="btn-secondary btn-secondary-light">Ikke nå</button>
+        </div>
+    </div>
 
     <div id="updateBanner" class="update-banner hidden">
         Ny versjon tilgjengelig!
@@ -292,6 +304,26 @@
 
     <script src="app.js"></script>
     <script>
+    let deferredInstallPrompt = null;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault();
+        deferredInstallPrompt = event;
+        document.getElementById('installBanner').classList.remove('hidden');
+    });
+
+    document.getElementById('dismissInstallBtn').addEventListener('click', () => {
+        document.getElementById('installBanner').classList.add('hidden');
+    });
+
+    document.getElementById('installBtn').addEventListener('click', async () => {
+        if (!deferredInstallPrompt) return;
+        deferredInstallPrompt.prompt();
+        await deferredInstallPrompt.userChoice;
+        deferredInstallPrompt = null;
+        document.getElementById('installBanner').classList.add('hidden');
+    });
+
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js').then(reg => {
             reg.addEventListener('updatefound', () => {
@@ -303,6 +335,7 @@
                 });
             });
         });
+
         document.getElementById('updateBtn').addEventListener('click', () => {
             window.location.reload();
         });
