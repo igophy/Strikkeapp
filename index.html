@@ -14,23 +14,44 @@
     <header>
         <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; v1.3</p>
+        <p class="subtitle">Din digitale strikkeassistent &middot; <span id="appVersionLabel">v1.4</span></p>
         <div class="header-actions">
-            <button id="openWhatsNew" class="header-chip" type="button" aria-label="Vis siste endringer">Nytt</button>
             <button id="darkModeToggle" class="dark-mode-toggle" type="button" aria-label="Bytt mørk/lys modus"></button>
         </div>
     </header>
 
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
-        <div class="whats-new-box">
-            <strong>Siste endringer i v1.3</strong>
-            <ul>
-                <li>Nytt appikon for installasjon på mobil og hjemmeskjerm</li>
-                <li>Mørkemodus er gjort dypere, roligere og lettere å lese</li>
-                <li>Oppdateringsboksen kan åpnes igjen med knappen <em>Nytt</em> i toppen</li>
-            </ul>
-            <p class="whats-new-meta">Tips: Etter opplasting til GitHub Pages kan det hende du må oppdatere siden én gang for å hente nytt ikon og nye farger.</p>
-            <button id="closeWhatsNew" class="whats-new-close">OK, forstått!</button>
+        <div class="whats-new-box app-store-card">
+            <div class="whats-new-topline">Oppdatert app</div>
+            <strong id="whatsNewTitle">Nytt i v1.4</strong>
+            <p class="whats-new-intro">Små, men viktige forbedringer som gjør appen ryddigere og mer behagelig å bruke.</p>
+
+            <div class="whats-new-list">
+                <article class="whats-new-item">
+                    <div class="whats-new-icon" aria-hidden="true">📰</div>
+                    <div>
+                        <h3>Bedre plassering av oppdateringer</h3>
+                        <p>Knappen er flyttet ned til bunnen av appen, ved versjonsnummeret, så toppen holder seg ren og enkel.</p>
+                    </div>
+                </article>
+                <article class="whats-new-item">
+                    <div class="whats-new-icon" aria-hidden="true">🌙</div>
+                    <div>
+                        <h3>Roligere mørk modus</h3>
+                        <p>Mørke flater, kontrast og detaljer er justert videre for en mer behagelig kveldsversion.</p>
+                    </div>
+                </article>
+                <article class="whats-new-item">
+                    <div class="whats-new-icon" aria-hidden="true">✨</div>
+                    <div>
+                        <h3>Ny stil på endringsboksen</h3>
+                        <p>Oppdateringsboksen har fått et mer moderne uttrykk med tydeligere innhold og bedre lesbarhet.</p>
+                    </div>
+                </article>
+            </div>
+
+            <p class="whats-new-meta">Tips: Hvis du bruker GitHub Pages eller har installert appen på mobilen, kan en oppdatering av siden være nok for å hente siste versjon.</p>
+            <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
         </div>
     </div>
 
@@ -293,7 +314,10 @@
 
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
-        <p class="version">v1.2</p>
+        <div class="footer-meta">
+            <p class="version" id="versionText">v1.4</p>
+            <button id="openWhatsNew" class="news-btn" type="button" aria-label="Vis siste endringer">Nytt i v1.4</button>
+        </div>
     </footer>
 
     <div id="installBanner" class="update-banner hidden">
