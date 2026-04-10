@@ -1282,3 +1282,257 @@ body.dark .garn-search-item span {
         align-items: stretch;
     }
 }
+
+
+/* v1.3 ikon, oppdateringsknapp og mørkemodus */
+:root {
+    --bg-dark: #120f0e;
+    --surface-dark: #1b1715;
+    --surface-dark-2: #26201d;
+    --surface-dark-3: #302925;
+    --line-dark: #4a3d36;
+    --text-dark: #f6eee8;
+    --text-dark-muted: #d4c7be;
+    --accent-dark: #d49a7e;
+    --accent-dark-2: #b96d56;
+    --success-dark-bg: #16241b;
+    --success-dark-line: #4d9b6c;
+    --warn-dark-bg: #34241d;
+    --warn-dark-line: #a96d4c;
+}
+
+.header-actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.header-chip {
+    min-height: 36px;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.28);
+    background: rgba(255,255,255,0.12);
+    color: white;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.12s ease, border-color 0.2s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.header-chip:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.header-chip:active {
+    transform: scale(0.96);
+}
+
+.whats-new-meta {
+    margin-top: 0.75rem;
+    color: #7d665b;
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.whats-new-box ul {
+    margin-top: 0.75rem;
+    padding-left: 1.1rem;
+}
+
+.whats-new-box li + li {
+    margin-top: 0.45rem;
+}
+
+body.dark {
+    background:
+        radial-gradient(circle at top, rgba(118, 76, 62, 0.18), transparent 30%),
+        linear-gradient(180deg, #171210 0%, var(--bg-dark) 100%);
+    color: var(--text-dark);
+}
+
+body.dark header {
+    background:
+        radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 42%),
+        linear-gradient(135deg, #7a4a3b, #4f3027 62%, #39231d 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+body.dark .header-chip,
+body.dark .dark-mode-toggle {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.22);
+}
+
+body.dark .header-chip:hover,
+body.dark .dark-mode-toggle:hover {
+    background: rgba(255,255,255,0.14);
+}
+
+body.dark .subtitle {
+    color: rgba(255, 245, 239, 0.88);
+}
+
+body.dark h2,
+body.dark .section-title,
+body.dark .result-header h3,
+body.dark .counter label,
+body.dark .garn-search-item strong,
+body.dark .garn-kort-header strong {
+    color: var(--text-dark);
+}
+
+body.dark .description,
+body.dark .small-muted,
+body.dark .selected-yarn-header p,
+body.dark .selected-yarn-note,
+body.dark .garn-search-item span,
+body.dark .garn-kort-tips p,
+body.dark .result .detail,
+body.dark .whats-new-meta {
+    color: var(--text-dark-muted);
+}
+
+body.dark main {
+    color: var(--text-dark);
+}
+
+body.dark .tile,
+body.dark .counter,
+body.dark .result,
+body.dark .garnalt-card,
+body.dark .selected-yarn-card,
+body.dark .garn-search-item,
+body.dark .whats-new-box,
+body.dark .chat-bot,
+body.dark .chat-input-row input,
+body.dark .form-group input,
+body.dark .form-group select,
+body.dark .btn-secondary,
+body.dark .btn-reset,
+body.dark .btn-back {
+    background: linear-gradient(180deg, var(--surface-dark-2), var(--surface-dark));
+    color: var(--text-dark);
+    border-color: var(--line-dark);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+}
+
+body.dark .tile-label,
+body.dark .counter-value,
+body.dark .garn-estimate-box,
+body.dark .warning-box {
+    color: var(--text-dark);
+}
+
+body.dark .tile:hover,
+body.dark .garn-search-item:hover,
+body.dark .btn-secondary:hover,
+body.dark .btn-reset:hover,
+body.dark .btn-back:hover {
+    background: linear-gradient(180deg, #342d29, #221c19);
+}
+
+body.dark .tile-icon,
+body.dark .btn-calculate,
+body.dark .chat-send,
+body.dark .update-banner {
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent-dark-2));
+    color: #fff8f4;
+}
+
+body.dark .btn-counter {
+    background: var(--surface-dark-3);
+    border-color: var(--accent-dark);
+    color: var(--accent-dark);
+}
+
+body.dark .btn-counter:hover {
+    background: var(--accent-dark);
+    color: #1a1412;
+}
+
+body.dark .form-group input::placeholder {
+    color: #b8a79d;
+}
+
+body.dark .form-group input:focus,
+body.dark .form-group select:focus,
+body.dark .chat-input-row input:focus {
+    border-color: var(--accent-dark);
+    box-shadow: 0 0 0 3px rgba(212,154,126,0.16);
+}
+
+body.dark .result {
+    border-left-color: var(--accent-dark);
+}
+
+body.dark .garn-estimate-box {
+    background: linear-gradient(180deg, #2f2824, #251f1c);
+    border: 1px solid #4a3c35;
+}
+
+body.dark .warning-box {
+    background: linear-gradient(180deg, var(--warn-dark-bg), #271b16);
+    border: 1px solid var(--warn-dark-line);
+    color: #ffdccc;
+}
+
+body.dark .garn-kort {
+    background: linear-gradient(180deg, var(--surface-dark-2), var(--surface-dark));
+}
+
+body.dark .garn-kort.match-god {
+    background: linear-gradient(180deg, var(--success-dark-bg), #101814);
+    border-left-color: var(--success-dark-line);
+}
+
+body.dark .garn-kort.match-ok {
+    background: linear-gradient(180deg, #382920, #251a14);
+    border-left-color: #d08845;
+}
+
+body.dark .garn-kort.match-mulig {
+    background: linear-gradient(180deg, #2d2825, #211d1b);
+    border-left-color: #8a817a;
+}
+
+body.dark .garn-egenskap,
+body.dark .check-chip {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.08);
+    color: var(--text-dark);
+}
+
+body.dark .match-badge.neutral {
+    background: #4a3d36;
+    color: var(--text-dark);
+}
+
+body.dark footer {
+    border-top-color: #302723;
+    color: #b9aaa1;
+}
+
+body.dark .whats-new-overlay {
+    background: rgba(5, 4, 4, 0.72);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+
+@media (max-width: 520px) {
+    .header-actions {
+        top: 0.85rem;
+        right: 0.85rem;
+    }
+
+    .header-chip {
+        padding: 0.42rem 0.68rem;
+        font-size: 0.78rem;
+    }
+}
