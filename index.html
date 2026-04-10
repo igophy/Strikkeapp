@@ -6,15 +6,17 @@
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json?v=1.5">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64-v1.5.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-v1.5.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 <body>
     <header>
         <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; <span id="appVersionLabel">v1.4</span></p>
+        <p class="subtitle">Din digitale strikkeassistent &middot; <span id="appVersionLabel">v1.5</span></p>
         <div class="header-actions">
             <button id="darkModeToggle" class="dark-mode-toggle" type="button" aria-label="Bytt mørk/lys modus"></button>
         </div>
@@ -23,34 +25,34 @@
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.4</strong>
-            <p class="whats-new-intro">Små, men viktige forbedringer som gjør appen ryddigere og mer behagelig å bruke.</p>
+            <strong id="whatsNewTitle">Nytt i v1.5</strong>
+            <p class="whats-new-intro">Ny visuell oppdatering med bedre ikonstøtte og en mørkemodus som er behageligere å bruke på kvelden.</p>
 
             <div class="whats-new-list">
                 <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">📰</div>
+                    <div class="whats-new-icon" aria-hidden="true">🧶</div>
                     <div>
-                        <h3>Bedre plassering av oppdateringer</h3>
-                        <p>Knappen er flyttet ned til bunnen av appen, ved versjonsnummeret, så toppen holder seg ren og enkel.</p>
+                        <h3>Nytt appikon</h3>
+                        <p>Appen bruker nå det nye garnikonet ditt i favicon, PWA og iPhone-hjemskjermikon.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">🌙</div>
                     <div>
-                        <h3>Roligere mørk modus</h3>
-                        <p>Mørke flater, kontrast og detaljer er justert videre for en mer behagelig kveldsversion.</p>
+                        <h3>Forbedret mørkemodus</h3>
+                        <p>Mørk modus har fått roligere kontraster, mykere kortflater og bedre lesbarhet i hele appen.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">✨</div>
+                    <div class="whats-new-icon" aria-hidden="true">📱</div>
                     <div>
-                        <h3>Ny stil på endringsboksen</h3>
-                        <p>Oppdateringsboksen har fått et mer moderne uttrykk med tydeligere innhold og bedre lesbarhet.</p>
+                        <h3>Bedre støtte for iPhone</h3>
+                        <p>Ikonfiler er versjonert for å gi iOS større sjanse til å hente nytt ikon etter oppdatering.</p>
                     </div>
                 </article>
             </div>
 
-            <p class="whats-new-meta">Tips: Hvis du bruker GitHub Pages eller har installert appen på mobilen, kan en oppdatering av siden være nok for å hente siste versjon.</p>
+            <p class="whats-new-meta">Tips for iPhone: Hvis hjemskjermikonet ikke bytter seg med én gang, slett snarveien og legg appen til på nytt fra Safari.</p>
             <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
         </div>
     </div>
@@ -315,8 +317,8 @@
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.4</p>
-            <button id="openWhatsNew" class="news-btn" type="button" aria-label="Vis siste endringer">Nytt i v1.4</button>
+            <p class="version" id="versionText">v1.5</p>
+            <button id="openWhatsNew" class="news-btn" type="button" aria-label="Vis siste endringer">Nytt i v1.5</button>
         </div>
     </footer>
 
