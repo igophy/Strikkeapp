@@ -1696,3 +1696,71 @@ body.dark .whats-new-icon {
         max-width: 360px;
     }
 }
+
+
+/* v1.5 mørkemodusforbedringer */
+body.dark {
+    background: radial-gradient(circle at top, #211816 0%, #14100f 48%, #0f0c0b 100%);
+    color: #f4ebe6;
+}
+
+body.dark header {
+    background: linear-gradient(135deg, #5b352c, #2f1e19);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+}
+
+body.dark .subtitle {
+    opacity: 0.95;
+    color: #ead8cf;
+}
+
+body.dark .tile,
+body.dark .counter,
+body.dark .result-card,
+body.dark .tip-card,
+body.dark .chat-message,
+body.dark .help-card,
+body.dark .filter-card,
+body.dark .input-card,
+body.dark .summary-card,
+body.dark .whats-new-box {
+    box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+}
+
+body.dark .tile {
+    background: linear-gradient(180deg, #261f1c, #1b1614);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+body.dark input,
+body.dark select,
+body.dark textarea {
+    background: #201917;
+    border-color: #4f3c34;
+    color: #f4ebe6;
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+    color: #bfaea5;
+}
+
+body.dark footer {
+    background: #120f0e;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+body.dark .footer-meta,
+body.dark .version {
+    color: #cebdb5;
+}
+
+body.dark .news-btn {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.12);
+    color: #f4ebe6;
+}
+
+body.dark .news-btn:hover {
+    background: rgba(255,255,255,0.15);
+}
