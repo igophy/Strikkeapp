@@ -1,4 +1,4 @@
-const CACHE_NAME = 'inges-strikkehjelp-v1.2';
+const CACHE_NAME = 'inges-strikkehjelp-v1.3';
 const ASSETS = [
     './',
     './index.html',
@@ -7,7 +7,11 @@ const ASSETS = [
     './strikketips.json',
     './logo.svg',
     './manifest.json',
-    './yarn-data.js'
+    './yarn-data.js',
+    './icon-192.png',
+    './icon-512.png',
+    './apple-touch-icon.png',
+    './favicon-64.png'
 ];
 
 // Installer: cache alle filer

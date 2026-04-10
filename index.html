@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inges strikkehjelp</title>
+    <meta name="theme-color" content="#6f4336">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 </head>
 <body>
     <header>
         <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; v1.2</p>
-        <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Bytt mørk/lys modus"></button>
+        <p class="subtitle">Din digitale strikkeassistent &middot; v1.3</p>
+        <div class="header-actions">
+            <button id="openWhatsNew" class="header-chip" type="button" aria-label="Vis siste endringer">Nytt</button>
+            <button id="darkModeToggle" class="dark-mode-toggle" type="button" aria-label="Bytt mørk/lys modus"></button>
+        </div>
     </header>
 
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box">
-            <strong>Nytt i v1.2!</strong>
+            <strong>Siste endringer i v1.3</strong>
             <ul>
-                <li>Ny Garnalternativ-funksjon med søk og smart matching</li>
-                <li>Forklaring, advarsler og nøsteberegning</li>
-                <li>Bedre struktur for videre utvidelse av garndatabasen</li>
+                <li>Nytt appikon for installasjon på mobil og hjemmeskjerm</li>
+                <li>Mørkemodus er gjort dypere, roligere og lettere å lese</li>
+                <li>Oppdateringsboksen kan åpnes igjen med knappen <em>Nytt</em> i toppen</li>
             </ul>
+            <p class="whats-new-meta">Tips: Etter opplasting til GitHub Pages kan det hende du må oppdatere siden én gang for å hente nytt ikon og nye farger.</p>
             <button id="closeWhatsNew" class="whats-new-close">OK, forstått!</button>
         </div>
     </div>

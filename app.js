@@ -1,10 +1,11 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.1';
+const APP_VERSION = '1.3';
 const PAGE_KEY = 'inges-strikkehjelp-lastpage';
 
 // --- Mørkmodus ---
 const DARK_MODE_KEY = 'inges-strikkehjelp-darkmode';
 const darkToggle = document.getElementById('darkModeToggle');
+const openWhatsNewBtn = document.getElementById('openWhatsNew');
 
 function settMorkModus(aktiv) {
     document.body.classList.toggle('dark', aktiv);
@@ -33,12 +34,22 @@ if (settVersjon !== APP_VERSION) {
     whatsNew.classList.remove('hidden');
 }
 
+function apneWhatsNew() {
+    whatsNew.classList.remove('hidden');
+}
+
 function lukkWhatsNew() {
     whatsNew.classList.add('hidden');
     localStorage.setItem(VERSION_KEY, APP_VERSION);
 }
 
 document.getElementById('closeWhatsNew').addEventListener('click', lukkWhatsNew);
+if (openWhatsNewBtn) {
+    openWhatsNewBtn.addEventListener('click', () => {
+        vibrer(8);
+        apneWhatsNew();
+    });
+}
 whatsNew.addEventListener('click', (e) => {
     if (e.target === whatsNew) lukkWhatsNew();
 });
