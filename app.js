@@ -1,11 +1,19 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.3';
+const APP_VERSION = '1.4';
 const PAGE_KEY = 'inges-strikkehjelp-lastpage';
 
 // --- Mørkmodus ---
 const DARK_MODE_KEY = 'inges-strikkehjelp-darkmode';
 const darkToggle = document.getElementById('darkModeToggle');
 const openWhatsNewBtn = document.getElementById('openWhatsNew');
+
+const appVersionLabel = document.getElementById('appVersionLabel');
+const versionText = document.getElementById('versionText');
+const whatsNewTitle = document.getElementById('whatsNewTitle');
+if (appVersionLabel) appVersionLabel.textContent = `v${APP_VERSION}`;
+if (versionText) versionText.textContent = `v${APP_VERSION}`;
+if (openWhatsNewBtn) openWhatsNewBtn.textContent = `Nytt i v${APP_VERSION}`;
+if (whatsNewTitle) whatsNewTitle.textContent = `Nytt i v${APP_VERSION}`;
 
 function settMorkModus(aktiv) {
     document.body.classList.toggle('dark', aktiv);
