@@ -1,36 +1,86 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.7';
+const APP_VERSION = '1.7.1';
 const PAGE_KEY = 'inges-strikkehjelp-lastpage';
 
-// --- Mørkmodus ---
-const DARK_MODE_KEY = 'inges-strikkehjelp-darkmode';
-const darkToggle = document.getElementById('darkModeToggle');
-const openWhatsNewBtn = document.getElementById('openWhatsNew');
-
-const appVersionLabel = document.getElementById('appVersionLabel');
+// --- Tema (lys / mørk / auto) ---
+const THEME_MODE_KEY = 'inges-strikkehjelp-theme-mode';
 const versionText = document.getElementById('versionText');
 const whatsNewTitle = document.getElementById('whatsNewTitle');
-if (appVersionLabel) appVersionLabel.textContent = `v${APP_VERSION}`;
-if (versionText) versionText.textContent = `v${APP_VERSION}`;
-if (openWhatsNewBtn) openWhatsNewBtn.textContent = `Nytt i v${APP_VERSION}`;
-if (whatsNewTitle) whatsNewTitle.textContent = `Nytt i v${APP_VERSION}`;
+const settingsVersionPill = document.getElementById('settingsVersionPill');
+const openWhatsNewSettingsBtn = document.getElementById('openWhatsNewSettings');
+const openInstallGuideBtn = document.getElementById('openInstallGuide');
+const themeHelp = document.getElementById('themeModeHelp');
+const themeButtons = document.querySelectorAll('.theme-option');
+const systemDarkMedia = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
-function settMorkModus(aktiv) {
-    document.body.classList.toggle('dark', aktiv);
-    localStorage.setItem(DARK_MODE_KEY, aktiv ? 'on' : 'off');
+if (versionText) versionText.textContent = `v${APP_VERSION}`;
+if (whatsNewTitle) whatsNewTitle.textContent = `Nytt i v${APP_VERSION}`;
+if (settingsVersionPill) settingsVersionPill.textContent = `v${APP_VERSION}`;
+
+function hentLagretTema() {
+    const lagret = localStorage.getItem(THEME_MODE_KEY);
+    return ['light', 'dark', 'auto'].includes(lagret) ? lagret : 'auto';
 }
 
-settMorkModus(localStorage.getItem(DARK_MODE_KEY) === 'on');
+function faktiskTema(modus) {
+    if (modus === 'dark') return 'dark';
+    if (modus === 'light') return 'light';
+    return systemDarkMedia && systemDarkMedia.matches ? 'dark' : 'light';
+}
+
+function oppdaterThemeKnappStatus(modus) {
+    themeButtons.forEach(btn => {
+        const aktiv = btn.dataset.themeChoice === modus;
+        btn.classList.toggle('active', aktiv);
+        btn.setAttribute('aria-pressed', aktiv ? 'true' : 'false');
+    });
+
+    if (themeHelp) {
+        themeHelp.textContent = modus === 'auto'
+            ? 'Auto følger innstillingen på mobilen din.'
+            : modus === 'dark'
+                ? 'Mørk modus er låst på til du endrer det igjen.'
+                : 'Lys modus er låst på til du endrer det igjen.';
+    }
+}
+
+function anvendTema(modus, lagre = true) {
+    const valgtModus = ['light', 'dark', 'auto'].includes(modus) ? modus : 'auto';
+    const aktivtTema = faktiskTema(valgtModus);
+
+    document.body.classList.toggle('dark', aktivtTema === 'dark');
+    document.documentElement.setAttribute('data-theme-mode', valgtModus);
+
+    const themeColor = aktivtTema === 'dark' ? '#120f0e' : '#6f4336';
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColor);
+
+    oppdaterThemeKnappStatus(valgtModus);
+    if (lagre) localStorage.setItem(THEME_MODE_KEY, valgtModus);
+}
+
+const valgtTemaVedStart = hentLagretTema();
+anvendTema(valgtTemaVedStart, false);
+
+if (systemDarkMedia) {
+    const handleSystemThemeChange = () => {
+        if (hentLagretTema() === 'auto') anvendTema('auto', false);
+    };
+    if (typeof systemDarkMedia.addEventListener === 'function') {
+        systemDarkMedia.addEventListener('change', handleSystemThemeChange);
+    } else if (typeof systemDarkMedia.addListener === 'function') {
+        systemDarkMedia.addListener(handleSystemThemeChange);
+    }
+}
+
+themeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        vibrer(8);
+        anvendTema(btn.dataset.themeChoice);
+    });
+});
 
 function vibrer(ms = 10) {
     if (navigator.vibrate) navigator.vibrate(ms);
-}
-
-if (darkToggle) {
-    darkToggle.addEventListener('click', () => {
-        vibrer(8);
-        settMorkModus(!document.body.classList.contains('dark'));
-    });
 }
 
 // --- Hva er nytt ---
@@ -53,8 +103,8 @@ function lukkWhatsNew() {
 }
 
 document.getElementById('closeWhatsNew').addEventListener('click', lukkWhatsNew);
-if (openWhatsNewBtn) {
-    openWhatsNewBtn.addEventListener('click', () => {
+if (openWhatsNewSettingsBtn) {
+    openWhatsNewSettingsBtn.addEventListener('click', () => {
         vibrer(8);
         apneWhatsNew();
     });
@@ -137,6 +187,16 @@ if (installGuideNever) {
     });
 }
 
+if (openInstallGuideBtn) {
+    openInstallGuideBtn.addEventListener('click', () => {
+        vibrer(8);
+        localStorage.removeItem(INSTALL_GUIDE_SEEN_KEY);
+        byggInstallGuide();
+        installGuideOverlay.classList.remove('hidden');
+        installGuideOverlay.setAttribute('aria-hidden', 'false');
+    });
+}
+
 if (installGuideOverlay) {
     installGuideOverlay.addEventListener('click', (e) => {
         if (e.target === installGuideOverlay) lukkInstallGuide(false);
@@ -149,12 +209,71 @@ if (installGuideOverlay) {
 
 // --- Side-navigasjon (fliser) ---
 const allPages = document.querySelectorAll('.page');
+const RESETTABLE_PAGES = new Set(['oykning', 'felling', 'fasthet', 'garn', 'garnalternativ', 'ekspert']);
+let aktivSide = document.querySelector('.page.active')?.id || 'hjem';
+
+function resetStandardPage(pageId) {
+    const page = document.getElementById(pageId);
+    if (!page) return;
+
+    page.querySelectorAll('input').forEach(input => {
+        if (input.type === 'checkbox' || input.type === 'radio') {
+            input.checked = input.defaultChecked;
+        } else {
+            input.value = '';
+        }
+        delete input.dataset.selectedId;
+    });
+
+    page.querySelectorAll('select').forEach(select => {
+        select.selectedIndex = 0;
+    });
+
+    page.querySelectorAll('.result').forEach(result => {
+        result.classList.add('hidden');
+        result.innerHTML = '';
+    });
+}
+
+function resetGarnAlternativPage() {
+    const resetButton = document.getElementById('nullstillGarnalt');
+    if (resetButton) {
+        resetButton.click();
+        return;
+    }
+    resetStandardPage('garnalternativ');
+}
+
+function resetEkspertPage() {
+    if (typeof nullstillChat === 'function') {
+        nullstillChat();
+    }
+}
+
+function resetPageState(pageId) {
+    if (!RESETTABLE_PAGES.has(pageId)) return;
+    if (pageId === 'garnalternativ') {
+        resetGarnAlternativPage();
+        return;
+    }
+    if (pageId === 'ekspert') {
+        resetEkspertPage();
+        return;
+    }
+    resetStandardPage(pageId);
+}
 
 function visSide(id) {
     const side = document.getElementById(id);
     if (!side) return;
+
+    if (id === 'hjem' && aktivSide && aktivSide !== 'hjem') {
+        resetPageState(aktivSide);
+    }
+
     allPages.forEach(p => p.classList.remove('active'));
     side.classList.add('active');
+    aktivSide = id;
     localStorage.setItem(PAGE_KEY, id);
 
     document.querySelectorAll('.tile').forEach(tile => {
@@ -918,6 +1037,7 @@ function setupGarnAlternativ() {
         renderSearchResults([]);
         document.getElementById('filterOnlyNorway').checked = true;
         FILTER_IDS.slice(1).forEach(id => { document.getElementById(id).checked = false; });
+        localStorage.removeItem('garnalternativ-state');
         saveGarnAltState();
     });
 

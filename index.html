@@ -6,9 +6,9 @@
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json?v=1.7">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64-v1.6.png?v=1.7">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-v1.6.png?v=1.7">
+    <link rel="manifest" href="manifest.json?v=1.7.1">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.7.1">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.7.1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
@@ -16,43 +16,40 @@
     <header>
         <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; <span id="appVersionLabel">v1.7</span></p>
-        <div class="header-actions">
-            <button id="darkModeToggle" class="dark-mode-toggle" type="button" aria-label="Bytt mørk/lys modus"></button>
-        </div>
+        <p class="subtitle">Din digitale strikkeassistent</p>
     </header>
 
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.7</strong>
-            <p class="whats-new-intro">Ny oppdatering med guide for å legge appen til på hjemskjermen, forbedret mørkemodus og tydeligere hjelp første gang du åpner appen.</p>
+            <strong id="whatsNewTitle">Nytt i v1.7.1</strong>
+            <p class="whats-new-intro">Ny oppdatering med egen innstillinger-flis, tema-valg for lys, mørk og auto, og smartere nullstilling når du går tilbake til hovedskjermen.</p>
 
             <div class="whats-new-list">
                 <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">🧶</div>
+                    <div class="whats-new-icon" aria-hidden="true">⚙️</div>
                     <div>
-                        <h3>Legg til app på hjemskjerm</h3>
-                        <p>Nye brukere får nå en enkel veiledning som viser hvordan appen legges til som hjemskjerm-app på iPhone og Android.</p>
+                        <h3>Ny flis for innstillinger</h3>
+                        <p>Mørkemodus er flyttet inn i en egen Innstillinger-flis, sammen med siste endringer i appen.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">🌙</div>
+                    <div class="whats-new-icon" aria-hidden="true">🌗</div>
                     <div>
-                        <h3>Bedre førstegangsopplevelse</h3>
-                        <p>Installasjonsveiledningen vises bare når det trengs, og skjules automatisk når appen allerede kjører fra hjemskjermen.</p>
+                        <h3>Lys, mørk eller auto</h3>
+                        <p>Velg selv om appen skal være lys, mørk eller følge mobilens systeminnstilling automatisk.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">📱</div>
+                    <div class="whats-new-icon" aria-hidden="true">🧹</div>
                     <div>
-                        <h3>Forbedret mørkemodus</h3>
-                        <p>Mørk modus er finjustert videre med bedre kontrast og roligere flater.</p>
+                        <h3>Renere start når du går tilbake</h3>
+                        <p>Alle verktøy utenom Masketeller nullstilles nå når du går tilbake til hovedskjermen.</p>
                     </div>
                 </article>
             </div>
 
-            <p class="whats-new-meta">Tips: Åpne appen i Safari på iPhone og bruk Del-knappen for å legge den til på Hjem-skjerm. På Android kan du bruke Installer-knappen når den vises.</p>
+            <p class="whats-new-meta">Masketeller beholder fortsatt tellingen din. Resten starter friskt neste gang du åpner flisen.</p>Tips: Åpne appen i Safari på iPhone og bruk Del-knappen for å legge den til på Hjem-skjerm. På Android kan du bruke Installer-knappen når den vises.</p>
             <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
         </div>
     </div>
@@ -103,6 +100,10 @@
                 <button class="tile" data-page="ekspert">
                     <span class="tile-icon">?</span>
                     <span class="tile-label">Strikkeekspert</span>
+                </button>
+                <button class="tile" data-page="innstillinger">
+                    <span class="tile-icon">⚙</span>
+                    <span class="tile-label">Innstillinger</span>
                 </button>
             </div>
         </section>
@@ -327,13 +328,66 @@
                 <button id="chatSend" class="chat-send">Spør</button>
             </div>
         </section>
+        <!-- Innstillinger -->
+        <section id="innstillinger" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Innstillinger</h2>
+            <p class="description">Tilpass temaet og se hva som er nytt i siste versjon.</p>
+
+            <div class="settings-card">
+                <h3 class="section-title">Tema</h3>
+                <p class="small-muted">Velg hvordan appen skal vises.</p>
+                <div class="theme-picker" role="group" aria-label="Velg tema">
+                    <button type="button" class="theme-option" data-theme-choice="light">Lys</button>
+                    <button type="button" class="theme-option" data-theme-choice="dark">Mørk</button>
+                    <button type="button" class="theme-option" data-theme-choice="auto">Auto</button>
+                </div>
+                <p id="themeModeHelp" class="settings-helper">Auto følger innstillingen på mobilen din.</p>
+            </div>
+
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <h3 class="section-title">Nytt i siste versjon</h3>
+                    <span id="settingsVersionPill" class="settings-version-pill">v1.7.1</span>
+                </div>
+
+                <div class="settings-whatsnew-list">
+                    <div class="settings-whatsnew-item">
+                        <span class="settings-whatsnew-icon" aria-hidden="true">⚙️</span>
+                        <div>
+                            <strong>Ny innstillinger-flis</strong>
+                            <p>Mørkemodus er flyttet ut av toppen og inn i en egen flis.</p>
+                        </div>
+                    </div>
+                    <div class="settings-whatsnew-item">
+                        <span class="settings-whatsnew-icon" aria-hidden="true">🌗</span>
+                        <div>
+                            <strong>Tema med tre valg</strong>
+                            <p>Velg mellom lys, mørk eller auto.</p>
+                        </div>
+                    </div>
+                    <div class="settings-whatsnew-item">
+                        <span class="settings-whatsnew-icon" aria-hidden="true">🧹</span>
+                        <div>
+                            <strong>Automatisk nullstilling</strong>
+                            <p>Når du går tilbake til hovedskjermen, nullstilles alle fliser bortsett fra Masketeller.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button id="openWhatsNewSettings" class="btn-secondary" type="button">Åpne oppdateringsboksen</button>
+                    <button id="openInstallGuide" class="btn-secondary" type="button">Hvordan legge til appen</button>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.7</p>
-            <button id="openWhatsNew" class="news-btn" type="button" aria-label="Vis siste endringer">Nytt i v1.7</button>
+            <p class="version" id="versionText">v1.7.1</p>
         </div>
     </footer>
 

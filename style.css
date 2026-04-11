@@ -1867,3 +1867,161 @@ body.dark .installGuideNever,
 body.dark #installGuideNever {
     background: transparent;
 }
+
+
+/* v1.7.1 innstillinger og tema */
+.settings-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1rem;
+}
+
+.settings-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.8rem;
+}
+
+.settings-version-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: #f3e5dc;
+    color: #8b533f;
+    font-weight: bold;
+    font-size: 0.82rem;
+}
+
+.theme-picker {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    margin-top: 0.9rem;
+}
+
+.theme-option {
+    border: 1.5px solid #d8c6b8;
+    background: #faf5f0;
+    color: #5a3e2e;
+    border-radius: 12px;
+    padding: 0.8rem 0.6rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.theme-option.active {
+    background: linear-gradient(135deg, #c97b63, #a85d4a);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 6px 16px rgba(169, 93, 74, 0.2);
+}
+
+.theme-option:active {
+    transform: scale(0.98);
+}
+
+.settings-helper {
+    margin-top: 0.8rem;
+    color: #7d6758;
+}
+
+.settings-whatsnew-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-top: 0.4rem;
+}
+
+.settings-whatsnew-item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 0.8rem;
+    align-items: start;
+}
+
+.settings-whatsnew-item strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: #4d3429;
+}
+
+.settings-whatsnew-item p {
+    color: #7c6657;
+    font-size: 0.92rem;
+}
+
+.settings-whatsnew-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4e6de;
+    font-size: 1.1rem;
+}
+
+.settings-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.settings-actions .btn-secondary {
+    flex: 1 1 210px;
+}
+
+body.dark .settings-card {
+    background: #1f1a18;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+
+body.dark .settings-version-pill {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f5d7c9;
+}
+
+body.dark .theme-option {
+    background: #2a2220;
+    color: #f3ece6;
+    border-color: #4b3a35;
+}
+
+body.dark .theme-option.active {
+    background: linear-gradient(135deg, #8d5a4c, #6f4336);
+    color: white;
+}
+
+body.dark .settings-helper,
+body.dark .settings-whatsnew-item p {
+    color: #c8b8af;
+}
+
+body.dark .settings-whatsnew-item strong {
+    color: #fff2ea;
+}
+
+body.dark .settings-whatsnew-icon {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 420px) {
+    .theme-picker {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
