@@ -1764,3 +1764,106 @@ body.dark .news-btn {
 body.dark .news-btn:hover {
     background: rgba(255,255,255,0.15);
 }
+
+
+.install-guide-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(23, 14, 12, 0.58);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 1150;
+    backdrop-filter: blur(3px);
+}
+
+.install-guide-overlay.hidden {
+    display: none;
+}
+
+.install-guide-box {
+    width: min(100%, 520px);
+    background: linear-gradient(180deg, #fffaf6, #f6ede7);
+    border-radius: 22px;
+    box-shadow: 0 14px 40px rgba(41, 25, 20, 0.22);
+    padding: 1.25rem;
+    border: 1px solid rgba(168, 93, 74, 0.14);
+    animation: popIn 0.22s ease-out;
+}
+
+.install-guide-topline {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #a85d4a;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.install-guide-intro,
+.install-guide-tip {
+    color: #6d5248;
+    line-height: 1.45;
+}
+
+.install-guide-steps {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.install-step {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(168, 93, 74, 0.12);
+    border-radius: 16px;
+    padding: 0.8rem 0.9rem;
+}
+
+.install-step-number {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #c97b63, #a85d4a);
+    color: white;
+    font-weight: 700;
+}
+
+.install-step p {
+    margin: 0.15rem 0 0;
+}
+
+.install-guide-actions {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+body.dark .install-guide-box {
+    background: linear-gradient(180deg, #211917, #171211);
+    border-color: rgba(255,255,255,0.06);
+    box-shadow: 0 16px 46px rgba(0,0,0,0.42);
+}
+
+body.dark .install-guide-intro,
+body.dark .install-guide-tip,
+body.dark .install-step p {
+    color: #decfc8;
+}
+
+body.dark .install-step {
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(255,255,255,0.07);
+}
+
+body.dark .installGuideNever,
+body.dark #installGuideNever {
+    background: transparent;
+}
