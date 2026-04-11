@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.6';
+const APP_VERSION = '1.7';
 const PAGE_KEY = 'inges-strikkehjelp-lastpage';
 
 // --- Mørkmodus ---
@@ -49,6 +49,7 @@ function apneWhatsNew() {
 function lukkWhatsNew() {
     whatsNew.classList.add('hidden');
     localStorage.setItem(VERSION_KEY, APP_VERSION);
+    window.setTimeout(visInstallGuideOmNodvendig, 250);
 }
 
 document.getElementById('closeWhatsNew').addEventListener('click', lukkWhatsNew);
@@ -61,6 +62,90 @@ if (openWhatsNewBtn) {
 whatsNew.addEventListener('click', (e) => {
     if (e.target === whatsNew) lukkWhatsNew();
 });
+
+// --- Førstegangs-guide for installasjon ---
+const INSTALL_GUIDE_SEEN_KEY = 'inges-strikkehjelp-installguide-seen';
+const installGuideOverlay = document.getElementById('installGuideOverlay');
+const installGuideSteps = document.getElementById('installGuideSteps');
+const installGuideTip = document.getElementById('installGuideTip');
+const installGuideClose = document.getElementById('installGuideClose');
+const installGuideNever = document.getElementById('installGuideNever');
+
+function erStandalone() {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+
+function erIOS() {
+    return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+}
+
+function byggInstallGuide() {
+    if (!installGuideSteps || !installGuideTip) return;
+
+    const steps = erIOS()
+        ? [
+            'Åpne appen i Safari.',
+            'Trykk på Del-knappen nederst eller øverst i Safari.',
+            'Velg «Legg til på Hjem-skjerm».',
+            'Trykk «Legg til».'
+        ]
+        : [
+            'Åpne menyen i nettleseren.',
+            'Velg «Installer app» eller «Legg til på startsiden».',
+            'Bekreft valget for å få appikon på mobilen.'
+        ];
+
+    installGuideSteps.innerHTML = steps
+        .map((step, index) => `<div class="install-step"><span class="install-step-number">${index + 1}</span><p>${step}</p></div>`)
+        .join('');
+
+    installGuideTip.textContent = erIOS()
+        ? 'Tips: Etter at appen er lagt til på Hjem-skjerm, åpnes den som en egen app uten nettleserfelt.'
+        : 'Tips: Når appen er installert, får du eget ikon og raskere tilgang fra hjemskjermen.';
+}
+
+function visInstallGuideOmNodvendig() {
+    if (!installGuideOverlay) return;
+    if (erStandalone()) return;
+    if (localStorage.getItem(INSTALL_GUIDE_SEEN_KEY) === 'dismissed') return;
+    if (whatsNew && !whatsNew.classList.contains('hidden')) return;
+
+    byggInstallGuide();
+    installGuideOverlay.classList.remove('hidden');
+    installGuideOverlay.setAttribute('aria-hidden', 'false');
+    localStorage.setItem(INSTALL_GUIDE_SEEN_KEY, 'shown');
+}
+
+function lukkInstallGuide(permanent = false) {
+    if (!installGuideOverlay) return;
+    installGuideOverlay.classList.add('hidden');
+    installGuideOverlay.setAttribute('aria-hidden', 'true');
+    localStorage.setItem(INSTALL_GUIDE_SEEN_KEY, permanent ? 'dismissed' : 'seen');
+}
+
+if (installGuideClose) {
+    installGuideClose.addEventListener('click', () => {
+        vibrer(8);
+        lukkInstallGuide(false);
+    });
+}
+
+if (installGuideNever) {
+    installGuideNever.addEventListener('click', () => {
+        vibrer(8);
+        lukkInstallGuide(true);
+    });
+}
+
+if (installGuideOverlay) {
+    installGuideOverlay.addEventListener('click', (e) => {
+        if (e.target === installGuideOverlay) lukkInstallGuide(false);
+    });
+
+    window.addEventListener('load', () => {
+        window.setTimeout(visInstallGuideOmNodvendig, 700);
+    });
+}
 
 // --- Side-navigasjon (fliser) ---
 const allPages = document.querySelectorAll('.page');

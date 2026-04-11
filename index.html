@@ -6,9 +6,9 @@
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json?v=1.6">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64-v1.6.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-v1.6.png">
+    <link rel="manifest" href="manifest.json?v=1.7">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64-v1.6.png?v=1.7">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-v1.6.png?v=1.7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
@@ -16,7 +16,7 @@
     <header>
         <img src="logo.svg" alt="Logo" class="logo">
         <h1>Inges strikkehjelp</h1>
-        <p class="subtitle">Din digitale strikkeassistent &middot; <span id="appVersionLabel">v1.6</span></p>
+        <p class="subtitle">Din digitale strikkeassistent &middot; <span id="appVersionLabel">v1.7</span></p>
         <div class="header-actions">
             <button id="darkModeToggle" class="dark-mode-toggle" type="button" aria-label="Bytt mørk/lys modus"></button>
         </div>
@@ -25,35 +25,50 @@
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.6</strong>
-            <p class="whats-new-intro">Ny oppdatering med nytt iOS-inspirert ikon, forbedret mørkemodus og bedre støtte for hjemskjermikon på iPhone.</p>
+            <strong id="whatsNewTitle">Nytt i v1.7</strong>
+            <p class="whats-new-intro">Ny oppdatering med guide for å legge appen til på hjemskjermen, forbedret mørkemodus og tydeligere hjelp første gang du åpner appen.</p>
 
             <div class="whats-new-list">
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">🧶</div>
                     <div>
-                        <h3>Nytt appikon</h3>
-                        <p>Appen bruker nå et nytt iOS-inspirert ikon som passer bedre til uttrykket i appen på både iPhone og PWA.</p>
+                        <h3>Legg til app på hjemskjerm</h3>
+                        <p>Nye brukere får nå en enkel veiledning som viser hvordan appen legges til som hjemskjerm-app på iPhone og Android.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">🌙</div>
                     <div>
-                        <h3>Forbedret mørkemodus</h3>
-                        <p>Mørk modus er justert videre med bedre kontrast, roligere flater og tydeligere knapper og kort.</p>
+                        <h3>Bedre førstegangsopplevelse</h3>
+                        <p>Installasjonsveiledningen vises bare når det trengs, og skjules automatisk når appen allerede kjører fra hjemskjermen.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">📱</div>
                     <div>
-                        <h3>Bedre støtte for iPhone</h3>
-                        <p>Ikonfiler og cache er oppdatert til ny versjon for å gi iOS større sjanse til å hente riktig ikon etter oppdatering.</p>
+                        <h3>Forbedret mørkemodus</h3>
+                        <p>Mørk modus er finjustert videre med bedre kontrast og roligere flater.</p>
                     </div>
                 </article>
             </div>
 
-            <p class="whats-new-meta">Tips for iPhone: Hvis hjemskjermikonet ikke bytter seg med én gang på iPhone, slett snarveien og legg appen til på nytt fra Safari.</p>
+            <p class="whats-new-meta">Tips: Åpne appen i Safari på iPhone og bruk Del-knappen for å legge den til på Hjem-skjerm. På Android kan du bruke Installer-knappen når den vises.</p>
             <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
+        </div>
+    </div>
+
+    
+    <div id="installGuideOverlay" class="install-guide-overlay hidden" aria-hidden="true">
+        <div class="install-guide-box">
+            <div class="install-guide-topline">Gjør appen enklere å åpne</div>
+            <strong id="installGuideTitle">Legg Inges strikkehjelp til på Hjem-skjerm</strong>
+            <p id="installGuideIntro" class="install-guide-intro">Da får du appen som et eget ikon på mobilen og kan åpne den som en vanlig app.</p>
+            <div id="installGuideSteps" class="install-guide-steps"></div>
+            <p id="installGuideTip" class="install-guide-tip"></p>
+            <div class="install-guide-actions">
+                <button id="installGuideClose" class="whats-new-close" type="button">Skjønner</button>
+                <button id="installGuideNever" class="btn-secondary" type="button">Ikke vis igjen</button>
+            </div>
         </div>
     </div>
 
@@ -317,8 +332,8 @@
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.6</p>
-            <button id="openWhatsNew" class="news-btn" type="button" aria-label="Vis siste endringer">Nytt i v1.6</button>
+            <p class="version" id="versionText">v1.7</p>
+            <button id="openWhatsNew" class="news-btn" type="button" aria-label="Vis siste endringer">Nytt i v1.7</button>
         </div>
     </footer>
 
