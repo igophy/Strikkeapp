@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.5';
+const APP_VERSION = '1.6';
 const PAGE_KEY = 'inges-strikkehjelp-lastpage';
 
 // --- Mørkmodus ---
