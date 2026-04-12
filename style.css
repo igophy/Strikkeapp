@@ -2025,3 +2025,81 @@ body.dark .settings-whatsnew-icon {
         flex-direction: column;
     }
 }
+
+
+/* Tilbakemelding */
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    border: 2px solid #d4c4b5;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: white;
+    color: #4a3728;
+    resize: vertical;
+    min-height: 140px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #c97b63;
+    box-shadow: 0 0 0 3px rgba(201, 123, 99, 0.12);
+}
+
+.feedback-status {
+    margin-bottom: 1rem;
+    padding: 0.85rem 0.95rem;
+    border-radius: 12px;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    border: 1px solid #e4d3c6;
+    background: #fffaf6;
+    color: #6d5444;
+}
+
+.feedback-status.success {
+    background: #edf8f0;
+    border-color: #9bcaab;
+    color: #2c5d39;
+}
+
+.feedback-status.error {
+    background: #fff1ed;
+    border-color: #e0a08d;
+    color: #8a3f2a;
+}
+
+body.dark .form-group textarea {
+    background: linear-gradient(180deg, var(--surface-dark-2), var(--surface-dark));
+    color: var(--text-dark);
+    border-color: var(--line-dark);
+}
+
+body.dark .form-group textarea::placeholder {
+    color: #b9aba1;
+}
+
+body.dark .form-group textarea:focus {
+    border-color: var(--accent-dark);
+    box-shadow: 0 0 0 3px rgba(212, 154, 126, 0.14);
+}
+
+body.dark .feedback-status {
+    background: linear-gradient(180deg, var(--surface-dark-2), var(--surface-dark));
+    border-color: var(--line-dark);
+    color: var(--text-dark-muted);
+}
+
+body.dark .feedback-status.success {
+    background: linear-gradient(180deg, var(--success-dark-bg), #101a13);
+    border-color: var(--success-dark-line);
+    color: #d5f0de;
+}
+
+body.dark .feedback-status.error {
+    background: linear-gradient(180deg, var(--warn-dark-bg), #241713);
+    border-color: var(--warn-dark-line);
+    color: #f1d0c4;
+}
