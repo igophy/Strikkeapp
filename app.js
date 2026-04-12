@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.7.1';
+const APP_VERSION = '1.7.2';
 const PAGE_KEY = 'inges-strikkehjelp-lastpage';
 
 // --- Tema (lys / mørk / auto) ---

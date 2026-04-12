@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json?v=1.7.1">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.7.1">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.7.1">
+    <link rel="stylesheet" href="style.css?v=1.7.2">
+    <link rel="manifest" href="manifest.json?v=1.7.2">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.7.2">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.7.2">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
@@ -22,34 +22,34 @@
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.7.1</strong>
-            <p class="whats-new-intro">Ny oppdatering med egen innstillinger-flis, tema-valg for lys, mørk og auto, og smartere nullstilling når du går tilbake til hovedskjermen.</p>
+            <strong id="whatsNewTitle">Nytt i v1.7.2</strong>
+            <p class="whats-new-intro">Denne oppdateringen gjør appen mer robust ved nye utgivelser, med bedre håndtering av cache, service worker og oppdateringsmelding.</p>
 
             <div class="whats-new-list">
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">⚙️</div>
                     <div>
-                        <h3>Ny flis for innstillinger</h3>
-                        <p>Mørkemodus er flyttet inn i en egen Innstillinger-flis, sammen med siste endringer i appen.</p>
+                        <h3>Mer robust oppdatering</h3>
+                        <p>Statiske filer er nå versjonert tydeligere, slik at nye endringer slår inn raskere etter publisering.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">🌗</div>
+                    <div class="whats-new-icon" aria-hidden="true">♻️</div>
                     <div>
-                        <h3>Lys, mørk eller auto</h3>
-                        <p>Velg selv om appen skal være lys, mørk eller følge mobilens systeminnstilling automatisk.</p>
+                        <h3>Bedre cache-opprydding</h3>
+                        <p>Gamle cacher ryddes bort når en ny versjon aktiveres, så appen ikke henger igjen på gamle filer.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">🧹</div>
+                    <div class="whats-new-icon" aria-hidden="true">🚀</div>
                     <div>
-                        <h3>Renere start når du går tilbake</h3>
-                        <p>Alle verktøy utenom Masketeller nullstilles nå når du går tilbake til hovedskjermen.</p>
+                        <h3>Raskere ny versjon</h3>
+                        <p>Appen sjekker nå aktivt etter ny service worker og viser oppdateringsknapp når en ny utgave er klar.</p>
                     </div>
                 </article>
             </div>
 
-            <p class="whats-new-meta">Masketeller beholder fortsatt tellingen din. Resten starter friskt neste gang du åpner flisen.</p>Tips: Åpne appen i Safari på iPhone og bruk Del-knappen for å legge den til på Hjem-skjerm. På Android kan du bruke Installer-knappen når den vises.</p>
+            <p class="whats-new-meta">Denne versjonen fokuserer på tryggere oppdateringer, raskere bytte til nye filer og mindre sjanse for at gammel cache henger igjen.</p>
             <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
         </div>
     </div>
@@ -348,7 +348,7 @@
             <div class="settings-card">
                 <div class="settings-card-header">
                     <h3 class="section-title">Nytt i siste versjon</h3>
-                    <span id="settingsVersionPill" class="settings-version-pill">v1.7.1</span>
+                    <span id="settingsVersionPill" class="settings-version-pill">v1.7.2</span>
                 </div>
 
                 <div class="settings-whatsnew-list">
@@ -387,7 +387,7 @@
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.7.1</p>
+            <p class="version" id="versionText">v1.7.2</p>
         </div>
     </footer>
 
@@ -404,10 +404,12 @@
         <button id="updateBtn" class="update-btn">Oppdater</button>
     </div>
 
-    <script src="yarn-data.js"></script>
-    <script src="app.js"></script>
+    <script src="yarn-data.js?v=1.7.2"></script>
+    <script src="app.js?v=1.7.2"></script>
     <script>
+    const APP_VERSION = '1.7.2';
     let deferredInstallPrompt = null;
+    let refreshingFromController = false;
 
     window.addEventListener('beforeinstallprompt', (event) => {
         event.preventDefault();
@@ -428,19 +430,45 @@
     });
 
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').then(reg => {
-            reg.addEventListener('updatefound', () => {
-                const nySW = reg.installing;
-                nySW.addEventListener('statechange', () => {
-                    if (nySW.state === 'installed' && navigator.serviceWorker.controller) {
-                        document.getElementById('updateBanner').classList.remove('hidden');
+        window.addEventListener('load', async () => {
+            try {
+                const reg = await navigator.serviceWorker.register(`./sw.js?v=${APP_VERSION}`);
+
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    if (refreshingFromController) return;
+                    refreshingFromController = true;
+                    window.location.reload();
+                });
+
+                const showUpdateBanner = () => {
+                    document.getElementById('updateBanner').classList.remove('hidden');
+                };
+
+                const watchInstallingWorker = (worker) => {
+                    if (!worker) return;
+                    worker.addEventListener('statechange', () => {
+                        if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+                            showUpdateBanner();
+                        }
+                    });
+                };
+
+                watchInstallingWorker(reg.installing);
+                reg.addEventListener('updatefound', () => watchInstallingWorker(reg.installing));
+                await reg.update();
+                window.setInterval(() => reg.update(), 60 * 60 * 1000);
+
+                document.getElementById('updateBtn').addEventListener('click', () => {
+                    const waitingWorker = reg.waiting;
+                    if (waitingWorker) {
+                        waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+                    } else {
+                        window.location.reload();
                     }
                 });
-            });
-        });
-
-        document.getElementById('updateBtn').addEventListener('click', () => {
-            window.location.reload();
+            } catch (error) {
+                console.error('Service worker-feil:', error);
+            }
         });
     }
     </script>
