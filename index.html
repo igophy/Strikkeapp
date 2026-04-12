@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
-    <link rel="stylesheet" href="style.css?v=1.7.3">
-    <link rel="manifest" href="manifest.json?v=1.7.3">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.7.3">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.7.3">
+    <link rel="stylesheet" href="style.css?v=1.7.4">
+    <link rel="manifest" href="manifest.json?v=1.7.4">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.7.4">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.7.4">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
@@ -22,34 +22,34 @@
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.7.3</strong>
-            <p class="whats-new-intro">Denne oppdateringen gjør appen enklere å starte fra fremsiden og legger til en egen måte å sende tilbakemelding fra Innstillinger.</p>
+            <strong id="whatsNewTitle">Nytt i v1.7.4</strong>
+            <p class="whats-new-intro">Denne oppdateringen rydder opp i Innstillinger og markerer funksjoner som fortsatt er under utvikling.</p>
 
             <div class="whats-new-list">
                 <article class="whats-new-item">
+                    <div class="whats-new-icon" aria-hidden="true">🧪</div>
+                    <div>
+                        <h3>Beta-merking</h3>
+                        <p>Garnalternativ og Strikkeekspert er nå merket med Beta, slik at det er tydelig at disse funksjonene fortsatt utvikles.</p>
+                    </div>
+                </article>
+                <article class="whats-new-item">
+                    <div class="whats-new-icon" aria-hidden="true">⚙️</div>
+                    <div>
+                        <h3>Ryddigere Innstillinger</h3>
+                        <p>Tilbakemeldingsdelen er fjernet foreløpig, så Innstillinger er enklere og renere å bruke.</p>
+                    </div>
+                </article>
+                <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">🏠</div>
                     <div>
-                        <h3>Starter alltid på fremsiden</h3>
-                        <p>Appen åpnes nå alltid på hovedsiden, slik at du får en ren og forutsigbar start hver gang.</p>
-                    </div>
-                </article>
-                <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">✉️</div>
-                    <div>
-                        <h3>Ny tilbakemeldingsfunksjon</h3>
-                        <p>I Innstillinger kan du nå fylle ut et enkelt skjema som åpner e-postappen din med ferdig utfylt melding.</p>
-                    </div>
-                </article>
-                <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">🧭</div>
-                    <div>
-                        <h3>Ryddigere startflyt</h3>
-                        <p>Fokus er flyttet mot rask tilgang til fremsiden, innstillinger og tydeligere kontaktmulighet når du vil sende inn forslag eller feil.</p>
+                        <h3>Fortsatt tydelig start</h3>
+                        <p>Appen åpnes fortsatt på fremsiden, mens masketelleren får beholde tilstanden sin mellom besøk.</p>
                     </div>
                 </article>
             </div>
 
-            <p class="whats-new-meta">Denne versjonen fokuserer på en ryddigere startopplevelse og enklere kontakt direkte fra appen via din egen e-postapp.</p>
+            <p class="whats-new-meta">Denne versjonen rydder opp rundt appskallet og gjør det tydeligere hvilke funksjoner som fortsatt er under utvikling.</p>
             <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
         </div>
     </div>
@@ -95,11 +95,11 @@
                 </button>
                 <button class="tile" data-page="garnalternativ">
                     <span class="tile-icon">&#8644;</span>
-                    <span class="tile-label">Garnalternativ</span>
+                    <span class="tile-label">Garnalternativ (Beta)</span>
                 </button>
                 <button class="tile" data-page="ekspert">
                     <span class="tile-icon">?</span>
-                    <span class="tile-label">Strikkeekspert</span>
+                    <span class="tile-label">Strikkeekspert (Beta)</span>
                 </button>
                 <button class="tile" data-page="innstillinger">
                     <span class="tile-icon">⚙</span>
@@ -250,7 +250,7 @@
         <!-- Garnalternativ -->
         <section id="garnalternativ" class="page">
             <button class="btn-back" data-page="hjem">Tilbake</button>
-            <h2>Garnalternativ</h2>
+            <h2>Garnalternativ <span class="beta-label">(Beta)</span></h2>
             <p class="description">Finn smarte og praktiske garnbytter med forklaring, advarsler og nøsteberegning.</p>
 
             <div class="garnalt-layout">
@@ -310,7 +310,7 @@
         <!-- Strikkeekspert -->
         <section id="ekspert" class="page">
             <button class="btn-back" data-page="hjem">Tilbake</button>
-            <h2>Strikkeekspert</h2>
+            <h2>Strikkeekspert <span class="beta-label">(Beta)</span></h2>
             <p class="description">Spør meg om strikking!</p>
 
             <div id="chatMessages" class="chat-messages">
@@ -348,29 +348,29 @@
             <div class="settings-card">
                 <div class="settings-card-header">
                     <h3 class="section-title">Nytt i siste versjon</h3>
-                    <span id="settingsVersionPill" class="settings-version-pill">v1.7.3</span>
+                    <span id="settingsVersionPill" class="settings-version-pill">v1.7.4</span>
                 </div>
 
                 <div class="settings-whatsnew-list">
                     <div class="settings-whatsnew-item">
+                        <span class="settings-whatsnew-icon" aria-hidden="true">🧪</span>
+                        <div>
+                            <strong>Beta-merking på utvalgte verktøy</strong>
+                            <p>Garnalternativ og Strikkeekspert er nå merket som Beta for å sette riktige forventninger mens de videreutvikles.</p>
+                        </div>
+                    </div>
+                    <div class="settings-whatsnew-item">
+                        <span class="settings-whatsnew-icon" aria-hidden="true">⚙️</span>
+                        <div>
+                            <strong>Tilbakemelding er fjernet foreløpig</strong>
+                            <p>Tilbakemeldingsknappen og skjemaet er tatt ut av Innstillinger inntil en bedre løsning er klar.</p>
+                        </div>
+                    </div>
+                    <div class="settings-whatsnew-item">
                         <span class="settings-whatsnew-icon" aria-hidden="true">🏠</span>
                         <div>
-                            <strong>Starter alltid på fremsiden</strong>
-                            <p>Appen åpnes nå alltid på hovedsiden i stedet for å huske sist brukte side.</p>
-                        </div>
-                    </div>
-                    <div class="settings-whatsnew-item">
-                        <span class="settings-whatsnew-icon" aria-hidden="true">✉️</span>
-                        <div>
-                            <strong>Gi tilbakemelding</strong>
-                            <p>Nytt skjema i Innstillinger åpner e-postappen din med emne og melding ferdig fylt ut.</p>
-                        </div>
-                    </div>
-                    <div class="settings-whatsnew-item">
-                        <span class="settings-whatsnew-icon" aria-hidden="true">🧹</span>
-                        <div>
-                            <strong>Ryddigere start</strong>
-                            <p>Fremsiden brukes nå konsekvent som startpunkt, samtidig som masketelleren fortsatt husker verdiene sine.</p>
+                            <strong>Starter fortsatt på fremsiden</strong>
+                            <p>Appen åpnes fortsatt på hovedsiden, slik at du alltid får en ryddig start.</p>
                         </div>
                     </div>
                 </div>
@@ -380,41 +380,6 @@
                     <button id="openInstallGuide" class="btn-secondary" type="button">Hvordan legge til appen</button>
                 </div>
             </div>
-
-            <div class="settings-card">
-                <div class="settings-card-header">
-                    <h3 class="section-title">Gi tilbakemelding</h3>
-                </div>
-                <p class="small-muted">Fyll ut feltene under. Når du trykker send, åpnes e-postappen din med meldingen ferdig utfylt.</p>
-
-                <div id="feedbackStatus" class="feedback-status hidden" role="status" aria-live="polite"></div>
-
-                <div class="form-group">
-                    <label for="feedbackFromEmail">Fra e-post</label>
-                    <input type="email" id="feedbackFromEmail" inputmode="email" autocomplete="email" placeholder="deg@eksempel.no">
-                </div>
-
-                <div class="form-group">
-                    <label for="feedbackSubject">Emne</label>
-                    <select id="feedbackSubject">
-                        <option value="">Velg emne</option>
-                        <option value="Feil i appen">Feil i appen</option>
-                        <option value="Forslag til forbedring">Forslag til forbedring</option>
-                        <option value="Garnalternativ">Garnalternativ</option>
-                        <option value="Design og brukeropplevelse">Design og brukeropplevelse</option>
-                        <option value="Annet">Annet</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="feedbackMessage">Melding</label>
-                    <textarea id="feedbackMessage" rows="6" maxlength="2500" placeholder="Skriv tilbakemeldingen din her..."></textarea>
-                </div>
-
-                <div class="settings-actions">
-                    <button id="sendFeedbackBtn" class="btn-calculate" type="button">Send i e-postapp</button>
-                </div>
-            </div>
         </section>
 
     </main>
@@ -422,7 +387,7 @@
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.7.3</p>
+            <p class="version" id="versionText">v1.7.4</p>
         </div>
     </footer>
 
@@ -439,10 +404,10 @@
         <button id="updateBtn" class="update-btn">Oppdater</button>
     </div>
 
-    <script src="yarn-data.js?v=1.7.3"></script>
-    <script src="app.js?v=1.7.3"></script>
+    <script src="yarn-data.js?v=1.7.4"></script>
+    <script src="app.js?v=1.7.4"></script>
     <script>
-    const APP_VERSION = '1.7.3';
+    const APP_VERSION = '1.7.4';
     let deferredInstallPrompt = null;
     let refreshingFromController = false;
 

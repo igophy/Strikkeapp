@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.7.3';
+const APP_VERSION = '1.7.4';
 
 // --- Tema (lys / mørk / auto) ---
 const THEME_MODE_KEY = 'inges-strikkehjelp-theme-mode';
@@ -10,11 +10,6 @@ const openWhatsNewSettingsBtn = document.getElementById('openWhatsNewSettings');
 const openInstallGuideBtn = document.getElementById('openInstallGuide');
 const themeHelp = document.getElementById('themeModeHelp');
 const themeButtons = document.querySelectorAll('.theme-option');
-const feedbackFromEmail = document.getElementById('feedbackFromEmail');
-const feedbackSubject = document.getElementById('feedbackSubject');
-const feedbackMessage = document.getElementById('feedbackMessage');
-const sendFeedbackBtn = document.getElementById('sendFeedbackBtn');
-const feedbackStatus = document.getElementById('feedbackStatus');
 const systemDarkMedia = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
 if (versionText) versionText.textContent = `v${APP_VERSION}`;
@@ -212,64 +207,6 @@ if (installGuideOverlay) {
 }
 
 
-// --- Tilbakemelding via e-postapp ---
-const FEEDBACK_TO = ['jojoba_krakelert', '.0q', '@icloud.com'].join('');
-
-function visFeedbackStatus(melding, type = 'info') {
-    if (!feedbackStatus) return;
-    feedbackStatus.textContent = melding;
-    feedbackStatus.classList.remove('hidden', 'success', 'error');
-    if (type === 'success') feedbackStatus.classList.add('success');
-    if (type === 'error') feedbackStatus.classList.add('error');
-}
-
-function resetFeedbackStatus() {
-    if (!feedbackStatus) return;
-    feedbackStatus.textContent = '';
-    feedbackStatus.classList.add('hidden');
-    feedbackStatus.classList.remove('success', 'error');
-}
-
-function gyldigEpost(epost) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(epost);
-}
-
-function sendTilbakemelding() {
-    const fraEpost = feedbackFromEmail?.value.trim() || '';
-    const emne = feedbackSubject?.value.trim() || '';
-    const melding = feedbackMessage?.value.trim() || '';
-
-    if (!fraEpost || !gyldigEpost(fraEpost)) {
-        visFeedbackStatus('Skriv inn en gyldig e-postadresse.', 'error');
-        feedbackFromEmail?.focus();
-        return;
-    }
-
-    if (!emne) {
-        visFeedbackStatus('Velg et emne før du sender.', 'error');
-        feedbackSubject?.focus();
-        return;
-    }
-
-    if (!melding) {
-        visFeedbackStatus('Skriv litt tekst før du sender.', 'error');
-        feedbackMessage?.focus();
-        return;
-    }
-
-    const fullSubject = `[Inges strikkehjelp] ${emne}`;
-    const body = `Fra e-post: ${fraEpost}\n\nMelding:\n${melding}\n\n---\nAppversjon: ${APP_VERSION}\nSendt fra Innstillinger i appen.`;
-    const mailtoUrl = `mailto:${FEEDBACK_TO}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(body)}`;
-
-    visFeedbackStatus('E-postappen åpnes nå med meldingen ferdig utfylt.', 'success');
-    vibrer(10);
-    window.location.href = mailtoUrl;
-}
-
-feedbackFromEmail?.addEventListener('input', resetFeedbackStatus);
-feedbackSubject?.addEventListener('change', resetFeedbackStatus);
-feedbackMessage?.addEventListener('input', resetFeedbackStatus);
-sendFeedbackBtn?.addEventListener('click', sendTilbakemelding);
 
 // --- Side-navigasjon (fliser) ---
 const allPages = document.querySelectorAll('.page');
