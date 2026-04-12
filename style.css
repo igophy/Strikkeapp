@@ -2103,3 +2103,14 @@ body.dark .feedback-status.error {
     border-color: var(--warn-dark-line);
     color: #f1d0c4;
 }
+
+
+.beta-label {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #a85d4a;
+}
+
+body.dark .beta-label {
+    color: #f0b7a7;
+}
