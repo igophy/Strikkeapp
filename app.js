@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.8.0';
+const APP_VERSION = '1.8.1';
 
 // --- Tema (lys / mørk / auto) ---
 const THEME_MODE_KEY = 'inges-strikkehjelp-theme-mode';
@@ -655,7 +655,8 @@ const FILTER_IDS = [
     'filterLessFluffy',
     'filterSofter',
     'filterSummer',
-    'filterBaby'
+    'filterBaby',
+    'filterSameExpression'
 ];
 
 function getSelectedFilters() {
@@ -669,6 +670,7 @@ function getSelectedFilters() {
         softer: document.getElementById('filterSofter').checked,
         summer: document.getElementById('filterSummer').checked,
         baby: document.getElementById('filterBaby').checked,
+        sameExpression: document.getElementById('filterSameExpression').checked,
     };
 }
 
@@ -701,6 +703,7 @@ function categoryDistance(a, b) {
     return Math.abs(ai - bi);
 }
 
+
 function fiberSimilarity(a, b) {
     const aKeys = getFiberKeys(a);
     const bKeys = getFiberKeys(b);
@@ -712,6 +715,26 @@ function fiberSimilarity(a, b) {
     return Math.min(overlap / 100, 1);
 }
 
+function fiberFamily(key) {
+    if (['wool', 'merino', 'alpaca', 'mohair', 'silk'].includes(key)) return 'animal';
+    if (['cotton', 'linen', 'viscose', 'bamboo'].includes(key)) return 'plant';
+    return 'synthetic';
+}
+
+function fiberFamilySimilarity(a, b) {
+    const aFamilies = new Set(getFiberKeys(a).map(fiberFamily));
+    const bFamilies = new Set(getFiberKeys(b).map(fiberFamily));
+    if (!aFamilies.size || !bFamilies.size) return 0;
+    let overlap = 0;
+    for (const family of aFamilies) if (bFamilies.has(family)) overlap += 1;
+    return overlap / Math.max(aFamilies.size, bFamilies.size);
+}
+
+function metersPer100g(yarn) {
+    if (!yarn?.metersPerSkein || !yarn?.gramsPerSkein) return 0;
+    return (yarn.metersPerSkein / yarn.gramsPerSkein) * 100;
+}
+
 function practicalUseSimilarity(a, b) {
     const aa = new Set(a.bestFor || []);
     const bb = new Set(b.bestFor || []);
@@ -721,6 +744,31 @@ function practicalUseSimilarity(a, b) {
     return overlap / Math.max(aa.size, bb.size);
 }
 
+function expressionSimilarity(a, b) {
+    let score = 0;
+    if (a.structure === b.structure) score += 0.4;
+    else if (a.texture === b.texture) score += 0.2;
+    const haloDiff = Math.abs((a.halo || 0) - (b.halo || 0));
+    score += Math.max(0, 0.3 - haloDiff * 0.08);
+    const firmnessDiff = Math.abs((a.firmness || 0) - (b.firmness || 0));
+    score += Math.max(0, 0.15 - firmnessDiff * 0.04);
+    const drapeDiff = Math.abs((a.drape || 0) - (b.drape || 0));
+    score += Math.max(0, 0.15 - drapeDiff * 0.04);
+    return Math.max(0, Math.min(score, 1));
+}
+
+function strengthTags(source, candidate, scoreParts) {
+    const tags = [];
+    if (scoreParts.gauge >= 20) tags.push('Nær strikkefasthet');
+    if (scoreParts.meter >= 16) tags.push('Lignende løpelengde');
+    if (scoreParts.fiber >= 10 || scoreParts.family >= 4) tags.push('Lignende fiber');
+    if (scoreParts.expression >= 9) tags.push('Liknende uttrykk');
+    if (scoreParts.use >= 7) tags.push('Passer samme type plagg');
+    if (!tags.length) tags.push('Praktisk mulig alternativ');
+    return tags.slice(0, 3);
+}
+
+
 function buildWarnings(source, candidate) {
     const warnings = [];
     if (Math.abs(candidate.halo - source.halo) >= 2) {
@@ -729,24 +777,26 @@ function buildWarnings(source, candidate) {
     }
     if (Math.abs(candidate.drape - source.drape) >= 2) warnings.push('Har et annet fall enn originalen.');
     if (Math.abs(candidate.elasticity - source.elasticity) >= 2) warnings.push('Har en annen elastisitet og kan oppføre seg ulikt i bruk.');
-    if (candidate.structure !== source.structure) warnings.push(`Annen konstruksjon (${candidate.structure}) enn originalen.`);
+    if (candidate.structure !== source.structure) warnings.push(`Annen konstruksjon (${prettyStructureLabel(candidate.structure)}) enn originalen.`);
+    if (candidate.superwash !== source.superwash) warnings.push(source.superwash ? 'Dette er ikke superwash, så det krever litt annen behandling.' : 'Dette er superwash og vil kunne oppføre seg litt annerledes enn ubehandlet ull.');
     const sourceFibers = getFiberKeys(source);
     const candidateFibers = getFiberKeys(candidate);
     if (!candidateFibers.some(f => sourceFibers.includes(f))) warnings.push('Helt annen fibertype enn originalen.');
     return warnings.slice(0, 3);
 }
 
-function explainMatch(source, candidate, warnings) {
+function explainMatch(source, candidate, warnings, scoreParts) {
     const lines = [];
     const gaugeDiff = Math.abs((candidate.gauge || 0) - (source.gauge || 0));
-    const meterDiff = Math.abs(candidate.metersPerSkein - source.metersPerSkein);
-    if (gaugeDiff <= 1) lines.push('Ligner godt i praktisk strikkefasthet.');
+    const meter100Diff = Math.abs(metersPer100g(candidate) - metersPer100g(source));
+    if (gaugeDiff <= 1) lines.push('Ligger svært nær originalen i praktisk strikkefasthet.');
     else if (gaugeDiff <= 2) lines.push('Ganske nær strikkefasthet, men prøvelapp anbefales.');
-    if (meterDiff <= 15) lines.push('Har lignende løpelengde per nøste.');
-    if (candidate.structure === source.structure) lines.push('Har lignende oppbygging og oppfører seg likt i plagget.');
-    else if (candidate.texture === source.texture) lines.push('Har ganske likt uttrykk i ferdig plagg.');
+    if (meter100Diff <= 20) lines.push('Har lignende løpelengde i forhold til vekten, så garnforbruket blir ofte mer forutsigbart.');
+    if (scoreParts.expression >= 9) lines.push('Gir et uttrykk som ligger tett på originalen i ferdig plagg.');
+    else if (candidate.structure === source.structure) lines.push('Har lignende oppbygging og oppfører seg ofte ganske likt i plagget.');
     else lines.push(`Har ${prettyStructureLabel(candidate.structure)} konstruksjon, så uttrykket blir litt annerledes.`);
-    if (fiberSimilarity(source, candidate) >= 0.5) lines.push('Deler mye av samme fiberprofil.');
+    if (scoreParts.fiber >= 10) lines.push('Deler mye av samme fiberprofil.');
+    else if (scoreParts.family >= 4) lines.push('Ligger i samme fiberfamilie og kan fungere fint praktisk.');
     if (practicalUseSimilarity(source, candidate) >= 0.4) lines.push(`Passer godt til ${prettifyBestFor((candidate.bestFor || [])[0] || 'plagg')}.`);
     if (!lines.length) lines.push('Kan fungere, men skiller seg mer fra originalen enn toppresultatene.');
     if (warnings.length) lines.push('Prøvelapp anbefales før du starter.');
@@ -774,28 +824,40 @@ function gradeMatch(score) {
 }
 
 function scoreCandidate(source, candidate, filters) {
-    const gaugeScore = metricScore(Math.abs((candidate.gauge || 0) - (source.gauge || 0)), 6, 25);
-    const meterScore = metricScore(Math.abs(candidate.metersPerSkein - source.metersPerSkein), Math.max(source.metersPerSkein * 0.5, 30), 20);
-    const structureScore = candidate.structure === source.structure ? 15 : candidate.texture === source.texture ? 9 : 3;
-    const fiberScore = 15 * fiberSimilarity(source, candidate);
-    const useScore = 10 * practicalUseSimilarity(source, candidate);
-    const haloScore = metricScore(Math.abs(candidate.halo - source.halo), 5, 5);
-    const behaviorDiff = (
-        Math.abs(candidate.elasticity - source.elasticity) +
-        Math.abs(candidate.drape - source.drape) +
-        Math.abs(candidate.firmness - source.firmness)
-    ) / 3;
-    const behaviorScore = metricScore(behaviorDiff, 5, 5);
-    const needleScore = metricScore(Math.abs((candidate.needle || [0])[0] - (source.needle || [0])[0]), 3, 3);
+    const scoreParts = {
+        gauge: metricScore(Math.abs((candidate.gauge || 0) - (source.gauge || 0)), 6, 25),
+        meter: metricScore(Math.abs(metersPer100g(candidate) - metersPer100g(source)), Math.max(metersPer100g(source) * 0.45, 30), 20),
+        structure: candidate.structure === source.structure ? 10 : candidate.texture === source.texture ? 6 : 2,
+        expression: 10 * expressionSimilarity(source, candidate),
+        fiber: 12 * fiberSimilarity(source, candidate),
+        family: 5 * fiberFamilySimilarity(source, candidate),
+        use: 8 * practicalUseSimilarity(source, candidate),
+        halo: metricScore(Math.abs(candidate.halo - source.halo), 5, 4),
+        behavior: metricScore((
+            Math.abs(candidate.elasticity - source.elasticity) +
+            Math.abs(candidate.drape - source.drape) +
+            Math.abs(candidate.firmness - source.firmness) +
+            Math.abs(candidate.warmth - source.warmth)
+        ) / 4, 5, 4),
+        needle: metricScore(Math.abs((candidate.needle || [0])[0] - (source.needle || [0])[0]), 3, 2)
+    };
 
-    let score = gaugeScore + meterScore + structureScore + fiberScore + useScore + haloScore + behaviorScore + needleScore;
+    let score = Object.values(scoreParts).reduce((sum, val) => sum + val, 0);
     const dist = categoryDistance(source.weight, candidate.weight);
-    if (dist > 1) score -= 12;
+    if (dist > 1) score -= 14;
+    if (dist === 1) score -= 5;
     if (filters.lessFluffy && candidate.halo > source.halo) score -= 8;
     if (filters.softer && candidate.softness >= source.softness) score += 4;
     if (filters.summer && candidate.bestFor?.includes('summer')) score += 4;
     if (filters.baby && candidate.bestFor?.includes('baby')) score += 4;
-    return Math.max(0, Math.min(100, Math.round(score)));
+    if (filters.sameExpression) {
+        if (expressionSimilarity(source, candidate) < 0.55) score -= 14;
+        else score += 5;
+    }
+    if (source.superwash !== candidate.superwash) score -= 3;
+
+    const finalScore = Math.max(0, Math.min(100, Math.round(score)));
+    return { score: finalScore, scoreParts };
 }
 
 function renderSelectedYarn(yarn) {
@@ -919,15 +981,17 @@ function restoreGarnAltState() {
             document.getElementById('filterSofter').checked = !!state.filters.softer;
             document.getElementById('filterSummer').checked = !!state.filters.summer;
             document.getElementById('filterBaby').checked = !!state.filters.baby;
+            document.getElementById('filterSameExpression').checked = !!state.filters.sameExpression;
         }
     } catch (_) {}
 }
 
 function buildResultCard(candidate, source, filters, originalSkeins) {
-    const score = scoreCandidate(source, candidate, filters);
+    const { score, scoreParts } = scoreCandidate(source, candidate, filters);
     const grade = gradeMatch(score);
     const warnings = buildWarnings(source, candidate);
-    const explanations = explainMatch(source, candidate, warnings);
+    const explanations = explainMatch(source, candidate, warnings, scoreParts);
+    const strengths = strengthTags(source, candidate, scoreParts);
     const calculation = calculateYarnNeed(source, candidate, originalSkeins);
     const fibers = getFiberKeys(candidate).map(key => fiberLabel(key)).join(', ');
     return `
@@ -946,6 +1010,8 @@ function buildResultCard(candidate, source, filters, originalSkeins) {
                 <span class="garn-egenskap">${candidate.gauge} m/10 cm</span>
                 <span class="garn-egenskap">${candidate.structure}</span>
             </div>
+
+            <div class="strength-badges">${strengths.map(tag => `<span class="strength-chip">${tag}</span>`).join('')}</div>
 
             <div class="garn-kort-tips">
                 ${explanations.map(line => `<p>${line}</p>`).join('')}
@@ -975,11 +1041,10 @@ function findAlternatives(source, filters) {
     return GARN_DATABASE
         .filter(candidate => candidate.id !== source.id)
         .filter(candidate => passesHardFilters(candidate, filters))
-        .map(candidate => ({ candidate, score: scoreCandidate(source, candidate, filters) }))
-        .filter(item => item.score >= 40)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 8)
-        .map(item => item.candidate);
+        .map(candidate => ({ candidate, ...scoreCandidate(source, candidate, filters) }))
+        .filter(item => item.score >= 45)
+        .sort((a, b) => b.score - a.score || a.candidate.brand.localeCompare(b.candidate.brand))
+        .slice(0, 10);
 }
 
 function renderGarnAltSummary(source, alternatives, filters) {
@@ -993,13 +1058,15 @@ function renderGarnAltSummary(source, alternatives, filters) {
         filters.lessFluffy && 'mindre fluffy',
         filters.softer && 'mykere',
         filters.summer && 'sommerplagg',
-        filters.baby && 'babyvennlig'
+        filters.baby && 'babyvennlig',
+        filters.sameExpression && 'samme uttrykk'
     ].filter(Boolean);
 
     summary.innerHTML = `
         <div class="garnalt-summary-card">
             <strong>${source.brand} ${source.name}</strong>
             <p>Fant <strong>${alternatives.length}</strong> relevante alternativer${activeFilters.length ? ` med filter: ${activeFilters.join(', ')}` : ''}.</p>
+            <p class="small-muted">Databasen inneholder nå <strong>${GARN_DATABASE.length}</strong> garn. Resultatene er rangert etter praktisk likhet, uttrykk og fiberprofil.</p>
         </div>
     `;
     summary.classList.remove('hidden');
@@ -1009,7 +1076,7 @@ function renderGarnAltResults(source, alternatives, filters, originalSkeins) {
     const result = document.getElementById('garnaltResultat');
     if (!alternatives.length) {
         document.getElementById('garnaltSummary')?.classList.add('hidden');
-        visResultat(result, '<h3>Ingen gode treff</h3><p>Prøv å fjerne noen filtre eller velg et annet originalgarn.</p>');
+        visResultat(result, '<h3>Ingen gode treff</h3><p>Prøv å fjerne noen filtre, slå av «Samme uttrykk», eller velg et originalgarn med flere lignende alternativer i basen.</p>');
         return;
     }
     renderGarnAltSummary(source, alternatives, filters);
@@ -1018,7 +1085,7 @@ function renderGarnAltResults(source, alternatives, filters, originalSkeins) {
             <h3>Beste praktiske alternativer til ${source.brand} ${source.name}</h3>
             <p class="small-muted">Sortert etter hvor godt garnet fungerer i praksis, ikke bare teknisk likhet.</p>
         </div>
-        ${alternatives.map(candidate => buildResultCard(candidate, source, filters, originalSkeins)).join('')}
+        ${alternatives.map(item => buildResultCard(item.candidate, source, filters, originalSkeins)).join('')}
     `;
     visResultat(result, html);
 }
@@ -1113,7 +1180,17 @@ function setupGarnAlternativ() {
         searchInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 const source = getSelectedYarn();
-                if (source) document.getElementById('beregnGarnalt').click();
+                if (source) {
+                    document.getElementById('beregnGarnalt').click();
+                    return;
+                }
+                const firstHit = searchYarns(searchInput.value)[0];
+                if (firstHit) {
+                    searchInput.value = `${firstHit.brand} ${firstHit.name}`;
+                    searchInput.dataset.selectedId = firstHit.id;
+                    renderSelectedYarn(firstHit);
+                    renderSearchResults([]);
+                }
             }
         });
     }
