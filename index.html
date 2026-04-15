@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
-    <link rel="stylesheet" href="style.css?v=1.8.6">
-    <link rel="manifest" href="manifest.json?v=1.8.6">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.6">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.6">
+    <link rel="stylesheet" href="style.css?v=1.8.7">
+    <link rel="manifest" href="manifest.json?v=1.8.7">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.7">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
@@ -22,34 +22,34 @@
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.8.6</strong>
-            <p class="whats-new-intro">Denne oppdateringen rydder opp i yarn-data.js med en første pulje dokumenterte produktdata fra offisielle kilder.</p>
+            <strong id="whatsNewTitle">Nytt i v1.8.7</strong>
+            <p class="whats-new-intro">Denne oppdateringen utvider den dokumenterte delen av yarn-data.js videre og rydder bort flere dubletter i garnbasen.</p>
 
             <div class="whats-new-list">
                 <article class="whats-new-item">
     <div class="whats-new-icon" aria-hidden="true">📚</div>
     <div>
-        <h3>Første dokumenterte dataløft</h3>
-        <p>yarn-data.js har nå en første pulje verifiserte garnposter basert på offisielle produktsider.</p>
+        <h3>Flere offisielt dokumenterte garn</h3>
+        <p>yarn-data.js har nå en større, sporbar base med flere verifiserte poster fra offisielle produktsider.</p>
     </div>
 </article>
 <article class="whats-new-item">
     <div class="whats-new-icon" aria-hidden="true">🔗</div>
     <div>
-        <h3>Kilder er lagret per garn</h3>
-        <p>Verifiserte poster har nå sourceUrl, lastVerified og et eget documented-felt for sporbarhet.</p>
+        <h3>Bedre sporbarhet</h3>
+        <p>Flere garn har nå sourceUrl, lastVerified og et eget documented-felt slik at tallene kan spores tilbake til kilden.</p>
     </div>
 </article>
 <article class="whats-new-item">
     <div class="whats-new-icon" aria-hidden="true">🧶</div>
     <div>
-        <h3>Kompatibel med appen</h3>
-        <p>Eksisterende matcher-felter er beholdt, slik at Garnalternativ fortsatt fungerer mens databasen ryddes opp.</p>
+        <h3>Ryddet garnbase</h3>
+        <p>Noen dubletter er fjernet, og eksisterende matcher-felter er beholdt slik at Garnalternativ fortsatt fungerer.</p>
     </div>
 </article>
             </div>
 
-            <p class="whats-new-meta">Denne versjonen prioriterer dokumenterte produktdata i yarn-data.js. Verifiserte poster: 32.</p>
+            <p class="whats-new-meta">Denne versjonen prioriterer dokumenterte produktdata i yarn-data.js. Verifiserte poster: 48.</p>
             <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
         </div>
     </div>
@@ -342,7 +342,7 @@
             <div class="settings-card">
                 <div class="settings-card-header">
                     <h3 class="section-title">Nytt i siste versjon</h3>
-                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.6</span>
+                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.7</span>
                 </div>
 
                         <div class="settings-whatsnew-list">
@@ -376,7 +376,7 @@
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.8.6</p>
+            <p class="version" id="versionText">v1.8.7</p>
         </div>
     </footer>
 
@@ -393,10 +393,10 @@
         <button id="updateBtn" class="update-btn">Oppdater</button>
     </div>
 
-    <script src="yarn-data.js?v=1.8.6"></script>
-    <script src="app.js?v=1.8.6"></script>
+    <script src="yarn-data.js?v=1.8.7"></script>
+    <script src="app.js?v=1.8.7"></script>
     <script>
-    const APP_VERSION = '1.8.6';
+    const APP_VERSION = '1.8.7';
     let deferredInstallPrompt = null;
     let refreshingFromController = false;
 
