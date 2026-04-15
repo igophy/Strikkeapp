@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.8.2';
+const APP_VERSION = '1.8.3';
 
 // --- Tema (lys / mørk / auto) ---
 const THEME_MODE_KEY = 'inges-strikkehjelp-theme-mode';
@@ -919,11 +919,19 @@ function searchYarns(query) {
         .map(item => item.yarn);
 }
 
-function setGarnAltFiltersVisible(visible) {
-    const card = document.getElementById('garnaltFiltersCard');
-    if (!card) return;
-    card.classList.toggle('hidden', !visible);
+
+function setGarnAltWorkflowVisible(visible) {
+    const ids = ['garnaltFiltersCard', 'garnaltAmountCard', 'garnaltActions'];
+    ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('hidden', !visible);
+    });
+    if (!visible) {
+        document.getElementById('garnaltSummary')?.classList.add('hidden');
+        document.getElementById('garnaltResultat')?.classList.add('hidden');
+    }
 }
+
 
 function renderSearchResults(results, query = '') {
     const box = document.getElementById('garnSearchResults');
@@ -953,6 +961,32 @@ function renderSearchResults(results, query = '') {
 function getSelectedYarn() {
     const selectedId = document.getElementById('garnSearch').dataset.selectedId;
     return GARN_DATABASE.find(y => y.id === selectedId) || null;
+}
+
+function showGarnAltResults() {
+    const source = getSelectedYarn();
+    const resultBox = document.getElementById('garnaltResultat');
+    if (!source) {
+        document.getElementById('garnaltSummary')?.classList.add('hidden');
+        resultBox?.classList.add('hidden');
+        return;
+    }
+    const originalSkeins = parseInt(document.getElementById('antallNoster').value, 10) || 0;
+    const filters = getSelectedFilters();
+    const alternatives = findAlternatives(source, filters);
+    renderGarnAltResults(source, alternatives, filters, originalSkeins);
+}
+
+function selectGarnForAlternatives(yarn) {
+    const searchInput = document.getElementById('garnSearch');
+    if (!searchInput || !yarn) return;
+    searchInput.value = `${yarn.brand} ${yarn.name}`;
+    searchInput.dataset.selectedId = yarn.id;
+    renderSelectedYarn(yarn);
+    setGarnAltWorkflowVisible(true);
+    renderSearchResults([], '');
+    showGarnAltResults();
+    saveGarnAltState();
 }
 
 function saveGarnAltState() {
@@ -1098,33 +1132,25 @@ function renderGarnAltResults(source, alternatives, filters, originalSkeins) {
     visResultat(result, html);
 }
 
+
 function setupGarnAlternativ() {
     const searchInput = document.getElementById('garnSearch');
     const searchResults = document.getElementById('garnSearchResults');
-    const quickSearchButtons = document.querySelectorAll('.quick-search-chip');
-    const filtersCard = document.getElementById('garnaltFiltersCard');
     const findButton = document.getElementById('beregnGarnalt');
     const resetButton = document.getElementById('nullstillGarnalt');
 
     searchInput.addEventListener('input', () => {
         searchInput.dataset.selectedId = '';
         renderSelectedYarn(null);
-        setGarnAltFiltersVisible(false);
+        setGarnAltWorkflowVisible(false);
         document.getElementById('garnaltSummary').classList.add('hidden');
         document.getElementById('garnaltResultat').classList.add('hidden');
         renderSearchResults(searchYarns(searchInput.value), searchInput.value);
+        saveGarnAltState();
     });
 
     searchInput.addEventListener('focus', () => {
         renderSearchResults(searchYarns(searchInput.value), searchInput.value);
-    });
-
-    quickSearchButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            searchInput.value = button.dataset.query || '';
-            renderSearchResults(searchYarns(searchInput.value), searchInput.value);
-            searchInput.focus();
-        });
     });
 
     searchResults.addEventListener('click', (e) => {
@@ -1132,12 +1158,7 @@ function setupGarnAlternativ() {
         if (!button) return;
         const yarn = GARN_DATABASE.find(item => item.id === button.dataset.yarnId);
         if (!yarn) return;
-        searchInput.value = `${yarn.brand} ${yarn.name}`;
-        searchInput.dataset.selectedId = yarn.id;
-        renderSelectedYarn(yarn);
-        setGarnAltFiltersVisible(true);
-        renderSearchResults([], '');
-        saveGarnAltState();
+        selectGarnForAlternatives(yarn);
     });
 
     document.addEventListener('click', (e) => {
@@ -1153,10 +1174,7 @@ function setupGarnAlternativ() {
             visResultat(document.getElementById('garnaltResultat'), '<p class="error">Velg et originalgarn først.</p>');
             return;
         }
-        const originalSkeins = parseInt(document.getElementById('antallNoster').value, 10) || 0;
-        const filters = getSelectedFilters();
-        const alternatives = findAlternatives(source, filters);
-        renderGarnAltResults(source, alternatives, filters, originalSkeins);
+        showGarnAltResults();
         saveGarnAltState();
     });
 
@@ -1170,14 +1188,16 @@ function setupGarnAlternativ() {
         document.getElementById('garnaltSummary').innerHTML = '';
         renderSelectedYarn(null);
         renderSearchResults([]);
-        setGarnAltFiltersVisible(false);
+        setGarnAltWorkflowVisible(false);
         FILTER_IDS.forEach(id => { document.getElementById(id).checked = false; });
         localStorage.removeItem('garnalternativ-state');
-        saveGarnAltState();
     });
 
     [...document.querySelectorAll('#garnalternativ input')].forEach(el => {
-        el.addEventListener('change', saveGarnAltState);
+        el.addEventListener('change', () => {
+            saveGarnAltState();
+            if (getSelectedYarn()) showGarnAltResults();
+        });
     });
 
     if (searchInput) {
@@ -1190,21 +1210,22 @@ function setupGarnAlternativ() {
                 }
                 const firstHit = searchYarns(searchInput.value)[0];
                 if (firstHit) {
-                    searchInput.value = `${firstHit.brand} ${firstHit.name}`;
-                    searchInput.dataset.selectedId = firstHit.id;
-                    renderSelectedYarn(firstHit);
-                    setGarnAltFiltersVisible(true);
-                    renderSearchResults([], '');
+                    selectGarnForAlternatives(firstHit);
+                } else {
+                    renderSearchResults([], searchInput.value);
                 }
             }
         });
     }
 
     restoreGarnAltState();
-    setGarnAltFiltersVisible(!!getSelectedYarn());
+    const harValgtGarn = !!getSelectedYarn();
+    setGarnAltWorkflowVisible(harValgtGarn);
+    if (harValgtGarn) showGarnAltResults();
 }
 
 setupGarnAlternativ();
+
 
 
 // --- Tastaturstøtte for kalkulatorer ---
