@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Inges strikkehjelp</title>
+    <meta name="theme-color" content="#6f4336">
+    <link rel="stylesheet" href="style.css?v=1.8.4">
+    <link rel="manifest" href="manifest.json?v=1.8.4">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.4">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+<body>
+    <header>
+        <img src="logo.svg" alt="Logo" class="logo">
+        <h1>Inges strikkehjelp</h1>
+        <p class="subtitle">Din digitale strikkeassistent</p>
+    </header>
+
+    <div id="whatsNewOverlay" class="whats-new-overlay hidden">
+        <div class="whats-new-box app-store-card">
+            <div class="whats-new-topline">Oppdatert app</div>
+            <strong id="whatsNewTitle">Nytt i v1.8.4</strong>
+            <p class="whats-new-intro">Denne oppdateringen retter stegflyten i Garnalternativ, skrur av automatisk resultatvisning og skiller tydeligere mellom søk og filtrerte treff.</p>
+
+            <div class="whats-new-list">
+                <article class="whats-new-item">
+                    <div class="whats-new-icon" aria-hidden="true">🧪</div>
+                    <div>
+                        <h3>Korrigert stegflyt i Garnalternativ</h3>
+                        <p>Resultater vises nå først når du trykker på Vis resultater, og valgseksjonene åpnes først etter at du har valgt et garn.</p>
+                    </div>
+                </article>
+                <article class="whats-new-item">
+                    <div class="whats-new-icon" aria-hidden="true">⚙️</div>
+                    <div>
+                        <h3>Tydeligere nulltreff</h3>
+                        <p>Søk uten treff viser Søket ga ingen treff, mens for strenge filtre får en egen melding om at ingen alternative garn passer.</p>
+                    </div>
+                </article>
+                <article class="whats-new-item">
+                    <div class="whats-new-icon" aria-hidden="true">🏠</div>
+                    <div>
+                        <h3>Renere reset og oppstart</h3>
+                        <p>Garnalternativ starter nå rent uten gjenopprettet tilstand, og nullstillingen går via en egen funksjon i stedet for simulert knappetrykk.</p>
+                    </div>
+                </article>
+            </div>
+
+            <p class="whats-new-meta">Denne versjonen prioriterer stabilitet og forutsigbar flyt i Garnalternativ før videre utvidelse av databasen.</p>
+            <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
+        </div>
+    </div>
+
+    
+    <div id="installGuideOverlay" class="install-guide-overlay hidden" aria-hidden="true">
+        <div class="install-guide-box">
+            <div class="install-guide-topline">Gjør appen enklere å åpne</div>
+            <strong id="installGuideTitle">Legg Inges strikkehjelp til på Hjem-skjerm</strong>
+            <p id="installGuideIntro" class="install-guide-intro">Da får du appen som et eget ikon på mobilen og kan åpne den som en vanlig app.</p>
+            <div id="installGuideSteps" class="install-guide-steps"></div>
+            <p id="installGuideTip" class="install-guide-tip"></p>
+            <div class="install-guide-actions">
+                <button id="installGuideClose" class="whats-new-close" type="button">Skjønner</button>
+                <button id="installGuideNever" class="btn-secondary" type="button">Ikke vis igjen</button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Startside med fliser -->
+        <section id="hjem" class="page active">
+            <div class="tile-grid">
+                <button class="tile" data-page="teller">
+                    <span class="tile-icon">123</span>
+                    <span class="tile-label">Masketeller</span>
+                </button>
+                <button class="tile" data-page="oykning">
+                    <span class="tile-icon">+</span>
+                    <span class="tile-label">Beregn økning</span>
+                </button>
+                <button class="tile" data-page="felling">
+                    <span class="tile-icon">&minus;</span>
+                    <span class="tile-label">Beregn felling</span>
+                </button>
+                <button class="tile" data-page="fasthet">
+                    <span class="tile-icon">cm</span>
+                    <span class="tile-label">Strikkefasthet</span>
+                </button>
+                <button class="tile" data-page="garn">
+                    <span class="tile-icon">~</span>
+                    <span class="tile-label">Garnforbruk</span>
+                </button>
+                <button class="tile" data-page="garnalternativ">
+                    <span class="tile-icon">&#8644;</span>
+                    <span class="tile-label">Garnalternativ (Beta)</span>
+                </button>
+                <button class="tile" data-page="ekspert">
+                    <span class="tile-icon">?</span>
+                    <span class="tile-label">Strikkeekspert (Beta)</span>
+                </button>
+                <button class="tile" data-page="innstillinger">
+                    <span class="tile-icon">⚙</span>
+                    <span class="tile-label">Innstillinger</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Masketeller -->
+        <section id="teller" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Masketeller</h2>
+            <p class="description">Hold tellingen på maskene og radene dine.</p>
+
+            <div class="counter-group">
+                <div class="counter">
+                    <label>Masker</label>
+                    <div class="counter-controls">
+                        <button class="btn-counter btn-minus" data-target="masker">-</button>
+                        <span id="masker" class="counter-value">0</span>
+                        <button class="btn-counter btn-plus" data-target="masker">+</button>
+                    </div>
+                </div>
+
+                <div class="counter">
+                    <label>Rader</label>
+                    <div class="counter-controls">
+                        <button class="btn-counter btn-minus" data-target="rader">-</button>
+                        <span id="rader" class="counter-value">0</span>
+                        <button class="btn-counter btn-plus" data-target="rader">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-reset" id="resetCounters">Nullstill tellere</button>
+        </section>
+
+        <!-- Økning -->
+        <section id="oykning" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Beregn økning</h2>
+            <p class="description">Regn ut jevn fordeling av økninger over et antall masker.</p>
+
+            <div class="form-group">
+                <label for="oykningStart">Antall masker nå:</label>
+                <input type="number" id="oykningStart" min="1" inputmode="numeric" placeholder="f.eks. 80">
+            </div>
+            <div class="form-group">
+                <label for="oykningMal">Ønsket antall masker:</label>
+                <input type="number" id="oykningMal" min="1" inputmode="numeric" placeholder="f.eks. 100">
+            </div>
+
+            <button class="btn-calculate" id="beregnOykning">Beregn</button>
+            <div id="oykningResultat" class="result hidden"></div>
+        </section>
+
+        <!-- Felling -->
+        <section id="felling" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Beregn felling</h2>
+            <p class="description">Regn ut jevn fordeling av fellinger over et antall masker.</p>
+
+            <div class="form-group">
+                <label for="fellingStart">Antall masker nå:</label>
+                <input type="number" id="fellingStart" min="1" inputmode="numeric" placeholder="f.eks. 100">
+            </div>
+            <div class="form-group">
+                <label for="fellingMal">Ønsket antall masker:</label>
+                <input type="number" id="fellingMal" min="1" inputmode="numeric" placeholder="f.eks. 80">
+            </div>
+
+            <button class="btn-calculate" id="beregnFelling">Beregn</button>
+            <div id="fellingResultat" class="result hidden"></div>
+        </section>
+
+        <!-- Strikkefasthet -->
+        <section id="fasthet" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Strikkefasthet</h2>
+            <p class="description">Regn ut masker og rader fra prøvelappen din.</p>
+
+            <div class="form-group">
+                <label for="provMasker">Masker i prøvelappen:</label>
+                <input type="number" id="provMasker" min="1" inputmode="numeric" placeholder="f.eks. 22">
+            </div>
+            <div class="form-group">
+                <label for="provCm">Bredde på prøvelappen (cm):</label>
+                <input type="number" id="provCm" min="0.1" step="0.1" inputmode="decimal" placeholder="f.eks. 10">
+            </div>
+            <div class="form-group">
+                <label for="onsketCm">Ønsket bredde (cm):</label>
+                <input type="number" id="onsketCm" min="0.1" step="0.1" inputmode="decimal" placeholder="f.eks. 50">
+            </div>
+
+            <button class="btn-calculate" id="beregnFasthet">Beregn</button>
+            <div id="fasthetResultat" class="result hidden"></div>
+        </section>
+
+        <!-- Garnforbruk -->
+        <section id="garn" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Garnforbruk</h2>
+            <p class="description">Estimer hvor mye garn du trenger.</p>
+
+            <div class="form-group">
+                <label for="prosjektType">Type prosjekt:</label>
+                <select id="prosjektType">
+                    <option value="">Velg prosjekt...</option>
+                    <option value="skjerf">Skjerf</option>
+                    <option value="lue">Lue</option>
+                    <option value="votter">Votter (par)</option>
+                    <option value="sokker">Sokker (par)</option>
+                    <option value="genser_barn">Genser barn</option>
+                    <option value="genser_dame">Genser dame</option>
+                    <option value="genser_herre">Genser herre</option>
+                    <option value="sjal">Sjal</option>
+                    <option value="teppe">Babyteppe</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="garnLengde">Meter per nøste:</label>
+                <input type="number" id="garnLengde" min="1" inputmode="numeric" placeholder="f.eks. 100">
+            </div>
+            <div class="form-group">
+                <label for="pinnestorrelse">Pinnestørrelse (mm):</label>
+                <select id="pinnestorrelse">
+                    <option value="">Velg pinnestørrelse...</option>
+                    <option value="2.5">2.5 mm</option>
+                    <option value="3">3 mm</option>
+                    <option value="3.5">3.5 mm</option>
+                    <option value="4">4 mm</option>
+                    <option value="4.5">4.5 mm</option>
+                    <option value="5">5 mm</option>
+                    <option value="5.5">5.5 mm</option>
+                    <option value="6">6 mm</option>
+                    <option value="7">7 mm</option>
+                    <option value="8">8 mm</option>
+                    <option value="10">10 mm</option>
+                    <option value="12">12 mm</option>
+                </select>
+            </div>
+
+            <button class="btn-calculate" id="beregnGarn">Beregn</button>
+            <div id="garnResultat" class="result hidden"></div>
+        </section>
+
+        
+        <!-- Garnalternativ -->
+        <section id="garnalternativ" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Garnalternativ <span class="beta-label">(Beta)</span></h2>
+                        <p class="description">Finn smarte og praktiske garnbytter med forklaring, advarsler og nøsteberegning.</p>
+
+            <div class="garnalt-layout">
+                <div class="garnalt-card">
+                    <h3 class="section-title">1. Finn originalgarn</h3>
+                    <div class="form-group">
+                        <label for="garnSearch">Søk etter garnnavn eller merke:</label>
+                        <input type="text" id="garnSearch" autocomplete="off" placeholder="f.eks. Peer Gynt, Drops Air, Sunday">
+                    </div>
+                    <p class="small-muted search-help">Du kan skrive både merke, garnnavn eller deler av navnet. Prøv for eksempel Air, Sunday eller Nepal.</p>
+<div id="garnSearchResults" class="garn-search-results hidden"></div>
+                    <div id="selectedYarnCard" class="selected-yarn-card hidden"></div>
+                </div>
+
+                <div id="garnaltFiltersCard" class="garnalt-card hidden">
+                    <h3 class="section-title">2. Velg egenskaper for alternativt garn</h3>
+
+                    <div class="filter-grid">
+                        <label class="check-chip"><input type="checkbox" id="filterNaturalOnly"> Kun naturfiber</label>
+                        <label class="check-chip"><input type="checkbox" id="filterAvoidMohair"> Unngå mohair</label>
+                        <label class="check-chip"><input type="checkbox" id="filterAvoidAlpaca"> Unngå alpakka</label>
+                        <label class="check-chip"><input type="checkbox" id="filterSuperwash"> Kun superwash</label>
+                        <label class="check-chip"><input type="checkbox" id="filterLessFluffy"> Mindre fluffy</label>
+                        <label class="check-chip"><input type="checkbox" id="filterSofter"> Mykere alternativ</label>
+                        <label class="check-chip"><input type="checkbox" id="filterSummer"> Passer til sommerplagg</label>
+                        <label class="check-chip"><input type="checkbox" id="filterBaby"> Babyvennlig</label>
+                        <label class="check-chip"><input type="checkbox" id="filterSameExpression"> Samme uttrykk</label>
+                    </div>
+                </div>
+
+                <div id="garnaltAmountCard" class="garnalt-card hidden">
+                    <h3 class="section-title">3. Beregn garnmengde</h3>
+                    <div class="form-group">
+                        <label for="antallNoster">Antall nøster i oppskriften:</label>
+                        <input type="number" id="antallNoster" min="1" inputmode="numeric" placeholder="f.eks. 8">
+                    </div>
+                    <p class="small-muted">Hvis du fyller inn antall nøster, regner appen ut ca. hvor mange nøster du trenger av alternativet.</p>
+                </div>
+
+                <div id="garnaltActions" class="garnalt-actions hidden">
+                    <button class="btn-calculate" id="beregnGarnalt">4. Vis resultater</button>
+                    <button class="btn-secondary" id="nullstillGarnalt" type="button">Nullstill</button>
+                </div>
+            </div>
+
+            <div id="garnaltSummary" class="garnalt-summary hidden"></div>
+            <div id="garnaltResultat" class="result hidden"></div>
+        </section>
+
+
+        <!-- Strikkeekspert -->
+        <section id="ekspert" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Strikkeekspert <span class="beta-label">(Beta)</span></h2>
+            <p class="description">Spør meg om strikking!</p>
+
+            <div id="chatMessages" class="chat-messages">
+                <div class="chat-bubble chat-bot">Hei! Jeg er strikkeeksperten. Spør meg om teknikker, masker, forkortelser eller tips!</div>
+            </div>
+
+            <div id="chatQuickReplies" class="chat-quick-replies"></div>
+
+            <div class="chat-actions">
+                <button id="chatReset" class="btn-secondary">Nullstill chat</button>
+            </div>
+
+            <div class="chat-input-row">
+                <input type="text" id="chatInput" placeholder="Skriv et spørsmål..." autocomplete="off">
+                <button id="chatSend" class="chat-send">Spør</button>
+            </div>
+        </section>
+        <!-- Innstillinger -->
+        <section id="innstillinger" class="page">
+            <button class="btn-back" data-page="hjem">Tilbake</button>
+            <h2>Innstillinger</h2>
+            <p class="description">Tilpass temaet og se hva som er nytt i siste versjon.</p>
+
+            <div class="settings-card">
+                <h3 class="section-title">Tema</h3>
+                <p class="small-muted">Velg hvordan appen skal vises.</p>
+                <div class="theme-picker" role="group" aria-label="Velg tema">
+                    <button type="button" class="theme-option" data-theme-choice="light">Lys</button>
+                    <button type="button" class="theme-option" data-theme-choice="dark">Mørk</button>
+                    <button type="button" class="theme-option" data-theme-choice="auto">Auto</button>
+                </div>
+                <p id="themeModeHelp" class="settings-helper">Auto følger innstillingen på mobilen din.</p>
+            </div>
+
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <h3 class="section-title">Nytt i siste versjon</h3>
+                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.4</span>
+                </div>
+
+                <div class="settings-whatsnew-list">
+                    <div class="settings-whatsnew-item">
+                        <span class="settings-whatsnew-icon" aria-hidden="true">🧪</span>
+                        <div>
+                            <strong>Korrigert Garnalternativ-flyt</strong>
+                            <p>Du søker først, velger garn, setter eventuelle egenskaper og viser resultater til slutt. Resultatene hopper ikke frem automatisk lenger.</p>
+                        </div>
+                    </div>
+                    <div class="settings-whatsnew-item">
+                        <span class="settings-whatsnew-icon" aria-hidden="true">⚙️</span>
+                        <div>
+                            <strong>Bedre nulltreff</strong>
+                            <p>Søk uten treff og for strenge filtervalg får nå hver sin tydelige melding, så det er lettere å forstå hva som må endres.</p>
+                        </div>
+                    </div>
+                    <div class="settings-whatsnew-item">
+                        <span class="settings-whatsnew-icon" aria-hidden="true">🏠</span>
+                        <div>
+                            <strong>Renere reset av Garnalternativ</strong>
+                            <p>Garnalternativ nullstilles nå via en egen reset-funksjon og starter uten lagret state fra tidligere bruk.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button id="openWhatsNewSettings" class="btn-secondary" type="button">Åpne oppdateringsboksen</button>
+                    <button id="openInstallGuide" class="btn-secondary" type="button">Hvordan legge til appen</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Inges strikkehjelp &mdash; God strikking!</p>
+        <div class="footer-meta">
+            <p class="version" id="versionText">v1.8.4</p>
+        </div>
+    </footer>
+
+    <div id="installBanner" class="update-banner hidden">
+        Installer appen på mobilen din
+        <div class="banner-actions">
+            <button id="installBtn" class="update-btn">Installer</button>
+            <button id="dismissInstallBtn" class="btn-secondary btn-secondary-light">Ikke nå</button>
+        </div>
+    </div>
+
+    <div id="updateBanner" class="update-banner hidden">
+        Ny versjon tilgjengelig!
+        <button id="updateBtn" class="update-btn">Oppdater</button>
+    </div>
+
+    <script src="yarn-data.js?v=1.8.4"></script>
+    <script src="app.js?v=1.8.4"></script>
+    <script>
+    const APP_VERSION = '1.8.4';
+    let deferredInstallPrompt = null;
+    let refreshingFromController = false;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault();
+        deferredInstallPrompt = event;
+        document.getElementById('installBanner').classList.remove('hidden');
+    });
+
+    document.getElementById('dismissInstallBtn').addEventListener('click', () => {
+        document.getElementById('installBanner').classList.add('hidden');
+    });
+
+    document.getElementById('installBtn').addEventListener('click', async () => {
+        if (!deferredInstallPrompt) return;
+        deferredInstallPrompt.prompt();
+        await deferredInstallPrompt.userChoice;
+        deferredInstallPrompt = null;
+        document.getElementById('installBanner').classList.add('hidden');
+    });
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', async () => {
+            try {
+                const reg = await navigator.serviceWorker.register(`./sw.js?v=${APP_VERSION}`);
+
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    if (refreshingFromController) return;
+                    refreshingFromController = true;
+                    window.location.reload();
+                });
+
+                const showUpdateBanner = () => {
+                    document.getElementById('updateBanner').classList.remove('hidden');
+                };
+
+                const watchInstallingWorker = (worker) => {
+                    if (!worker) return;
+                    worker.addEventListener('statechange', () => {
+                        if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+                            showUpdateBanner();
+                        }
+                    });
+                };
+
+                watchInstallingWorker(reg.installing);
+                reg.addEventListener('updatefound', () => watchInstallingWorker(reg.installing));
+                await reg.update();
+                window.setInterval(() => reg.update(), 60 * 60 * 1000);
+
+                document.getElementById('updateBtn').addEventListener('click', () => {
+                    const waitingWorker = reg.waiting;
+                    if (waitingWorker) {
+                        waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+                    } else {
+                        window.location.reload();
+                    }
+                });
+            } catch (error) {
+                console.error('Service worker-feil:', error);
+            }
+        });
+    }
+    </script>
+</body>
+</html>
