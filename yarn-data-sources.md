@@ -3,13 +3,14 @@
 
 Oppdatert: 2026-04-15
 
-Antall dokumenterte/verified poster: 107
+Antall dokumenterte/verified poster: 120
 
 | ID | Garn | Merke | Kilde |
 |---|---|---|---|
 | `bcgarn-bio-balance` | Bio Balance GOTS | BC Garn | https://www.bcgarn.com/article.php?id=bio-balance-gots |
 | `bcgarn-semilla-gots` | Semilla GOTS | BC Garn | https://www.bcgarn.com/artikel.php?id=1650 |
 | `bcgarn-semilla-melange` | Semilla Melange GOTS | BC Garn | https://www.bcgarn.com/article.php?id=semilla-melange-gots |
+| `camilla-pihl-silky-wool` | Silky Wool | Camilla Pihl | https://www.strikkemagi.no/products/silky-wool-625-oker |
 | `dale-lerke` | Lerke | Dale Garn | https://www.houseofyarn.no/lerke-1 |
 | `dale-lille-lerke` | Lille Lerke | Dale Garn | https://www.houseofyarn.no/gb/en/lille-lerke-1 |
 | `dale-merino-22` | Merino 22 | Dale Garn | https://www.houseofyarn.no/gb/en/merino-22-1 |
@@ -73,9 +74,20 @@ Antall dokumenterte/verified poster: 107
 | `jarbo-raggi` | Raggi | Järbo | https://www.jarbo.se/raggi-sockgarn-10000000250 |
 | `jarbo-svensk-ull-2-tr` | Svensk Ull 2 tr | Järbo | https://www.jarbo.se/svensk-ull-2-tr-ullgarn-10000000106 |
 | `jarbo-svensk-ull-3-tr` | Svensk Ull 3 tr | Järbo | https://www.jarbo.se/svensk-ull-3-tr-ullgarn-10000000297 |
+| `jord-woolly` | Woolly | Jord Clothing | https://www.strikkemagi.no/products/jord-woolly-120 |
+| `jord-woolly-light` | Woolly Light | Jord Clothing | https://www.strikkemagi.no/products/jord-woolly-light-201 |
 | `katia-basic-merino` | Basic Merino | Katia | https://www.katia.com/us/basic-merino-merino-superwash-acrylic-yarn |
 | `katia-cotton-merino` | Cotton-Merino | Katia | https://www.katia.com/us/cotton-merino-cotton-merino-extrafine-yarn |
 | `katia-merino-baby` | Merino Baby | Katia | https://www.katia.com/us/merino-baby-salmon-pink-87 |
+| `kfo-merino` | Merino | Knitting for Olive | https://www.strikkemagi.no/products/knitting-for-olive-merino-lys-cognac |
+| `lang-cashmere-lace` | Cashmere Lace | Lang Yarns | https://www.strikkemagi.no/products/cashmere-lace-0234 |
+| `lang-cashmere-light` | Cashmere Light | Lang Yarns | https://www.strikkemagi.no/products/cashmere-light-0063 |
+| `lang-cashmere-premium` | Cashmere Premium | Lang Yarns | https://www.strikkemagi.no/products/cashmere-premium-0011 |
+| `lang-donegal-tweed` | Donegal Tweed | Lang Yarns | https://www.strikkemagi.no/products/donegal-tweed---0067 |
+| `lang-mille-colori-socks-lace-luxe` | Mille Colori Socks & Lace Luxe | Lang Yarns | https://www.strikkemagi.no/products/mille-colori-sockslace-luxe-0203 |
+| `lang-mohair-21` | Mohair 21 | Lang Yarns | https://www.strikkemagi.no/products/mohair-21---0021 |
+| `lang-vaya` | Vaya | Lang Yarns | https://www.strikkemagi.no/products/vaya-0027 |
+| `lang-zen` | Zen | Lang Yarns | https://www.strikkemagi.no/products/zen-0079 |
 | `nostebarn-merinoull` | Nøstebarns merinoull | Nøstebarn | https://nostebarn.no/merino-2-trad |
 | `nostebarn-silkeull` | Silkeull | Nøstebarn | https://nostebarn.no/silkeull |
 | `novita-7-brothers` | 7 Brothers | Novita | https://novita.com/en/products/novita-7-veljesta-villasekoitelanka-1 |
@@ -89,6 +101,7 @@ Antall dokumenterte/verified poster: 107
 | `rauma-tumi` | Tumi | Rauma | https://www.raumagarn.no/produkt/garn/tumi-211 |
 | `rowan-felted-tweed` | Felted Tweed | Rowan | https://knitrowan.com/en/products/felted-tweed |
 | `rowan-kidsilk-haze` | Kidsilk Haze | Rowan | https://knitrowan.com/en/products/kidsilk-haze |
+| `sandnes-atlas` | Atlas | Sandnes Garn | https://www.strikkemagi.no/products/atlas-1012-natur |
 | `sg-alpakka` | Alpakka | Sandnes Garn | https://www.sandnesgarn.no/alpakka |
 | `sg-alpakka-folgetrad` | Alpakka Følgetråd | Sandnes Garn | https://www.sandnesgarn.no/alpakka-folgetrad |
 | `sg-alpakka-ull` | Alpakka Ull | Sandnes Garn | https://www.sandnesgarn.no/alpakka-ull |
