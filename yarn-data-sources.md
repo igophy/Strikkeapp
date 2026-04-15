@@ -3,7 +3,7 @@
 
 Oppdatert: 2026-04-15
 
-Antall dokumenterte/verified poster: 66
+Antall dokumenterte/verified poster: 79
 
 | ID | Garn | Merke | Kilde |
 |---|---|---|---|
@@ -36,18 +36,31 @@ Antall dokumenterte/verified poster: 66
 | `dsa-faerytale-updated` | Faerytale | Du Store Alpakka | https://www.houseofyarn.no/gb/en/faerytale-1 |
 | `dsa-mini-sterk` | Mini Sterk | Du Store Alpakka | https://www.houseofyarn.no/mini-sterk-1 |
 | `dsa-sterk` | Sterk | Du Store Alpakka | https://www.houseofyarn.no/gb/en/sterk-1?variant=12118 |
+| `filcolana-arwetta` | Arwetta Classic | Filcolana | https://en.filcolana.dk/yarns/arwetta-classic.html |
 | `friends-extra-fine-merino` | Friends Extra Fine Merino | Friends | https://hobbii.no/products/hp-1005610-friends-merino |
 | `friends-wool` | Friends Wool | Friends | https://hobbii.no/products/hp-1005611-friends-wool |
 | `hillesvag-solje` | Sølje | Hillesvåg | https://ull.no/produkt/solje-naturgra/ |
+| `hjertegarn-120-extrafine-merino` | 120 Extra fine merino | Hjertegarn | https://hjertegarn.dk/shop/220-120-extra-fine-merino-/ |
+| `hjertegarn-merino-cotton` | Merino Cotton | Hjertegarn | https://hjertegarn.dk/shop/217-merino-cotton/ |
+| `hjertegarn-natur-uld` | Natur Uld | Hjertegarn | https://hjertegarn.dk/shop/157-natur-uld/ |
 | `hobbii-diablo` | Diablo | Hobbii | https://hobbii.no/products/hp-1003094-diablo |
 | `hv-vilje` | Vilje Lamullgarn | Hillesvåg | https://ull.no/produkt/vilje-lamullgarn-rodbrun/ |
+| `isager-alpaca-1` | Alpaca 1 | Isager | https://isagerstrik.dk/en/product/alpaca-1/ |
+| `isager-jensen-yarn` | Jensen Yarn | Isager | https://isagerstrik.dk/en/product/jensen-yarn/ |
+| `jarbo-raggi` | Raggi | Järbo | https://www.jarbo.se/raggi-sockgarn-10000000250 |
+| `jarbo-svensk-ull-3-tr` | Svensk Ull 3 tr | Järbo | https://www.jarbo.se/svensk-ull-3-tr-ullgarn-10000000297 |
 | `nostebarn-merinoull` | Nøstebarns merinoull | Nøstebarn | https://nostebarn.no/merino-2-trad |
 | `nostebarn-silkeull` | Silkeull | Nøstebarn | https://nostebarn.no/silkeull |
+| `novita-7-brothers` | 7 Brothers | Novita | https://novita.com/en/products/novita-7-veljesta-villasekoitelanka-1 |
+| `novita-nalle` | Nalle | Novita | https://novita.com/en/products/novita-nalle-100-g-villasekoitelanka |
+| `permin-bella` | Bella | Permin | https://permin.dk/en/knit/yarn/quality/bella |
 | `ra-3-trads` | 3-tråds Strikkegarn | Rauma | https://www.raumagarn.no/produkt/garn/3-traads-strikkegarn-hvit_-_-100 |
 | `ra-finull` | Finull | Rauma | https://www.raumagarn.no/produkt/garn/finull |
 | `ra-vams` | Vams | Rauma | https://www.raumagarn.no/produkt/garn/vams |
 | `rauma-fivel` | Fivel | Rauma | https://www.raumagarn.no/produkt/garn/fivel |
 | `rauma-tumi` | Tumi | Rauma | https://www.raumagarn.no/produkt/garn/tumi-211 |
+| `rowan-felted-tweed` | Felted Tweed | Rowan | https://knitrowan.com/en/products/felted-tweed |
+| `rowan-kidsilk-haze` | Kidsilk Haze | Rowan | https://knitrowan.com/en/products/kidsilk-haze |
 | `sg-alpakka` | Alpakka | Sandnes Garn | https://www.sandnesgarn.no/alpakka |
 | `sg-alpakka-folgetrad` | Alpakka Følgetråd | Sandnes Garn | https://www.sandnesgarn.no/alpakka-folgetrad |
 | `sg-alpakka-ull` | Alpakka Ull | Sandnes Garn | https://www.sandnesgarn.no/alpakka-ull |
