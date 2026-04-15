@@ -37,7 +37,12 @@ window.YARN_DATABASE = [
       "smart",
       "sandnes smart"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-peer-gynt",
@@ -77,7 +82,34 @@ window.YARN_DATABASE = [
       "peer gynt",
       "sandnes peer gynt"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.sandnesgarn.no/peer-gynt-1865",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100,
+          "label": "norsk ull"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 91,
+      "metersPer100g": 182,
+      "recommendedNeedleMm": [
+        3.5,
+        4
+      ],
+      "gaugeStitches10cm": [
+        22
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.sandnesgarn.no/peer-gynt-1865",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "sg-sisu",
@@ -95,7 +127,7 @@ window.YARN_DATABASE = [
     "texture": "smooth",
     "fibers": {
       "wool": 80,
-      "polyamide": 20
+      "nylon": 20
     },
     "superwash": true,
     "halo": 0,
@@ -118,7 +150,37 @@ window.YARN_DATABASE = [
       "sisu",
       "sandnes sisu"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.sandnesgarn.no/catalog/product/view/id/5152",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 80
+        },
+        {
+          "type": "nylon",
+          "percent": 20
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 175,
+      "metersPer100g": 350,
+      "recommendedNeedleMm": [
+        2.5,
+        3
+      ],
+      "gaugeStitches10cm": [
+        27
+      ],
+      "gaugeRows10cm": null,
+      "superwash": true,
+      "sourceUrl": "https://www.sandnesgarn.no/catalog/product/view/id/5152",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "sg-tynn-merinoull",
@@ -158,7 +220,12 @@ window.YARN_DATABASE = [
       "tynn merinoull",
       "sandnes tynn merinoull"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-babyull-lanett",
@@ -197,7 +264,12 @@ window.YARN_DATABASE = [
       "babyull lanett",
       "lanett"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-double-sunday",
@@ -236,7 +308,34 @@ window.YARN_DATABASE = [
       "double sunday",
       "sandnes double sunday"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.sandnesgarn.no/double-sunday",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "merino",
+          "percent": 100
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 108,
+      "metersPer100g": 216,
+      "recommendedNeedleMm": [
+        3.5,
+        4
+      ],
+      "gaugeStitches10cm": [
+        20,
+        21
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.sandnesgarn.no/double-sunday",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "sg-tynn-silk-mohair",
@@ -244,7 +343,7 @@ window.YARN_DATABASE = [
     "brand": "Sandnes Garn",
     "gramsPerSkein": 25,
     "metersPerSkein": 212,
-    "gauge": 24,
+    "gauge": 21,
     "needle": [
       3,
       5
@@ -277,7 +376,42 @@ window.YARN_DATABASE = [
       "tynn silk mohair",
       "sandnes tynn silk mohair"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.sandnesgarn.no/tynn-silk-mohair",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "mohair",
+          "percent": 57
+        },
+        {
+          "type": "silk",
+          "percent": 28
+        },
+        {
+          "type": "wool",
+          "percent": 15
+        }
+      ],
+      "gramsPerSkein": 25,
+      "metersPerSkein": 212,
+      "metersPer100g": 848,
+      "recommendedNeedleMm": [
+        3,
+        5
+      ],
+      "gaugeStitches10cm": [
+        18,
+        24
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.sandnesgarn.no/tynn-silk-mohair",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "sg-duo",
@@ -318,7 +452,12 @@ window.YARN_DATABASE = [
       "duo",
       "sandnes duo"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-line",
@@ -328,7 +467,7 @@ window.YARN_DATABASE = [
     "metersPerSkein": 110,
     "gauge": 20,
     "needle": [
-      3.5,
+      4,
       4
     ],
     "weight": "dk",
@@ -360,7 +499,41 @@ window.YARN_DATABASE = [
       "line",
       "sandnes line"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.sandnesgarn.no/line",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "cotton",
+          "percent": 53
+        },
+        {
+          "type": "viscose",
+          "percent": 33
+        },
+        {
+          "type": "linen",
+          "percent": 14
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 110,
+      "metersPer100g": 220,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        20
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.sandnesgarn.no/line",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "sg-mandarin-petit",
@@ -399,7 +572,12 @@ window.YARN_DATABASE = [
       "mandarin petit",
       "sandnes mandarin petit"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-kos",
@@ -407,18 +585,18 @@ window.YARN_DATABASE = [
     "brand": "Sandnes Garn",
     "gramsPerSkein": 50,
     "metersPerSkein": 150,
-    "gauge": 16,
+    "gauge": 17,
     "needle": [
-      5.5,
+      4.5,
       5.5
     ],
-    "weight": "aran",
+    "weight": "worsted",
     "structure": "blown",
     "texture": "airy",
     "fibers": {
       "alpaca": 62,
-      "polyamide": 9,
-      "wool": 29
+      "nylon": 29,
+      "wool": 9
     },
     "superwash": false,
     "halo": 3,
@@ -440,7 +618,42 @@ window.YARN_DATABASE = [
       "kos",
       "sandnes kos"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.sandnesgarn.no/kos",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "alpaca",
+          "percent": 62
+        },
+        {
+          "type": "nylon",
+          "percent": 29
+        },
+        {
+          "type": "wool",
+          "percent": 9
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 150,
+      "metersPer100g": 300,
+      "recommendedNeedleMm": [
+        4.5,
+        5.5
+      ],
+      "gaugeStitches10cm": [
+        16,
+        18
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.sandnesgarn.no/kos",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "dr-karisma",
@@ -479,7 +692,35 @@ window.YARN_DATABASE = [
       "karisma",
       "drops karisma"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=39&show=drops-karisma",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 100,
+      "metersPer100g": 200,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        21
+      ],
+      "gaugeRows10cm": [
+        28
+      ],
+      "superwash": true,
+      "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=39&show=drops-karisma",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "dr-merino-extra-fine",
@@ -518,7 +759,36 @@ window.YARN_DATABASE = [
       "merino extra fine",
       "drops merino extra fine"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=1&show=drops-merino-extra-fine",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "merino",
+          "percent": 100,
+          "label": "extra fine merino wool"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 105,
+      "metersPer100g": 210,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        21
+      ],
+      "gaugeRows10cm": [
+        28
+      ],
+      "superwash": true,
+      "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=1&show=drops-merino-extra-fine",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "dr-nepal",
@@ -535,8 +805,8 @@ window.YARN_DATABASE = [
     "structure": "plied",
     "texture": "rustic",
     "fibers": {
-      "alpaca": 35,
-      "wool": 65
+      "wool": 65,
+      "alpaca": 35
     },
     "superwash": false,
     "halo": 1,
@@ -558,7 +828,39 @@ window.YARN_DATABASE = [
       "nepal",
       "drops nepal"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.garnstudio.com/yarn.php?show=drops-nepal&cid=19",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 65
+        },
+        {
+          "type": "alpaca",
+          "percent": 35
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 75,
+      "metersPer100g": 150,
+      "recommendedNeedleMm": [
+        5,
+        5
+      ],
+      "gaugeStitches10cm": [
+        17
+      ],
+      "gaugeRows10cm": [
+        22
+      ],
+      "superwash": false,
+      "sourceUrl": "https://www.garnstudio.com/yarn.php?show=drops-nepal&cid=19",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "dr-alpaca",
@@ -596,7 +898,12 @@ window.YARN_DATABASE = [
       "alpaca",
       "drops alpaca"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dr-baby-merino",
@@ -635,7 +942,12 @@ window.YARN_DATABASE = [
       "baby merino",
       "drops baby merino"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dr-fabel",
@@ -675,7 +987,12 @@ window.YARN_DATABASE = [
       "fabel",
       "drops fabel"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dr-air",
@@ -693,8 +1010,8 @@ window.YARN_DATABASE = [
     "texture": "airy",
     "fibers": {
       "alpaca": 65,
-      "polyamide": 7,
-      "wool": 28
+      "polyamide": 28,
+      "wool": 7
     },
     "superwash": false,
     "halo": 3,
@@ -716,7 +1033,43 @@ window.YARN_DATABASE = [
       "air",
       "drops air"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=39&show=drops-air",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "alpaca",
+          "percent": 65
+        },
+        {
+          "type": "polyamide",
+          "percent": 28
+        },
+        {
+          "type": "wool",
+          "percent": 7
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 150,
+      "metersPer100g": 300,
+      "recommendedNeedleMm": [
+        5,
+        5
+      ],
+      "gaugeStitches10cm": [
+        17
+      ],
+      "gaugeRows10cm": [
+        22
+      ],
+      "superwash": false,
+      "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=39&show=drops-air",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "dr-andes",
@@ -756,7 +1109,12 @@ window.YARN_DATABASE = [
       "andes",
       "drops andes"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dr-cotton-merino",
@@ -773,10 +1131,10 @@ window.YARN_DATABASE = [
     "structure": "chainette",
     "texture": "smooth",
     "fibers": {
-      "cotton": 50,
-      "merino": 50
+      "wool": 50,
+      "cotton": 50
     },
-    "superwash": false,
+    "superwash": true,
     "halo": 0,
     "elasticity": 2,
     "drape": 3,
@@ -796,7 +1154,40 @@ window.YARN_DATABASE = [
       "cotton merino",
       "drops cotton merino"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=19&id=103",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 50,
+          "label": "merino"
+        },
+        {
+          "type": "cotton",
+          "percent": 50
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 110,
+      "metersPer100g": 220,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        21
+      ],
+      "gaugeRows10cm": [
+        28
+      ],
+      "superwash": true,
+      "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=19&id=103",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "dr-muskat",
@@ -835,7 +1226,12 @@ window.YARN_DATABASE = [
       "muskat",
       "drops muskat"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dr-kid-silk",
@@ -875,7 +1271,12 @@ window.YARN_DATABASE = [
       "drops kid silk",
       "drops kid-silk"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "ra-finull",
@@ -883,10 +1284,10 @@ window.YARN_DATABASE = [
     "brand": "Rauma",
     "gramsPerSkein": 50,
     "metersPerSkein": 175,
-    "gauge": 26,
+    "gauge": 25,
     "needle": [
-      3,
-      3
+      2,
+      3.5
     ],
     "weight": "fingering",
     "structure": "plied",
@@ -914,7 +1315,35 @@ window.YARN_DATABASE = [
       "finull",
       "rauma finull"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.raumagarn.no/produkt/garn/finull",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100,
+          "label": "norsk ull"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 175,
+      "metersPer100g": 350,
+      "recommendedNeedleMm": [
+        2,
+        3.5
+      ],
+      "gaugeStitches10cm": [
+        24,
+        26
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.raumagarn.no/produkt/garn/finull",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "ra-3-trads",
@@ -955,7 +1384,35 @@ window.YARN_DATABASE = [
       "rauma 3-tråds strikkegarn",
       "3 tråds"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.raumagarn.no/produkt/garn/3-traads-strikkegarn-hvit_-_-100",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100,
+          "label": "norsk ull"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 108,
+      "metersPer100g": 216,
+      "recommendedNeedleMm": [
+        3.5,
+        4
+      ],
+      "gaugeStitches10cm": [
+        20,
+        22
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.raumagarn.no/produkt/garn/3-traads-strikkegarn-hvit_-_-100",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "ra-vams",
@@ -963,12 +1420,12 @@ window.YARN_DATABASE = [
     "brand": "Rauma",
     "gramsPerSkein": 50,
     "metersPerSkein": 83,
-    "gauge": 14,
+    "gauge": 15,
     "needle": [
-      5.5,
-      5.5
+      5,
+      6
     ],
-    "weight": "aran",
+    "weight": "bulky",
     "structure": "plied",
     "texture": "rustic",
     "fibers": {
@@ -994,7 +1451,35 @@ window.YARN_DATABASE = [
       "vams",
       "rauma vams"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.raumagarn.no/produkt/garn/vams",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100,
+          "label": "norsk ull"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 83,
+      "metersPer100g": 166,
+      "recommendedNeedleMm": [
+        5,
+        6
+      ],
+      "gaugeStitches10cm": [
+        14,
+        16
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.raumagarn.no/produkt/garn/vams",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "ra-puno-petit",
@@ -1035,7 +1520,12 @@ window.YARN_DATABASE = [
       "puno petit",
       "rauma puno petit"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "ra-pelini",
@@ -1075,7 +1565,12 @@ window.YARN_DATABASE = [
       "pelini",
       "rauma pelini"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "vi-alpaca-bris",
@@ -1116,7 +1611,12 @@ window.YARN_DATABASE = [
       "alpaca bris",
       "viking alpaca bris"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Viking",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "vi-sportsragg",
@@ -1157,7 +1657,12 @@ window.YARN_DATABASE = [
       "sportsragg",
       "viking sportsragg"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Viking",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "vi-nordlys",
@@ -1196,7 +1701,12 @@ window.YARN_DATABASE = [
       "nordlys",
       "viking nordlys"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Viking",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "vi-vår",
@@ -1235,7 +1745,12 @@ window.YARN_DATABASE = [
       "vår",
       "viking vår"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Viking",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dale-lille-lerke",
@@ -1275,7 +1790,12 @@ window.YARN_DATABASE = [
       "lille lerke",
       "dale lille lerke"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dale-lerke",
@@ -1295,7 +1815,7 @@ window.YARN_DATABASE = [
       "merino": 53,
       "cotton": 47
     },
-    "superwash": true,
+    "superwash": false,
     "halo": 0,
     "elasticity": 2,
     "drape": 3,
@@ -1315,7 +1835,37 @@ window.YARN_DATABASE = [
       "lerke",
       "dale lerke"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.houseofyarn.no/lerke-1",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "merino",
+          "percent": 53
+        },
+        {
+          "type": "cotton",
+          "percent": 47
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 115,
+      "metersPer100g": 230,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        22
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.houseofyarn.no/lerke-1",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "dale-faerytale",
@@ -1354,7 +1904,12 @@ window.YARN_DATABASE = [
       "faerytale",
       "dale faerytale"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dsa-sterk",
@@ -1364,10 +1919,10 @@ window.YARN_DATABASE = [
     "metersPerSkein": 137,
     "gauge": 22,
     "needle": [
-      3.5,
+      4,
       4
     ],
-    "weight": "sport",
+    "weight": "dk",
     "structure": "plied",
     "texture": "smooth",
     "fibers": {
@@ -1375,7 +1930,7 @@ window.YARN_DATABASE = [
       "merino": 40,
       "nylon": 20
     },
-    "superwash": true,
+    "superwash": false,
     "halo": 0,
     "elasticity": 3,
     "drape": 3,
@@ -1395,7 +1950,41 @@ window.YARN_DATABASE = [
       "sterk",
       "du store alpakka sterk"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.houseofyarn.no/gb/en/sterk-1?variant=12118",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "alpaca",
+          "percent": 40
+        },
+        {
+          "type": "merino",
+          "percent": 40
+        },
+        {
+          "type": "nylon",
+          "percent": 20
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 137,
+      "metersPer100g": 274,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        22
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.houseofyarn.no/gb/en/sterk-1?variant=12118",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "dsa-faerytale",
@@ -1435,7 +2024,12 @@ window.YARN_DATABASE = [
       "pus",
       "du store alpakka pus"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dsa-mini-sterk",
@@ -1456,7 +2050,7 @@ window.YARN_DATABASE = [
       "merino": 40,
       "nylon": 20
     },
-    "superwash": true,
+    "superwash": false,
     "halo": 0,
     "elasticity": 3,
     "drape": 3,
@@ -1476,7 +2070,41 @@ window.YARN_DATABASE = [
       "mini sterk",
       "du store alpakka mini sterk"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.houseofyarn.no/mini-sterk-1",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "alpaca",
+          "percent": 40
+        },
+        {
+          "type": "merino",
+          "percent": 40
+        },
+        {
+          "type": "nylon",
+          "percent": 20
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 166,
+      "metersPer100g": 332,
+      "recommendedNeedleMm": [
+        3,
+        3
+      ],
+      "gaugeStitches10cm": [
+        27
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.houseofyarn.no/mini-sterk-1",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "hv-tinde",
@@ -1516,7 +2144,12 @@ window.YARN_DATABASE = [
       "hillesvåg tinde",
       "tinde pelsullgarn"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Hillesvåg Ullvarefabrikk",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "hv-vilje",
@@ -1524,7 +2157,7 @@ window.YARN_DATABASE = [
     "brand": "Hillesvåg",
     "gramsPerSkein": 100,
     "metersPerSkein": 375,
-    "gauge": 28,
+    "gauge": 25,
     "needle": [
       3,
       3
@@ -1556,7 +2189,36 @@ window.YARN_DATABASE = [
       "hillesvåg vilje",
       "vilje lamullgarn"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Hillesvåg Ullvarefabrikk",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://ull.no/produkt/vilje-lamullgarn-rodbrun/",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100,
+          "label": "norsk lamull"
+        }
+      ],
+      "gramsPerSkein": 100,
+      "metersPerSkein": 375,
+      "metersPer100g": 375,
+      "recommendedNeedleMm": [
+        3,
+        3
+      ],
+      "gaugeStitches10cm": [
+        25
+      ],
+      "gaugeRows10cm": [
+        32
+      ],
+      "superwash": false,
+      "sourceUrl": "https://ull.no/produkt/vilje-lamullgarn-rodbrun/",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "gj-maja",
@@ -1596,7 +2258,12 @@ window.YARN_DATABASE = [
       "maja",
       "gjestal maja"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Gjestal",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "gj-cortina-soft",
@@ -1635,7 +2302,12 @@ window.YARN_DATABASE = [
       "cortina soft",
       "gjestal cortina soft"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Gjestal",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sm-regia",
@@ -1674,7 +2346,12 @@ window.YARN_DATABASE = [
       "regia 4-tråds",
       "schachenmayr regia"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Schachenmayr",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "lg-cool-wool",
@@ -1713,7 +2390,12 @@ window.YARN_DATABASE = [
       "cool wool",
       "lana grossa cool wool"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Lana Grossa",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "mb-rios",
@@ -1752,7 +2434,12 @@ window.YARN_DATABASE = [
       "rios",
       "malabrigo rios"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Malabrigo",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "mb-mechita",
@@ -1790,7 +2477,12 @@ window.YARN_DATABASE = [
       "mechita",
       "malabrigo mechita"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Malabrigo",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-sentinel",
@@ -1830,7 +2522,33 @@ window.YARN_DATABASE = [
       "sunday",
       "sandnes sunday"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.sandnesgarn.no/sunday",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "merino",
+          "percent": 100
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 235,
+      "metersPer100g": 470,
+      "recommendedNeedleMm": [
+        3,
+        3
+      ],
+      "gaugeStitches10cm": [
+        28
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.sandnesgarn.no/sunday",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "sg-alpakka-ull",
@@ -1870,7 +2588,12 @@ window.YARN_DATABASE = [
       "alpakka ull",
       "sandnes alpakka ull"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-merinoull",
@@ -1910,7 +2633,12 @@ window.YARN_DATABASE = [
       "merinoull",
       "sandnes merinoull"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "ra-petunia",
@@ -1950,7 +2678,12 @@ window.YARN_DATABASE = [
       "petunia",
       "rauma petunia"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "drops-big-merino",
@@ -1990,7 +2723,12 @@ window.YARN_DATABASE = [
       "big merino",
       "drops big merino"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "drops-alaska",
@@ -2029,7 +2767,12 @@ window.YARN_DATABASE = [
       "alaska",
       "drops alaska"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "viking-merino",
@@ -2040,7 +2783,7 @@ window.YARN_DATABASE = [
     "gauge": 22,
     "needle": [
       3.5,
-      4
+      3.5
     ],
     "weight": "dk",
     "structure": "plied",
@@ -2068,7 +2811,34 @@ window.YARN_DATABASE = [
       "viking merino",
       "merino viking"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Viking",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.viking-garn.no/garn/viking-garn/merino",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "merino",
+          "percent": 100,
+          "label": "superwash merino wool"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 105,
+      "metersPer100g": 210,
+      "recommendedNeedleMm": [
+        3.5,
+        3.5
+      ],
+      "gaugeStitches10cm": [
+        22
+      ],
+      "gaugeRows10cm": null,
+      "superwash": true,
+      "sourceUrl": "https://www.viking-garn.no/garn/viking-garn/merino",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "viking-alpaca-fine",
@@ -2109,7 +2879,12 @@ window.YARN_DATABASE = [
       "alpaca fine",
       "viking alpaca fine"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Viking",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dale-natural-lanolin-wool",
@@ -2148,7 +2923,12 @@ window.YARN_DATABASE = [
       "natural lanolin wool",
       "dale natural lanolin wool"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dsa-alpakka-tweed",
@@ -2189,7 +2969,12 @@ window.YARN_DATABASE = [
       "alpakka tweed",
       "du store alpakka alpakka tweed"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "hillesvag-varde",
@@ -2228,7 +3013,12 @@ window.YARN_DATABASE = [
       "varde",
       "hillesvag varde"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Hillesvåg Ullvarefabrikk",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "hillesvag-sollys",
@@ -2268,7 +3058,12 @@ window.YARN_DATABASE = [
       "sølje pelsullgarn",
       "hillesvåg sølje"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Hillesvåg Ullvarefabrikk",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-alpakka",
@@ -2299,12 +3094,19 @@ window.YARN_DATABASE = [
       "cardigans",
       "accessories"
     ],
-    "notes": "Ren alpakka med myk overflate. Fin når du vil ha varme og mykhet.",
+    "notes": [
+      "Ren alpakka med myk overflate. Fin når du vil ha varme og mykhet."
+    ],
     "aliases": [
       "alpakka",
       "sandnes alpakka"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-mini-alpakka",
@@ -2335,12 +3137,19 @@ window.YARN_DATABASE = [
       "kids",
       "lightweight"
     ],
-    "notes": "Tynn og myk alpakka til lette plagg.",
+    "notes": [
+      "Tynn og myk alpakka til lette plagg."
+    ],
     "aliases": [
       "mini alpakka",
       "sandnes mini alpakka"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-borstet-alpakka",
@@ -2371,13 +3180,20 @@ window.YARN_DATABASE = [
       "sweaters",
       "cozy"
     ],
-    "notes": "Luftig og fluffy garn som gir mykt uttrykk.",
+    "notes": [
+      "Luftig og fluffy garn som gir mykt uttrykk."
+    ],
     "aliases": [
       "borstet alpakka",
       "børstet alpakka",
       "sandnes børstet alpakka"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "sg-alpakka-folgetrad",
@@ -2407,12 +3223,19 @@ window.YARN_DATABASE = [
       "heldTogether",
       "shawls"
     ],
-    "notes": "Tynn følgetråd i alpakka som ofte brukes sammen med annet garn.",
+    "notes": [
+      "Tynn følgetråd i alpakka som ofte brukes sammen med annet garn."
+    ],
     "aliases": [
       "alpakka folgetrad",
       "følgetråd"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "drops-flora",
@@ -2423,9 +3246,9 @@ window.YARN_DATABASE = [
     "gauge": 24,
     "needle": [
       3,
-      3.5
+      3
     ],
-    "weight": "sport",
+    "weight": "fingering",
     "structure": "plied",
     "texture": "smooth",
     "fibers": {
@@ -2444,12 +3267,47 @@ window.YARN_DATABASE = [
       "colorwork",
       "everyday"
     ],
-    "notes": "Lett og fast ull/alpakka-blanding med tydelig maskebilde.",
+    "notes": [
+      "Lett og fast ull/alpakka-blanding med tydelig maskebilde."
+    ],
     "aliases": [
       "flora",
       "drops flora"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.garnstudio.com/yarn.php?id=111",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 65
+        },
+        {
+          "type": "alpaca",
+          "percent": 35,
+          "label": "superfine alpaca"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 210,
+      "metersPer100g": 420,
+      "recommendedNeedleMm": [
+        3,
+        3
+      ],
+      "gaugeStitches10cm": [
+        24
+      ],
+      "gaugeRows10cm": [
+        32
+      ],
+      "superwash": false,
+      "sourceUrl": "https://www.garnstudio.com/yarn.php?id=111",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "drops-lima",
@@ -2481,12 +3339,46 @@ window.YARN_DATABASE = [
       "cardigans",
       "everyday"
     ],
-    "notes": "Mye brukt alternativ til hverdagsplagg med litt mykhet fra alpakka.",
+    "notes": [
+      "Mye brukt alternativ til hverdagsplagg med litt mykhet fra alpakka."
+    ],
     "aliases": [
       "lima",
       "drops lima"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=39&show=drops-lima",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 65
+        },
+        {
+          "type": "alpaca",
+          "percent": 35
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 100,
+      "metersPer100g": 200,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        21
+      ],
+      "gaugeRows10cm": [
+        28
+      ],
+      "superwash": false,
+      "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=39&show=drops-lima",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "drops-safran",
@@ -2517,12 +3409,19 @@ window.YARN_DATABASE = [
       "tops",
       "baby"
     ],
-    "notes": "Mercerisert bomull til sommertøy og interiør.",
+    "notes": [
+      "Mercerisert bomull til sommertøy og interiør."
+    ],
     "aliases": [
       "safran",
       "drops safran"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "drops-belle",
@@ -2554,12 +3453,50 @@ window.YARN_DATABASE = [
       "summer",
       "tops"
     ],
-    "notes": "Sommergarn med sval følelse og pent fall.",
+    "notes": [
+      "Sommergarn med sval følelse og pent fall."
+    ],
     "aliases": [
       "belle",
       "drops belle"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=39&show=drops-belle",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "cotton",
+          "percent": 53
+        },
+        {
+          "type": "viscose",
+          "percent": 33
+        },
+        {
+          "type": "linen",
+          "percent": 14
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 120,
+      "metersPer100g": 240,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        21
+      ],
+      "gaugeRows10cm": [
+        28
+      ],
+      "superwash": false,
+      "sourceUrl": "https://www.garnstudio.com/yarn.php?cid=39&show=drops-belle",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "drops-sky",
@@ -2591,12 +3528,19 @@ window.YARN_DATABASE = [
       "sweaters",
       "cozy"
     ],
-    "notes": "Luftig blown yarn som gir mykt, lett plagg.",
+    "notes": [
+      "Luftig blown yarn som gir mykt, lett plagg."
+    ],
     "aliases": [
       "sky",
       "drops sky"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "drops-melody",
@@ -2628,12 +3572,19 @@ window.YARN_DATABASE = [
       "cozy",
       "outerwear"
     ],
-    "notes": "Børstet og svært fluffy garn til lune plagg.",
+    "notes": [
+      "Børstet og svært fluffy garn til lune plagg."
+    ],
     "aliases": [
       "melody",
       "drops melody"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "drops-paris",
@@ -2663,12 +3614,19 @@ window.YARN_DATABASE = [
       "summer",
       "home"
     ],
-    "notes": "Klassisk bomullsgarn til sommerplagg og interiør.",
+    "notes": [
+      "Klassisk bomullsgarn til sommerplagg og interiør."
+    ],
     "aliases": [
       "paris",
       "drops paris"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "drops-daisy",
@@ -2698,27 +3656,34 @@ window.YARN_DATABASE = [
       "sweaters",
       "kids"
     ],
-    "notes": "Lett chainette i merino med mykere uttrykk enn klassisk flertrådet garn.",
+    "notes": [
+      "Lett chainette i merino med mykere uttrykk enn klassisk flertrådet garn."
+    ],
     "aliases": [
       "daisy",
       "drops daisy"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "DROPS Design",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "rauma-fivel",
     "name": "Fivel",
     "brand": "Rauma",
-    "gramsPerSkein": 100,
-    "metersPerSkein": 200,
+    "gramsPerSkein": 50,
+    "metersPerSkein": 100,
     "gauge": 18,
     "needle": [
-      4.5,
+      4,
       5
     ],
     "weight": "worsted",
     "structure": "plied",
-    "texture": "rustic",
+    "texture": "soft",
     "fibers": {
       "wool": 100
     },
@@ -2734,12 +3699,41 @@ window.YARN_DATABASE = [
       "traditional",
       "outerwear"
     ],
-    "notes": "Robust ullgarn som holder formen godt.",
+    "notes": [
+      "Robust ullgarn som holder formen godt."
+    ],
     "aliases": [
       "fivel",
       "rauma fivel"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.raumagarn.no/produkt/garn/fivel",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100,
+          "label": "norsk lamull"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 100,
+      "metersPer100g": 200,
+      "recommendedNeedleMm": [
+        4,
+        5
+      ],
+      "gaugeStitches10cm": [
+        18
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.raumagarn.no/produkt/garn/fivel",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "rauma-pt5",
@@ -2771,13 +3765,20 @@ window.YARN_DATABASE = [
       "everyday",
       "colorwork"
     ],
-    "notes": "Slitesterkt sportsgarn med ullpreg.",
+    "notes": [
+      "Slitesterkt sportsgarn med ullpreg."
+    ],
     "aliases": [
       "pt5",
       "pt5 sport",
       "rauma pt5"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "rauma-inca",
@@ -2807,12 +3808,19 @@ window.YARN_DATABASE = [
       "cozy",
       "shawls"
     ],
-    "notes": "Myk alpakka med luftig preg og fint fall.",
+    "notes": [
+      "Myk alpakka med luftig preg og fint fall."
+    ],
     "aliases": [
       "inca",
       "rauma inca"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "rauma-fivel-2",
@@ -2843,12 +3851,19 @@ window.YARN_DATABASE = [
       "lightweight",
       "traditional"
     ],
-    "notes": "Tynt norsk ullgarn til fargestrikk og lette plagg.",
+    "notes": [
+      "Tynt norsk ullgarn til fargestrikk og lette plagg."
+    ],
     "aliases": [
       "lamull",
       "rauma lamull"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "viking-mohrino",
@@ -2880,12 +3895,19 @@ window.YARN_DATABASE = [
       "cozy",
       "sweaters"
     ],
-    "notes": "Myk blanding med litt halo og god varme.",
+    "notes": [
+      "Myk blanding med litt halo og god varme."
+    ],
     "aliases": [
       "mohrino",
       "viking mohrino"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Viking",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "viking-bamboo",
@@ -2916,12 +3938,19 @@ window.YARN_DATABASE = [
       "summer",
       "baby"
     ],
-    "notes": "Svalt og mykt garn med godt fall.",
+    "notes": [
+      "Svalt og mykt garn med godt fall."
+    ],
     "aliases": [
       "bamboo",
       "viking bamboo"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Viking",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "viking-fin",
@@ -2953,12 +3982,19 @@ window.YARN_DATABASE = [
       "lightweight",
       "shawls"
     ],
-    "notes": "Tynn alpakka-blanding som føles myk mot huden.",
+    "notes": [
+      "Tynn alpakka-blanding som føles myk mot huden."
+    ],
     "aliases": [
       "alpaca fine",
       "viking alpaca fine"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Viking",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dale-falk",
@@ -2989,12 +4025,19 @@ window.YARN_DATABASE = [
       "kids",
       "everyday"
     ],
-    "notes": "Superwash ull til hverdagsplagg og barn.",
+    "notes": [
+      "Superwash ull til hverdagsplagg og barn."
+    ],
     "aliases": [
       "falk",
       "dale falk"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dale-cotinga",
@@ -3026,12 +4069,19 @@ window.YARN_DATABASE = [
       "tops",
       "baby"
     ],
-    "notes": "Sommerlig blanding med litt ekstra spenst fra merino.",
+    "notes": [
+      "Sommerlig blanding med litt ekstra spenst fra merino."
+    ],
     "aliases": [
       "cotinga",
       "dale cotinga"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dsa-faerytale-updated",
@@ -3062,12 +4112,19 @@ window.YARN_DATABASE = [
       "shawls",
       "sweaters"
     ],
-    "notes": "Fluffy alpakka med mye varme og mykt uttrykk.",
+    "notes": [
+      "Fluffy alpakka med mye varme og mykt uttrykk."
+    ],
     "aliases": [
       "faerytale",
       "du store alpakka faerytale"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dsa-soul",
@@ -3098,12 +4155,19 @@ window.YARN_DATABASE = [
       "cozy",
       "sweaters"
     ],
-    "notes": "Luftig blown alpakka som gir lett plagg på tykke pinner.",
+    "notes": [
+      "Luftig blown alpakka som gir lett plagg på tykke pinner."
+    ],
     "aliases": [
       "soul",
       "dsa soul"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "dsa-hexa",
@@ -3134,12 +4198,19 @@ window.YARN_DATABASE = [
       "cozy",
       "outerwear"
     ],
-    "notes": "Fyldig blown yarn med luftig følelse.",
+    "notes": [
+      "Fyldig blown yarn med luftig følelse."
+    ],
     "aliases": [
       "hexa",
       "dsa hexa"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "hillesvag-blaane",
@@ -3169,13 +4240,20 @@ window.YARN_DATABASE = [
       "outerwear",
       "traditional"
     ],
-    "notes": "Fyldig norsk ull med tydelig særpreg.",
+    "notes": [
+      "Fyldig norsk ull med tydelig særpreg."
+    ],
     "aliases": [
       "blane",
       "blåne",
       "hillesvåg blåne"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Hillesvåg Ullvarefabrikk",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "hillesvag-solje",
@@ -3183,7 +4261,7 @@ window.YARN_DATABASE = [
     "brand": "Hillesvåg",
     "gramsPerSkein": 100,
     "metersPerSkein": 350,
-    "gauge": 26,
+    "gauge": 25,
     "needle": [
       3,
       3
@@ -3206,13 +4284,44 @@ window.YARN_DATABASE = [
       "lightweight",
       "traditional"
     ],
-    "notes": "Tynt norsk ullgarn til fargestrikk og lette plagg.",
+    "notes": [
+      "Tynt norsk ullgarn til fargestrikk og lette plagg."
+    ],
     "aliases": [
       "solje",
       "sølje",
       "hillesvåg sølje"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Hillesvåg Ullvarefabrikk",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://ull.no/produkt/solje-naturgra/",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100,
+          "label": "norsk ull"
+        }
+      ],
+      "gramsPerSkein": 100,
+      "metersPerSkein": 350,
+      "metersPer100g": 350,
+      "recommendedNeedleMm": [
+        3,
+        3
+      ],
+      "gaugeStitches10cm": [
+        25
+      ],
+      "gaugeRows10cm": [
+        32
+      ],
+      "superwash": false,
+      "sourceUrl": "https://ull.no/produkt/solje-naturgra/",
+      "lastVerified": "2026-04-15"
+    }
   },
   {
     "id": "hillesvag-vidde",
@@ -3243,12 +4352,19 @@ window.YARN_DATABASE = [
       "traditional",
       "colorwork"
     ],
-    "notes": "Lamull med fast uttrykk og godt hold.",
+    "notes": [
+      "Lamull med fast uttrykk og godt hold."
+    ],
     "aliases": [
       "vidde",
       "hillesvåg vidde"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Hillesvåg Ullvarefabrikk",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "gjestal-naturgarn",
@@ -3279,12 +4395,19 @@ window.YARN_DATABASE = [
       "home",
       "traditional"
     ],
-    "notes": "Tykk ull som holder formen godt.",
+    "notes": [
+      "Tykk ull som holder formen godt."
+    ],
     "aliases": [
       "naturgarn",
       "gjestal naturgarn"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Gjestal",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "gjestal-bomullsport",
@@ -3315,12 +4438,19 @@ window.YARN_DATABASE = [
       "baby",
       "home"
     ],
-    "notes": "Myk bomull til sommer og babyplagg.",
+    "notes": [
+      "Myk bomull til sommer og babyplagg."
+    ],
     "aliases": [
       "bomull sport",
       "gjestal bomull sport"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Gjestal",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "lanagrossa-ecopuno",
@@ -3353,12 +4483,19 @@ window.YARN_DATABASE = [
       "tops",
       "sweaters"
     ],
-    "notes": "Lett chainette med pent fall og myk følelse.",
+    "notes": [
+      "Lett chainette med pent fall og myk følelse."
+    ],
     "aliases": [
       "ecopuno",
       "lana grossa ecopuno"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Lana Grossa",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "lanagrossa-brigitte2",
@@ -3390,12 +4527,19 @@ window.YARN_DATABASE = [
       "sweaters",
       "cozy"
     ],
-    "notes": "Luftig chainette med myk overflate og lett uttrykk.",
+    "notes": [
+      "Luftig chainette med myk overflate og lett uttrykk."
+    ],
     "aliases": [
       "brigitte no 2",
       "brigitte no. 2"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Lana Grossa",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "malabrigo-worsted",
@@ -3425,12 +4569,19 @@ window.YARN_DATABASE = [
       "sweaters",
       "shawls"
     ],
-    "notes": "Håndfarget merino med mykhet og litt mer organisk uttrykk.",
+    "notes": [
+      "Håndfarget merino med mykhet og litt mer organisk uttrykk."
+    ],
     "aliases": [
       "malabrigo worsted",
       "worsted"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Malabrigo",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
   },
   {
     "id": "regia-premium-merino",
@@ -3462,11 +4613,508 @@ window.YARN_DATABASE = [
       "socks",
       "lightweight"
     ],
-    "notes": "Fint sokkegarn med litt ekstra mykhet og varme.",
+    "notes": [
+      "Fint sokkegarn med litt ekstra mykhet og varme."
+    ],
     "aliases": [
       "premium merino yak",
       "regia premium merino yak"
     ],
-    "availableInNorway": true
+    "availableInNorway": true,
+    "brandFamily": "Regia",
+    "dataStatus": "legacy-curated",
+    "sourceUrl": null,
+    "lastVerified": null,
+    "documented": null
+  },
+  {
+    "id": "sg-fritidsgarn",
+    "name": "Fritidsgarn",
+    "brand": "Sandnes Garn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 70,
+    "gauge": 15,
+    "needle": [
+      5.5,
+      5.5
+    ],
+    "weight": "bulky",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 2,
+    "warmth": 4,
+    "softness": 2,
+    "firmness": 4,
+    "bestFor": [
+      "felted",
+      "slippers",
+      "outerwear",
+      "hats"
+    ],
+    "notes": [
+      "100 % norsk ull. Egner seg godt til toving og tykke, varme plagg."
+    ],
+    "aliases": [
+      "fritidsgarn",
+      "sandnes fritidsgarn"
+    ],
+    "sourceUrl": "https://www.sandnesgarn.no/fritidsgarn",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100,
+          "label": "norsk ull"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 70,
+      "metersPer100g": 140,
+      "recommendedNeedleMm": [
+        5.5,
+        5.5
+      ],
+      "gaugeStitches10cm": [
+        15
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.sandnesgarn.no/fritidsgarn",
+      "lastVerified": "2026-04-15"
+    },
+    "availableInNorway": true,
+    "brandFamily": "Sandnes Garn",
+    "dataStatus": "official-verified"
+  },
+  {
+    "id": "rauma-tumi",
+    "name": "Tumi",
+    "brand": "Rauma",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 130,
+    "gauge": 25,
+    "needle": [
+      3,
+      3.5
+    ],
+    "weight": "sport",
+    "structure": "plied",
+    "texture": "soft",
+    "fibers": {
+      "wool": 50,
+      "alpaca": 50
+    },
+    "superwash": false,
+    "halo": 1,
+    "elasticity": 3,
+    "drape": 3,
+    "warmth": 4,
+    "softness": 4,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "kids",
+      "sweaters",
+      "accessories"
+    ],
+    "notes": [
+      "50 % ull og 50 % alpakka. Tynt blandingsgarn som kombinerer mykhet og spenst."
+    ],
+    "aliases": [
+      "tumi",
+      "rauma tumi"
+    ],
+    "sourceUrl": "https://www.raumagarn.no/produkt/garn/tumi-211",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 50
+        },
+        {
+          "type": "alpaca",
+          "percent": 50
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 130,
+      "metersPer100g": 260,
+      "recommendedNeedleMm": [
+        3,
+        3.5
+      ],
+      "gaugeStitches10cm": [
+        24,
+        26
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.raumagarn.no/produkt/garn/tumi-211",
+      "lastVerified": "2026-04-15"
+    },
+    "availableInNorway": true,
+    "brandFamily": "Rauma Garn",
+    "dataStatus": "official-verified"
+  },
+  {
+    "id": "viking-baby-ull",
+    "name": "Baby Ull",
+    "brand": "Viking Garn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 175,
+    "gauge": 28,
+    "needle": [
+      3,
+      3
+    ],
+    "weight": "fingering",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "merino": 100
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 3,
+    "warmth": 3,
+    "softness": 5,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "kids",
+      "sweaters",
+      "accessories"
+    ],
+    "notes": [
+      "100 % superwashbehandlet merinoull. Mykt garn til babyplagg og tynnere strikk."
+    ],
+    "aliases": [
+      "baby ull",
+      "viking baby ull"
+    ],
+    "sourceUrl": "https://www.viking-garn.no/garn/baby-ull",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "merino",
+          "percent": 100,
+          "label": "superwash merino wool"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 175,
+      "metersPer100g": 350,
+      "recommendedNeedleMm": [
+        3,
+        3
+      ],
+      "gaugeStitches10cm": [
+        28
+      ],
+      "gaugeRows10cm": null,
+      "superwash": true,
+      "sourceUrl": "https://www.viking-garn.no/garn/baby-ull",
+      "lastVerified": "2026-04-15"
+    },
+    "availableInNorway": true,
+    "brandFamily": "Viking Garn",
+    "dataStatus": "official-verified"
+  },
+  {
+    "id": "viking-alpaca-bris",
+    "name": "Alpaca Bris",
+    "brand": "Viking Garn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 150,
+    "gauge": 15,
+    "needle": [
+      6,
+      7
+    ],
+    "weight": "bulky",
+    "structure": "blown",
+    "texture": "airy",
+    "fibers": {
+      "alpaca": 60,
+      "merino": 11,
+      "nylon": 29
+    },
+    "superwash": false,
+    "halo": 1,
+    "elasticity": 3,
+    "drape": 3,
+    "warmth": 4,
+    "softness": 5,
+    "firmness": 2,
+    "bestFor": [
+      "sweaters",
+      "cardigans",
+      "accessories"
+    ],
+    "notes": [
+      "Air blown-garn i babyalpakka, merinoull og nylon. Gir lette og myke plagg."
+    ],
+    "aliases": [
+      "alpaca bris",
+      "viking alpaca bris"
+    ],
+    "sourceUrl": "https://www.viking-garn.no/garn/viking-garn/alpaca-bris",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "alpaca",
+          "percent": 60,
+          "label": "baby alpaca"
+        },
+        {
+          "type": "merino",
+          "percent": 11
+        },
+        {
+          "type": "nylon",
+          "percent": 29
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 150,
+      "metersPer100g": 300,
+      "recommendedNeedleMm": [
+        6,
+        7
+      ],
+      "gaugeStitches10cm": [
+        15
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.viking-garn.no/garn/viking-garn/alpaca-bris",
+      "lastVerified": "2026-04-15"
+    },
+    "availableInNorway": true,
+    "brandFamily": "Viking Garn",
+    "dataStatus": "official-verified"
+  },
+  {
+    "id": "viking-sportsragg",
+    "name": "Sportsragg",
+    "brand": "Viking Garn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 100,
+    "gauge": 23,
+    "needle": [
+      3.5,
+      3.5
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "wool": 60,
+      "acrylic": 20,
+      "nylon": 20
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 3,
+    "drape": 2,
+    "warmth": 3,
+    "softness": 3,
+    "firmness": 4,
+    "bestFor": [
+      "socks",
+      "everyday",
+      "mittens",
+      "hats"
+    ],
+    "notes": [
+      "Slitesterkt bruksgarn som passer godt til sokker og hverdagsplagg."
+    ],
+    "aliases": [
+      "sportsragg",
+      "viking sportsragg"
+    ],
+    "sourceUrl": "https://www.viking-garn.no/garn/viking-garn/sportsragg",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 60
+        },
+        {
+          "type": "acrylic",
+          "percent": 20
+        },
+        {
+          "type": "nylon",
+          "percent": 20
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 100,
+      "metersPer100g": 200,
+      "recommendedNeedleMm": [
+        3.5,
+        3.5
+      ],
+      "gaugeStitches10cm": [
+        22,
+        23
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.viking-garn.no/garn/viking-garn/sportsragg",
+      "lastVerified": "2026-04-15"
+    },
+    "availableInNorway": true,
+    "brandFamily": "Viking Garn",
+    "dataStatus": "official-verified"
+  },
+  {
+    "id": "dsa-alpakka-wool",
+    "name": "Alpakka Wool",
+    "brand": "Du Store Alpakka",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 166,
+    "gauge": 27,
+    "needle": [
+      3,
+      3
+    ],
+    "weight": "fingering",
+    "structure": "plied",
+    "texture": "soft",
+    "fibers": {
+      "alpaca": 60,
+      "wool": 40
+    },
+    "superwash": false,
+    "halo": 1,
+    "elasticity": 3,
+    "drape": 3,
+    "warmth": 4,
+    "softness": 4,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "kids",
+      "sweaters",
+      "cardigans"
+    ],
+    "notes": [
+      "Finstrikkgarn med alpakkaens mykhet og ullens elastisitet. Kan også toves."
+    ],
+    "aliases": [
+      "alpakka wool",
+      "du store alpakka alpakka wool"
+    ],
+    "sourceUrl": "https://www.houseofyarn.no/alpakka-wool-1",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "alpaca",
+          "percent": 60
+        },
+        {
+          "type": "wool",
+          "percent": 40
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 166,
+      "metersPer100g": 332,
+      "recommendedNeedleMm": [
+        3,
+        3
+      ],
+      "gaugeStitches10cm": [
+        27
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.houseofyarn.no/alpakka-wool-1",
+      "lastVerified": "2026-04-15"
+    },
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "official-verified"
+  },
+  {
+    "id": "dale-merino-22",
+    "name": "Merino 22",
+    "brand": "Dale Garn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 125,
+    "gauge": 22,
+    "needle": [
+      4,
+      4
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "merino": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 3,
+    "warmth": 3,
+    "softness": 5,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "kids",
+      "sweaters",
+      "texture"
+    ],
+    "notes": [
+      "100 % ekstra fin merinoull uten superwash. RWS-sertifisert ifølge produktbeskrivelsen."
+    ],
+    "aliases": [
+      "merino 22",
+      "dale merino 22"
+    ],
+    "sourceUrl": "https://www.houseofyarn.no/gb/en/merino-22-1",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "merino",
+          "percent": 100,
+          "label": "extra fine merino wool"
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 125,
+      "metersPer100g": 250,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        22
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://www.houseofyarn.no/gb/en/merino-22-1",
+      "lastVerified": "2026-04-15"
+    },
+    "availableInNorway": true,
+    "brandFamily": "House of Yarn",
+    "dataStatus": "official-verified"
   }
 ];
