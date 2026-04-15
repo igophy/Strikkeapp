@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
-    <link rel="stylesheet" href="style.css?v=1.7.4">
-    <link rel="manifest" href="manifest.json?v=1.7.4">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.7.4">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.7.4">
+    <link rel="stylesheet" href="style.css?v=1.8.0">
+    <link rel="manifest" href="manifest.json?v=1.8.0">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
@@ -22,34 +22,34 @@
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.7.4</strong>
-            <p class="whats-new-intro">Denne oppdateringen rydder opp i Innstillinger og markerer funksjoner som fortsatt er under utvikling.</p>
+            <strong id="whatsNewTitle">Nytt i v1.8.0</strong>
+            <p class="whats-new-intro">Denne oppdateringen gjør Garnalternativ enklere å bruke og bygger ut den norske garnbasen videre.</p>
 
             <div class="whats-new-list">
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">🧪</div>
                     <div>
-                        <h3>Beta-merking</h3>
-                        <p>Garnalternativ og Strikkeekspert er nå merket med Beta, slik at det er tydelig at disse funksjonene fortsatt utvikles.</p>
+                        <h3>Bedre start på Garnalternativ</h3>
+                        <p>Søket er gjort enklere med populære hurtigvalg, tydeligere treff og en mer trinnvis flyt.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">⚙️</div>
                     <div>
-                        <h3>Ryddigere Innstillinger</h3>
-                        <p>Tilbakemeldingsdelen er fjernet foreløpig, så Innstillinger er enklere og renere å bruke.</p>
+                        <h3>Større garnbase</h3>
+                        <p>Flere vanlige garn i Norge er lagt inn, så det er lettere å finne gode praktiske alternativer.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">🏠</div>
                     <div>
-                        <h3>Fortsatt tydelig start</h3>
-                        <p>Appen åpnes fortsatt på fremsiden, mens masketelleren får beholde tilstanden sin mellom besøk.</p>
+                        <h3>Bedre resultatkort</h3>
+                        <p>Resultatene forklarer tydeligere hvorfor et garn passer, og viser raskere hva du bør være obs på.</p>
                     </div>
                 </article>
             </div>
 
-            <p class="whats-new-meta">Denne versjonen rydder opp rundt appskallet og gjør det tydeligere hvilke funksjoner som fortsatt er under utvikling.</p>
+            <p class="whats-new-meta">Denne versjonen starter en større oppgradering av Garnalternativ med bedre flyt, større database og tydeligere resultater.</p>
             <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
         </div>
     </div>
@@ -260,6 +260,14 @@
                         <label for="garnSearch">Søk etter garnnavn eller merke:</label>
                         <input type="text" id="garnSearch" autocomplete="off" placeholder="f.eks. Peer Gynt, Drops Air, Sunday">
                     </div>
+                    <p class="small-muted search-help">Du kan skrive både merke, garnnavn eller deler av navnet. Prøv for eksempel Air, Sunday eller Nepal.</p>
+                    <div class="popular-searches">
+                        <span class="popular-searches-label">Populære søk:</span>
+                        <button type="button" class="quick-search-chip" data-query="Peer Gynt">Peer Gynt</button>
+                        <button type="button" class="quick-search-chip" data-query="Drops Air">Drops Air</button>
+                        <button type="button" class="quick-search-chip" data-query="Sunday">Sunday</button>
+                        <button type="button" class="quick-search-chip" data-query="Alpakka Ull">Alpakka Ull</button>
+                    </div>
                     <div id="garnSearchResults" class="garn-search-results hidden"></div>
                     <div id="selectedYarnCard" class="selected-yarn-card hidden"></div>
                 </div>
@@ -303,6 +311,7 @@
                 </div>
             </div>
 
+            <div id="garnaltSummary" class="garnalt-summary hidden"></div>
             <div id="garnaltResultat" class="result hidden"></div>
         </section>
 
@@ -348,7 +357,7 @@
             <div class="settings-card">
                 <div class="settings-card-header">
                     <h3 class="section-title">Nytt i siste versjon</h3>
-                    <span id="settingsVersionPill" class="settings-version-pill">v1.7.4</span>
+                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.0</span>
                 </div>
 
                 <div class="settings-whatsnew-list">
@@ -387,7 +396,7 @@
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.7.4</p>
+            <p class="version" id="versionText">v1.8.0</p>
         </div>
     </footer>
 
@@ -404,10 +413,10 @@
         <button id="updateBtn" class="update-btn">Oppdater</button>
     </div>
 
-    <script src="yarn-data.js?v=1.7.4"></script>
-    <script src="app.js?v=1.7.4"></script>
+    <script src="yarn-data.js?v=1.8.0"></script>
+    <script src="app.js?v=1.8.0"></script>
     <script>
-    const APP_VERSION = '1.7.4';
+    const APP_VERSION = '1.8.0';
     let deferredInstallPrompt = null;
     let refreshingFromController = false;
 

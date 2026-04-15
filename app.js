@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.7.4';
+const APP_VERSION = '1.8.0';
 
 // --- Tema (lys / mørk / auto) ---
 const THEME_MODE_KEY = 'inges-strikkehjelp-theme-mode';
@@ -631,6 +631,21 @@ function buildSearchIndex(yarn) {
     ].join(' '));
 }
 
+function tokenizeQuery(query) {
+    return slugify(query).split(' ').filter(Boolean);
+}
+
+function prettyStructureLabel(structure) {
+    const labels = {
+        plied: 'flertrådet',
+        blown: 'blown yarn',
+        brushed: 'børstet',
+        single: 'entrådet',
+        chainette: 'chainette'
+    };
+    return labels[structure] || structure;
+}
+
 const FILTER_IDS = [
     'filterOnlyNorway',
     'filterNaturalOnly',
@@ -730,6 +745,7 @@ function explainMatch(source, candidate, warnings) {
     if (meterDiff <= 15) lines.push('Har lignende løpelengde per nøste.');
     if (candidate.structure === source.structure) lines.push('Har lignende oppbygging og oppfører seg likt i plagget.');
     else if (candidate.texture === source.texture) lines.push('Har ganske likt uttrykk i ferdig plagg.');
+    else lines.push(`Har ${prettyStructureLabel(candidate.structure)} konstruksjon, så uttrykket blir litt annerledes.`);
     if (fiberSimilarity(source, candidate) >= 0.5) lines.push('Deler mye av samme fiberprofil.');
     if (practicalUseSimilarity(source, candidate) >= 0.4) lines.push(`Passer godt til ${prettifyBestFor((candidate.bestFor || [])[0] || 'plagg')}.`);
     if (!lines.length) lines.push('Kan fungere, men skiller seg mer fra originalen enn toppresultatene.');
@@ -812,15 +828,25 @@ function renderSelectedYarn(yarn) {
 
 function searchYarns(query) {
     const q = slugify(query);
+    const tokens = tokenizeQuery(query);
     if (!q) return [];
     return GARN_DATABASE
         .map(yarn => {
             const haystack = buildSearchIndex(yarn);
+            const brandName = slugify(`${yarn.brand} ${yarn.name}`);
             let score = 0;
-            if (haystack.startsWith(q)) score += 120;
-            if (haystack.includes(q)) score += 60;
+            if (brandName === q) score += 300;
+            if (slugify(yarn.name) === q) score += 220;
+            if (haystack.startsWith(q)) score += 150;
+            if (brandName.startsWith(q)) score += 120;
+            if (haystack.includes(q)) score += 50;
+            for (const token of tokens) {
+                if (brandName.includes(token)) score += 18;
+                if (haystack.includes(token)) score += 10;
+            }
             for (const alias of (yarn.aliases || [])) {
                 const aliasNorm = slugify(alias);
+                if (aliasNorm === q) score += 160;
                 if (aliasNorm.startsWith(q)) score += 80;
                 if (aliasNorm.includes(q)) score += 20;
             }
@@ -829,8 +855,8 @@ function searchYarns(query) {
             return { yarn, score };
         })
         .filter(item => item.score > 0)
-        .sort((a, b) => b.score - a.score || a.yarn.brand.localeCompare(b.yarn.brand))
-        .slice(0, 8)
+        .sort((a, b) => b.score - a.score || a.yarn.brand.localeCompare(b.yarn.brand) || a.yarn.name.localeCompare(b.yarn.name))
+        .slice(0, 10)
         .map(item => item.yarn);
 }
 
@@ -843,8 +869,11 @@ function renderSearchResults(results) {
     }
     box.innerHTML = results.map(yarn => `
         <button type="button" class="garn-search-item" data-yarn-id="${yarn.id}">
-            <strong>${yarn.brand} ${yarn.name}</strong>
-            <span>${yarn.metersPerSkein} m / ${yarn.gramsPerSkein} g · ${fiberLabel(getFiberKeys(yarn)[0] || '')}</span>
+            <div>
+                <strong>${yarn.brand} ${yarn.name}</strong>
+                <span>${yarn.metersPerSkein} m / ${yarn.gramsPerSkein} g · ${fiberLabel(getFiberKeys(yarn)[0] || '')}</span>
+            </div>
+            <span class="garn-search-meta">${(yarn.weight || '').toUpperCase()}</span>
         </button>
     `).join('');
     box.classList.remove('hidden');
@@ -953,12 +982,37 @@ function findAlternatives(source, filters) {
         .map(item => item.candidate);
 }
 
+function renderGarnAltSummary(source, alternatives, filters) {
+    const summary = document.getElementById('garnaltSummary');
+    if (!summary) return;
+    const activeFilters = [
+        filters.naturalOnly && 'naturfiber',
+        filters.avoidMohair && 'uten mohair',
+        filters.avoidAlpaca && 'uten alpakka',
+        filters.superwash && 'superwash',
+        filters.lessFluffy && 'mindre fluffy',
+        filters.softer && 'mykere',
+        filters.summer && 'sommerplagg',
+        filters.baby && 'babyvennlig'
+    ].filter(Boolean);
+
+    summary.innerHTML = `
+        <div class="garnalt-summary-card">
+            <strong>${source.brand} ${source.name}</strong>
+            <p>Fant <strong>${alternatives.length}</strong> relevante alternativer${activeFilters.length ? ` med filter: ${activeFilters.join(', ')}` : ''}.</p>
+        </div>
+    `;
+    summary.classList.remove('hidden');
+}
+
 function renderGarnAltResults(source, alternatives, filters, originalSkeins) {
     const result = document.getElementById('garnaltResultat');
     if (!alternatives.length) {
+        document.getElementById('garnaltSummary')?.classList.add('hidden');
         visResultat(result, '<h3>Ingen gode treff</h3><p>Prøv å fjerne noen filtre eller velg et annet originalgarn.</p>');
         return;
     }
+    renderGarnAltSummary(source, alternatives, filters);
     const html = `
         <div class="result-header">
             <h3>Beste praktiske alternativer til ${source.brand} ${source.name}</h3>
@@ -972,6 +1026,7 @@ function renderGarnAltResults(source, alternatives, filters, originalSkeins) {
 function setupGarnAlternativ() {
     const searchInput = document.getElementById('garnSearch');
     const searchResults = document.getElementById('garnSearchResults');
+    const quickSearchButtons = document.querySelectorAll('.quick-search-chip');
     const toggleAdvanced = document.getElementById('toggleAdvancedFilters');
     const advancedFilters = document.getElementById('advancedFilters');
     const findButton = document.getElementById('beregnGarnalt');
@@ -980,11 +1035,21 @@ function setupGarnAlternativ() {
     searchInput.addEventListener('input', () => {
         searchInput.dataset.selectedId = '';
         renderSelectedYarn(null);
+        document.getElementById('garnaltSummary').classList.add('hidden');
+        document.getElementById('garnaltResultat').classList.add('hidden');
         renderSearchResults(searchYarns(searchInput.value));
     });
 
     searchInput.addEventListener('focus', () => {
         renderSearchResults(searchYarns(searchInput.value));
+    });
+
+    quickSearchButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            searchInput.value = button.dataset.query || '';
+            renderSearchResults(searchYarns(searchInput.value));
+            searchInput.focus();
+        });
     });
 
     searchResults.addEventListener('click', (e) => {
@@ -1030,6 +1095,8 @@ function setupGarnAlternativ() {
         document.getElementById('antallNoster').value = '';
         document.getElementById('garnaltResultat').classList.add('hidden');
         document.getElementById('garnaltResultat').innerHTML = '';
+        document.getElementById('garnaltSummary').classList.add('hidden');
+        document.getElementById('garnaltSummary').innerHTML = '';
         renderSelectedYarn(null);
         renderSearchResults([]);
         document.getElementById('filterOnlyNorway').checked = true;

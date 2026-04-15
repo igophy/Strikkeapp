@@ -2114,3 +2114,21 @@ body.dark .feedback-status.error {
 body.dark .beta-label {
     color: #f0b7a7;
 }
+
+
+/* Garnalternativ 1.8 */
+.search-help { margin-top: -0.2rem; margin-bottom: 0.8rem; }
+.popular-searches { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin-bottom: 0.9rem; }
+.popular-searches-label { font-size:0.85rem; color:#8a7565; }
+.quick-search-chip { border:1px solid #d9c5b4; background:#fff; color:#6a4d3c; border-radius:999px; padding:0.42rem 0.75rem; font-family:inherit; font-size:0.86rem; cursor:pointer; }
+.quick-search-chip:active { transform: scale(0.98); }
+.garn-search-item { display:flex; justify-content:space-between; align-items:center; gap:0.8rem; width:100%; text-align:left; }
+.garn-search-item strong { display:block; margin-bottom:0.15rem; }
+.garn-search-item span { font-size:0.84rem; color:#7a6355; }
+.garn-search-meta { white-space:nowrap; font-weight:bold; color:#a85d4a !important; }
+.garnalt-summary { margin: 0.5rem 0 1rem; }
+.garnalt-summary-card { background:#fff8f4; border:1px solid #ecd6c8; color:#6a4d3c; border-radius:12px; padding:0.85rem 1rem; }
+.garn-kort-tips p { margin-bottom:0.45rem; }
+body.dark .quick-search-chip { background:#2d2724; color:#f5ebe4; border-color:#5e4e45; }
+body.dark .garnalt-summary-card { background:#2b2522; border-color:#4e4139; color:#f3e8df; }
+body.dark .garn-search-meta { color:#f2b59e !important; }
