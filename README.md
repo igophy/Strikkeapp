@@ -1,4 +1,4 @@
-# Inges strikkehjelp v1.8.8
+# Inges strikkehjelp v1.8.10
 
 Oppgradert versjon med ny **Garnalternativ 2.0**:
 
