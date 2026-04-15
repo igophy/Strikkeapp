@@ -1746,5 +1746,802 @@ window.YARN_DATABASE = [
       "mechita",
       "malabrigo mechita"
     ]
+  },
+  {
+    "id": "sg-sentinel",
+    "name": "Sunday",
+    "brand": "Sandnes Garn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 235,
+    "gauge": 28,
+    "needle": [
+      3,
+      3
+    ],
+    "weight": "fingering",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "merino": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 3,
+    "warmth": 3,
+    "softness": 4,
+    "firmness": 4,
+    "bestFor": [
+      "sweaters",
+      "baby",
+      "kids",
+      "heldTogether"
+    ],
+    "notes": [
+      "Tynt merinogarn uten superwash.",
+      "Passer fint alene eller sammen med følgetråd."
+    ],
+    "aliases": [
+      "sunday",
+      "sandnes sunday"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "sg-alpakka-ull",
+    "name": "Alpakka Ull",
+    "brand": "Sandnes Garn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 100,
+    "gauge": 19,
+    "needle": [
+      4,
+      5
+    ],
+    "weight": "aran",
+    "structure": "plied",
+    "texture": "fuzzy",
+    "fibers": {
+      "alpaca": 65,
+      "wool": 35
+    },
+    "superwash": false,
+    "halo": 2,
+    "elasticity": 2,
+    "drape": 4,
+    "warmth": 5,
+    "softness": 4,
+    "firmness": 2,
+    "bestFor": [
+      "sweaters",
+      "cardigans",
+      "cozy"
+    ],
+    "notes": [
+      "Varmt og mykt alpakka-ullgarn.",
+      "Gir mykere fall enn ren ull."
+    ],
+    "aliases": [
+      "alpakka ull",
+      "sandnes alpakka ull"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "sg-merinoull",
+    "name": "Merinoull",
+    "brand": "Sandnes Garn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 105,
+    "gauge": 22,
+    "needle": [
+      3.5,
+      4
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "merino": 100
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 3,
+    "warmth": 3,
+    "softness": 5,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "kids",
+      "sweaters",
+      "everyday"
+    ],
+    "notes": [
+      "Myk superwash merino.",
+      "God til plagg som skal vaskes ofte."
+    ],
+    "aliases": [
+      "merinoull",
+      "sandnes merinoull"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "ra-petunia",
+    "name": "Petunia",
+    "brand": "Rauma",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 110,
+    "gauge": 18,
+    "needle": [
+      4,
+      4.5
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "cotton": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 1,
+    "drape": 3,
+    "warmth": 1,
+    "softness": 3,
+    "firmness": 3,
+    "bestFor": [
+      "summer",
+      "tops",
+      "kids",
+      "home"
+    ],
+    "notes": [
+      "Mercerisert bomull med tydelig maskebilde.",
+      "Fin til sommerplagg og interiør."
+    ],
+    "aliases": [
+      "petunia",
+      "rauma petunia"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "drops-nepal",
+    "name": "Nepal",
+    "brand": "DROPS",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 75,
+    "gauge": 17,
+    "needle": [
+      5,
+      5
+    ],
+    "weight": "aran",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "alpaca": 35,
+      "wool": 65
+    },
+    "superwash": false,
+    "halo": 1,
+    "elasticity": 3,
+    "drape": 3,
+    "warmth": 5,
+    "softness": 3,
+    "firmness": 3,
+    "bestFor": [
+      "sweaters",
+      "cardigans",
+      "traditional"
+    ],
+    "notes": [
+      "Klassisk blanding av alpakka og ull.",
+      "God til varme plagg med litt mykere uttrykk."
+    ],
+    "aliases": [
+      "nepal",
+      "drops nepal"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "drops-andes",
+    "name": "Andes",
+    "brand": "DROPS",
+    "gramsPerSkein": 100,
+    "metersPerSkein": 96,
+    "gauge": 14,
+    "needle": [
+      9,
+      9
+    ],
+    "weight": "super_bulky",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "alpaca": 35,
+      "wool": 65
+    },
+    "superwash": false,
+    "halo": 1,
+    "elasticity": 2,
+    "drape": 3,
+    "warmth": 5,
+    "softness": 4,
+    "firmness": 2,
+    "bestFor": [
+      "outerwear",
+      "cozy",
+      "accessories"
+    ],
+    "notes": [
+      "Veldig tykt og varmt garn.",
+      "Passer til raske prosjekter og grove plagg."
+    ],
+    "aliases": [
+      "andes",
+      "drops andes"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "drops-merino-extra-fine",
+    "name": "Merino Extra Fine",
+    "brand": "DROPS",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 105,
+    "gauge": 21,
+    "needle": [
+      4,
+      4
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "merino": 100
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 3,
+    "warmth": 3,
+    "softness": 5,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "kids",
+      "sweaters",
+      "everyday"
+    ],
+    "notes": [
+      "Myk superwash merino.",
+      "Godt alternativ når du vil ha noe lettstelt og mykt."
+    ],
+    "aliases": [
+      "merino extra fine",
+      "drops merino extra fine"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "drops-big-merino",
+    "name": "Big Merino",
+    "brand": "DROPS",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 75,
+    "gauge": 17,
+    "needle": [
+      5,
+      5
+    ],
+    "weight": "aran",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "merino": 100
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 3,
+    "warmth": 4,
+    "softness": 5,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "sweaters",
+      "cardigans",
+      "texture"
+    ],
+    "notes": [
+      "Tykk superwash merino med jevnt uttrykk.",
+      "Fin til fletter og struktur når du ønsker mykhet."
+    ],
+    "aliases": [
+      "big merino",
+      "drops big merino"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "drops-alaska",
+    "name": "Alaska",
+    "brand": "DROPS",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 70,
+    "gauge": 17,
+    "needle": [
+      5,
+      5
+    ],
+    "weight": "aran",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 2,
+    "warmth": 4,
+    "softness": 2,
+    "firmness": 5,
+    "bestFor": [
+      "traditional",
+      "outerwear",
+      "sweaters"
+    ],
+    "notes": [
+      "Fast ullgarn med tydelig struktur.",
+      "Godt til plagg som skal holde fasongen."
+    ],
+    "aliases": [
+      "alaska",
+      "drops alaska"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "drops-karisma",
+    "name": "Karisma",
+    "brand": "DROPS",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 100,
+    "gauge": 21,
+    "needle": [
+      4,
+      4
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 2,
+    "warmth": 3,
+    "softness": 3,
+    "firmness": 4,
+    "bestFor": [
+      "sweaters",
+      "kids",
+      "colorwork",
+      "everyday"
+    ],
+    "notes": [
+      "Klassisk superwash ullgarn.",
+      "Slitesterkt og lett å bruke til hverdagsplagg."
+    ],
+    "aliases": [
+      "karisma",
+      "drops karisma"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "drops-muskat",
+    "name": "Muskat",
+    "brand": "DROPS",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 100,
+    "gauge": 21,
+    "needle": [
+      4,
+      4
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "cotton": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 1,
+    "drape": 3,
+    "warmth": 1,
+    "softness": 3,
+    "firmness": 3,
+    "bestFor": [
+      "summer",
+      "tops",
+      "kids",
+      "home"
+    ],
+    "notes": [
+      "Mercerisert bomull.",
+      "God til sommerplagg med tydelig maskebilde."
+    ],
+    "aliases": [
+      "muskat",
+      "drops muskat"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "viking-merino",
+    "name": "Merino",
+    "brand": "Viking",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 105,
+    "gauge": 22,
+    "needle": [
+      3.5,
+      4
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "merino": 100
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 3,
+    "warmth": 3,
+    "softness": 5,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "kids",
+      "sweaters"
+    ],
+    "notes": [
+      "Myk superwash merino.",
+      "Praktisk når plagg skal vaskes ofte."
+    ],
+    "aliases": [
+      "viking merino",
+      "merino viking"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "viking-alpaca-bris",
+    "name": "Alpaca Bris",
+    "brand": "Viking",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 150,
+    "gauge": 17,
+    "needle": [
+      5,
+      7
+    ],
+    "weight": "bulky",
+    "structure": "blown",
+    "texture": "airy",
+    "fibers": {
+      "alpaca": 60,
+      "polyamide": 11,
+      "wool": 29
+    },
+    "superwash": false,
+    "halo": 2,
+    "elasticity": 2,
+    "drape": 4,
+    "warmth": 5,
+    "softness": 5,
+    "firmness": 1,
+    "bestFor": [
+      "sweaters",
+      "cozy",
+      "lightweight"
+    ],
+    "notes": [
+      "Lett blown yarn med alpakka.",
+      "Ligner andre luftige garn mer enn fastspunnede alternativer."
+    ],
+    "aliases": [
+      "alpaca bris",
+      "viking alpaca bris"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "viking-alpaca-fine",
+    "name": "Alpaca Fine",
+    "brand": "Viking",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 175,
+    "gauge": 24,
+    "needle": [
+      3,
+      3
+    ],
+    "weight": "sport",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "alpaca": 85,
+      "merino": 15
+    },
+    "superwash": false,
+    "halo": 1,
+    "elasticity": 2,
+    "drape": 4,
+    "warmth": 4,
+    "softness": 5,
+    "firmness": 2,
+    "bestFor": [
+      "shawls",
+      "lightweight",
+      "baby",
+      "sweaters"
+    ],
+    "notes": [
+      "Tynt og mykt alpakka-garn.",
+      "Gir mykere fall enn ren ull."
+    ],
+    "aliases": [
+      "alpaca fine",
+      "viking alpaca fine"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "dale-natural-lanolin-wool",
+    "name": "Natural Lanolin Wool",
+    "brand": "Dale Garn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 100,
+    "gauge": 18,
+    "needle": [
+      4.5,
+      5
+    ],
+    "weight": "aran",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 2,
+    "warmth": 4,
+    "softness": 2,
+    "firmness": 5,
+    "bestFor": [
+      "traditional",
+      "outerwear",
+      "sweaters"
+    ],
+    "notes": [
+      "Ullgarn med mye hold og rustikk følelse.",
+      "Godt til klassiske norske plagg."
+    ],
+    "aliases": [
+      "natural lanolin wool",
+      "dale natural lanolin wool"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "dsa-alpakka-tweed",
+    "name": "Alpakka Tweed",
+    "brand": "Du Store Alpakka",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 80,
+    "gauge": 17,
+    "needle": [
+      5,
+      5
+    ],
+    "weight": "aran",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "alpaca": 50,
+      "wool": 30,
+      "viscose": 20
+    },
+    "superwash": false,
+    "halo": 1,
+    "elasticity": 2,
+    "drape": 3,
+    "warmth": 4,
+    "softness": 4,
+    "firmness": 3,
+    "bestFor": [
+      "sweaters",
+      "cardigans",
+      "texture"
+    ],
+    "notes": [
+      "Mykt tweedpreg med alpakka.",
+      "Passer godt til lune plagg med litt spill i overflaten."
+    ],
+    "aliases": [
+      "alpakka tweed",
+      "du store alpakka alpakka tweed"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "gjestal-cortina-soft",
+    "name": "Cortina Soft",
+    "brand": "Gjestal",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 55,
+    "gauge": 14,
+    "needle": [
+      6,
+      7
+    ],
+    "weight": "bulky",
+    "structure": "plied",
+    "texture": "fluffy",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": false,
+    "halo": 2,
+    "elasticity": 3,
+    "drape": 2,
+    "warmth": 5,
+    "softness": 3,
+    "firmness": 4,
+    "bestFor": [
+      "outerwear",
+      "cozy",
+      "traditional"
+    ],
+    "notes": [
+      "Tykt ullgarn som passer godt til varme vinterplagg.",
+      "Gir mer volum enn tynnere ullgarn."
+    ],
+    "aliases": [
+      "cortina soft",
+      "gjestal cortina soft"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "hillesvag-varde",
+    "name": "Varde",
+    "brand": "Hillesvåg",
+    "gramsPerSkein": 100,
+    "metersPerSkein": 200,
+    "gauge": 18,
+    "needle": [
+      4.5,
+      5
+    ],
+    "weight": "aran",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 2,
+    "warmth": 4,
+    "softness": 2,
+    "firmness": 5,
+    "bestFor": [
+      "traditional",
+      "outerwear",
+      "sweaters"
+    ],
+    "notes": [
+      "Norsk ull med godt hold og tydelig maskebilde.",
+      "Fin til plagg som skal vare lenge."
+    ],
+    "aliases": [
+      "varde",
+      "hillesvag varde"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "hillesvag-sollys",
+    "name": "Sølje Pelsullgarn",
+    "brand": "Hillesvåg",
+    "gramsPerSkein": 100,
+    "metersPerSkein": 350,
+    "gauge": 25,
+    "needle": [
+      3,
+      3.5
+    ],
+    "weight": "sport",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 2,
+    "warmth": 3,
+    "softness": 2,
+    "firmness": 5,
+    "bestFor": [
+      "traditional",
+      "colorwork",
+      "sweaters"
+    ],
+    "notes": [
+      "Fast og lett pelsullgarn.",
+      "Egner seg godt til fargestrikk og plagg med definisjon."
+    ],
+    "aliases": [
+      "solje pelsullgarn",
+      "sølje pelsullgarn",
+      "hillesvåg sølje"
+    ],
+    "availableInNorway": true
+  },
+  {
+    "id": "lana-grossa-cool-wool",
+    "name": "Cool Wool",
+    "brand": "Lana Grossa",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 160,
+    "gauge": 24,
+    "needle": [
+      3,
+      3.5
+    ],
+    "weight": "sport",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "merino": 100
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 3,
+    "warmth": 3,
+    "softness": 5,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "sweaters",
+      "everyday"
+    ],
+    "notes": [
+      "Fin og myk merino med jevnt uttrykk.",
+      "Praktisk til lette plagg."
+    ],
+    "aliases": [
+      "cool wool",
+      "lana grossa cool wool"
+    ],
+    "availableInNorway": true
   }
 ];
