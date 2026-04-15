@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
-    <link rel="stylesheet" href="style.css?v=1.8.1">
-    <link rel="manifest" href="manifest.json?v=1.8.1">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.1">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.1">
+    <link rel="stylesheet" href="style.css?v=1.8.2">
+    <link rel="manifest" href="manifest.json?v=1.8.2">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.2">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.2">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
@@ -22,8 +22,8 @@
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.8.1</strong>
-            <p class="whats-new-intro">Denne oppdateringen gjør Garnalternativ enklere å bruke og bygger ut den norske garnbasen videre.</p>
+            <strong id="whatsNewTitle">Nytt i v1.8.2</strong>
+            <p class="whats-new-intro">Denne oppdateringen rydder opp i Garnalternativ og gjør søket tydeligere når du ikke får treff.</p>
 
             <div class="whats-new-list">
                 <article class="whats-new-item">
@@ -49,7 +49,7 @@
                 </article>
             </div>
 
-            <p class="whats-new-meta">Denne versjonen starter en større oppgradering av Garnalternativ med bedre flyt, større database og tydeligere resultater.</p>
+            <p class="whats-new-meta">Denne versjonen rydder opp i flyten for Garnalternativ og gjør det tydeligere når søket ikke finner noe.</p>
             <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
         </div>
     </div>
@@ -251,8 +251,7 @@
         <section id="garnalternativ" class="page">
             <button class="btn-back" data-page="hjem">Tilbake</button>
             <h2>Garnalternativ <span class="beta-label">(Beta)</span></h2>
-            <div class="feature-pill-row"><span class="feature-pill">Smartere treff</span><span class="feature-pill">Større base</span><span class="feature-pill">Bedre forklaringer</span></div>
-            <p class="description">Finn smarte og praktiske garnbytter med forklaring, advarsler og nøsteberegning.</p>
+                        <p class="description">Finn smarte og praktiske garnbytter med forklaring, advarsler og nøsteberegning.</p>
 
             <div class="garnalt-layout">
                 <div class="garnalt-card">
@@ -273,28 +272,19 @@
                     <div id="selectedYarnCard" class="selected-yarn-card hidden"></div>
                 </div>
 
-                <div class="garnalt-card">
-                    <div class="section-title-row">
-                        <h3 class="section-title">2. Tilpass søket</h3>
-                        <button id="toggleAdvancedFilters" class="btn-secondary" type="button">Vis flere valg</button>
-                    </div>
+                <div id="garnaltFiltersCard" class="garnalt-card hidden">
+                    <h3 class="section-title">2. Velg egenskaper for alternativ garn</h3>
 
                     <div class="filter-grid">
-                        <label class="check-chip"><input type="checkbox" id="filterOnlyNorway" checked> Kun garn i norsk base</label>
                         <label class="check-chip"><input type="checkbox" id="filterNaturalOnly"> Kun naturfiber</label>
                         <label class="check-chip"><input type="checkbox" id="filterAvoidMohair"> Unngå mohair</label>
                         <label class="check-chip"><input type="checkbox" id="filterAvoidAlpaca"> Unngå alpakka</label>
-                    </div>
-
-                    <div id="advancedFilters" class="advanced-filters hidden">
-                        <div class="filter-grid">
-                            <label class="check-chip"><input type="checkbox" id="filterSuperwash"> Kun superwash</label>
-                            <label class="check-chip"><input type="checkbox" id="filterLessFluffy"> Mindre fluffy</label>
-                            <label class="check-chip"><input type="checkbox" id="filterSofter"> Mykere alternativ</label>
-                            <label class="check-chip"><input type="checkbox" id="filterSummer"> Passer til sommerplagg</label>
-                            <label class="check-chip"><input type="checkbox" id="filterBaby"> Babyvennlig</label>
-                            <label class="check-chip"><input type="checkbox" id="filterSameExpression"> Samme uttrykk</label>
-                        </div>
+                        <label class="check-chip"><input type="checkbox" id="filterSuperwash"> Kun superwash</label>
+                        <label class="check-chip"><input type="checkbox" id="filterLessFluffy"> Mindre fluffy</label>
+                        <label class="check-chip"><input type="checkbox" id="filterSofter"> Mykere alternativ</label>
+                        <label class="check-chip"><input type="checkbox" id="filterSummer"> Passer til sommerplagg</label>
+                        <label class="check-chip"><input type="checkbox" id="filterBaby"> Babyvennlig</label>
+                        <label class="check-chip"><input type="checkbox" id="filterSameExpression"> Samme uttrykk</label>
                     </div>
                 </div>
 
@@ -359,7 +349,7 @@
             <div class="settings-card">
                 <div class="settings-card-header">
                     <h3 class="section-title">Nytt i siste versjon</h3>
-                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.1</span>
+                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.2</span>
                 </div>
 
                 <div class="settings-whatsnew-list">
@@ -398,7 +388,7 @@
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.8.1</p>
+            <p class="version" id="versionText">v1.8.2</p>
         </div>
     </footer>
 
@@ -415,10 +405,10 @@
         <button id="updateBtn" class="update-btn">Oppdater</button>
     </div>
 
-    <script src="yarn-data.js?v=1.8.1"></script>
-    <script src="app.js?v=1.8.1"></script>
+    <script src="yarn-data.js?v=1.8.2"></script>
+    <script src="app.js?v=1.8.2"></script>
     <script>
-    const APP_VERSION = '1.8.1';
+    const APP_VERSION = '1.8.2';
     let deferredInstallPrompt = null;
     let refreshingFromController = false;
 

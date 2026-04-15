@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.8.1';
+const APP_VERSION = '1.8.2';
 
 // --- Tema (lys / mørk / auto) ---
 const THEME_MODE_KEY = 'inges-strikkehjelp-theme-mode';
@@ -647,7 +647,6 @@ function prettyStructureLabel(structure) {
 }
 
 const FILTER_IDS = [
-    'filterOnlyNorway',
     'filterNaturalOnly',
     'filterAvoidMohair',
     'filterAvoidAlpaca',
@@ -661,7 +660,6 @@ const FILTER_IDS = [
 
 function getSelectedFilters() {
     return {
-        onlyNorway: document.getElementById('filterOnlyNorway').checked,
         naturalOnly: document.getElementById('filterNaturalOnly').checked,
         avoidMohair: document.getElementById('filterAvoidMohair').checked,
         avoidAlpaca: document.getElementById('filterAvoidAlpaca').checked,
@@ -680,7 +678,6 @@ function isNaturalFiber(fiber) {
 
 function passesHardFilters(yarn, filters) {
     const fibers = getFiberKeys(yarn);
-    if (filters.onlyNorway && yarn.availableInNorway === false) return false;
     if (filters.naturalOnly && fibers.some(f => !isNaturalFiber(f))) return false;
     if (filters.avoidMohair && fibers.includes('mohair')) return false;
     if (filters.avoidAlpaca && fibers.includes('alpaca')) return false;
@@ -922,11 +919,23 @@ function searchYarns(query) {
         .map(item => item.yarn);
 }
 
-function renderSearchResults(results) {
+function setGarnAltFiltersVisible(visible) {
+    const card = document.getElementById('garnaltFiltersCard');
+    if (!card) return;
+    card.classList.toggle('hidden', !visible);
+}
+
+function renderSearchResults(results, query = '') {
     const box = document.getElementById('garnSearchResults');
+    const hasQuery = !!String(query || '').trim();
     if (!results.length) {
-        box.classList.add('hidden');
-        box.innerHTML = '';
+        if (hasQuery) {
+            box.innerHTML = '<div class="garn-search-empty">Søket ga ingen treff</div>';
+            box.classList.remove('hidden');
+        } else {
+            box.classList.add('hidden');
+            box.innerHTML = '';
+        }
         return;
     }
     box.innerHTML = results.map(yarn => `
@@ -972,7 +981,6 @@ function restoreGarnAltState() {
         }
         if (state.skeins) document.getElementById('antallNoster').value = state.skeins;
         if (state.filters) {
-            document.getElementById('filterOnlyNorway').checked = !!state.filters.onlyNorway;
             document.getElementById('filterNaturalOnly').checked = !!state.filters.naturalOnly;
             document.getElementById('filterAvoidMohair').checked = !!state.filters.avoidMohair;
             document.getElementById('filterAvoidAlpaca').checked = !!state.filters.avoidAlpaca;
@@ -1076,7 +1084,7 @@ function renderGarnAltResults(source, alternatives, filters, originalSkeins) {
     const result = document.getElementById('garnaltResultat');
     if (!alternatives.length) {
         document.getElementById('garnaltSummary')?.classList.add('hidden');
-        visResultat(result, '<h3>Ingen gode treff</h3><p>Prøv å fjerne noen filtre, slå av «Samme uttrykk», eller velg et originalgarn med flere lignende alternativer i basen.</p>');
+        visResultat(result, '<h3>Søket ga ingen treff</h3><p>Prøv å fjerne noen valg eller velg et annet originalgarn.</p>');
         return;
     }
     renderGarnAltSummary(source, alternatives, filters);
@@ -1094,27 +1102,27 @@ function setupGarnAlternativ() {
     const searchInput = document.getElementById('garnSearch');
     const searchResults = document.getElementById('garnSearchResults');
     const quickSearchButtons = document.querySelectorAll('.quick-search-chip');
-    const toggleAdvanced = document.getElementById('toggleAdvancedFilters');
-    const advancedFilters = document.getElementById('advancedFilters');
+    const filtersCard = document.getElementById('garnaltFiltersCard');
     const findButton = document.getElementById('beregnGarnalt');
     const resetButton = document.getElementById('nullstillGarnalt');
 
     searchInput.addEventListener('input', () => {
         searchInput.dataset.selectedId = '';
         renderSelectedYarn(null);
+        setGarnAltFiltersVisible(false);
         document.getElementById('garnaltSummary').classList.add('hidden');
         document.getElementById('garnaltResultat').classList.add('hidden');
-        renderSearchResults(searchYarns(searchInput.value));
+        renderSearchResults(searchYarns(searchInput.value), searchInput.value);
     });
 
     searchInput.addEventListener('focus', () => {
-        renderSearchResults(searchYarns(searchInput.value));
+        renderSearchResults(searchYarns(searchInput.value), searchInput.value);
     });
 
     quickSearchButtons.forEach(button => {
         button.addEventListener('click', () => {
             searchInput.value = button.dataset.query || '';
-            renderSearchResults(searchYarns(searchInput.value));
+            renderSearchResults(searchYarns(searchInput.value), searchInput.value);
             searchInput.focus();
         });
     });
@@ -1127,7 +1135,8 @@ function setupGarnAlternativ() {
         searchInput.value = `${yarn.brand} ${yarn.name}`;
         searchInput.dataset.selectedId = yarn.id;
         renderSelectedYarn(yarn);
-        renderSearchResults([]);
+        setGarnAltFiltersVisible(true);
+        renderSearchResults([], '');
         saveGarnAltState();
     });
 
@@ -1135,11 +1144,6 @@ function setupGarnAlternativ() {
         if (!e.target.closest('#garnSearch') && !e.target.closest('#garnSearchResults')) {
             renderSearchResults([]);
         }
-    });
-
-    toggleAdvanced.addEventListener('click', () => {
-        advancedFilters.classList.toggle('hidden');
-        toggleAdvanced.textContent = advancedFilters.classList.contains('hidden') ? 'Vis flere valg' : 'Skjul flere valg';
     });
 
     findButton.addEventListener('click', () => {
@@ -1166,8 +1170,8 @@ function setupGarnAlternativ() {
         document.getElementById('garnaltSummary').innerHTML = '';
         renderSelectedYarn(null);
         renderSearchResults([]);
-        document.getElementById('filterOnlyNorway').checked = true;
-        FILTER_IDS.slice(1).forEach(id => { document.getElementById(id).checked = false; });
+        setGarnAltFiltersVisible(false);
+        FILTER_IDS.forEach(id => { document.getElementById(id).checked = false; });
         localStorage.removeItem('garnalternativ-state');
         saveGarnAltState();
     });
@@ -1189,13 +1193,15 @@ function setupGarnAlternativ() {
                     searchInput.value = `${firstHit.brand} ${firstHit.name}`;
                     searchInput.dataset.selectedId = firstHit.id;
                     renderSelectedYarn(firstHit);
-                    renderSearchResults([]);
+                    setGarnAltFiltersVisible(true);
+                    renderSearchResults([], '');
                 }
             }
         });
     }
 
     restoreGarnAltState();
+    setGarnAltFiltersVisible(!!getSelectedYarn());
 }
 
 setupGarnAlternativ();

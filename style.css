@@ -2126,6 +2126,14 @@ body.dark .beta-label {
 .garn-search-item strong { display:block; margin-bottom:0.15rem; }
 .garn-search-item span { font-size:0.84rem; color:#7a6355; }
 .garn-search-meta { white-space:nowrap; font-weight:bold; color:#a85d4a !important; }
+.garn-search-empty {
+    padding: 0.9rem 1rem;
+    color: #7a6355;
+    font-size: 0.92rem;
+}
+body.dark .garn-search-empty {
+    color: #d7c7bd;
+}
 .garnalt-summary { margin: 0.5rem 0 1rem; }
 .garnalt-summary-card { background:#fff8f4; border:1px solid #ecd6c8; color:#6a4d3c; border-radius:12px; padding:0.85rem 1rem; }
 .garn-kort-tips p { margin-bottom:0.45rem; }
