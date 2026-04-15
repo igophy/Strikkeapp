@@ -6030,5 +6030,934 @@ window.YARN_DATABASE = [
       "sourceUrl": "https://www.viking-garn.no/garn/viking-garn/vaar",
       "lastVerified": "2026-04-15"
     }
+  },
+  {
+    "id": "filcolana-arwetta",
+    "name": "Arwetta Classic",
+    "brand": "Filcolana",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 210,
+    "gauge": 28,
+    "needle": [
+      2.5,
+      3
+    ],
+    "weight": "fingering",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "wool": 80,
+      "nylon": 20
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 3,
+    "warmth": 3,
+    "softness": 4,
+    "firmness": 4,
+    "bestFor": [
+      "socks",
+      "baby",
+      "light-sweaters"
+    ],
+    "notes": [
+      "Slitesterkt merinoblanding som også egner seg godt til babyplagg.",
+      "Fin som enslig tråd eller sammen med følgetråd."
+    ],
+    "aliases": [
+      "arwetta",
+      "arwetta classic",
+      "filcolana arwetta"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Filcolana",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://en.filcolana.dk/yarns/arwetta-classic.html",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 80
+        },
+        {
+          "type": "nylon",
+          "percent": 20
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 210,
+      "metersPer100g": 420,
+      "recommendedNeedleMm": [
+        2.5,
+        3
+      ],
+      "gaugeStitches10cm": [
+        28,
+        32
+      ],
+      "gaugeRows10cm": [
+        36,
+        42
+      ],
+      "superwash": true,
+      "sourceUrl": "https://en.filcolana.dk/yarns/arwetta-classic.html",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "hjertegarn-120-extrafine-merino",
+    "name": "120 Extra fine merino",
+    "brand": "Hjertegarn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 120,
+    "gauge": 22,
+    "needle": [
+      3.5,
+      4
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "soft",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 3,
+    "warmth": 3,
+    "softness": 4,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "sweaters",
+      "cardigans"
+    ],
+    "notes": [
+      "Superwash-merino med myk overflate og jevnt maskebilde.",
+      "En enkel allround-kvalitet til plagg som skal tåle bruk."
+    ],
+    "aliases": [
+      "120 extrafine merino",
+      "hjertegarn 120 extrafine merino",
+      "extra fine merino hjertegarn"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Hjertegarn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://hjertegarn.dk/shop/220-120-extra-fine-merino-/",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 120,
+      "metersPer100g": 240,
+      "recommendedNeedleMm": [
+        3.5,
+        4
+      ],
+      "gaugeStitches10cm": [
+        22
+      ],
+      "gaugeRows10cm": null,
+      "superwash": true,
+      "sourceUrl": "https://hjertegarn.dk/shop/220-120-extra-fine-merino-/",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "hjertegarn-merino-cotton",
+    "name": "Merino Cotton",
+    "brand": "Hjertegarn",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 120,
+    "gauge": 22,
+    "needle": [
+      3.5,
+      4
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "wool": 50,
+      "cotton": 50
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 3,
+    "drape": 3,
+    "warmth": 2,
+    "softness": 4,
+    "firmness": 3,
+    "bestFor": [
+      "baby",
+      "spring",
+      "summer"
+    ],
+    "notes": [
+      "Blanding av superwash ull og bomull som gir et roligere og litt kjøligere uttrykk.",
+      "Fin til overgangsplagg og plagg for sensitiv hud."
+    ],
+    "aliases": [
+      "merino cotton",
+      "hjertegarn merino cotton"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Hjertegarn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://hjertegarn.dk/shop/217-merino-cotton/",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 50
+        },
+        {
+          "type": "cotton",
+          "percent": 50
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 120,
+      "metersPer100g": 240,
+      "recommendedNeedleMm": [
+        3.5,
+        4
+      ],
+      "gaugeStitches10cm": [
+        22
+      ],
+      "gaugeRows10cm": null,
+      "superwash": true,
+      "sourceUrl": "https://hjertegarn.dk/shop/217-merino-cotton/",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "hjertegarn-natur-uld",
+    "name": "Natur Uld",
+    "brand": "Hjertegarn",
+    "gramsPerSkein": 100,
+    "metersPerSkein": 100,
+    "gauge": 14,
+    "needle": [
+      6,
+      7
+    ],
+    "weight": "bulky",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": false,
+    "halo": 1,
+    "elasticity": 4,
+    "drape": 2,
+    "warmth": 5,
+    "softness": 2,
+    "firmness": 4,
+    "bestFor": [
+      "outerwear",
+      "felted",
+      "cozy"
+    ],
+    "notes": [
+      "Tykk 100 % ull som også er egnet til toving.",
+      "God til varme plagg, tøfler og tilbehør."
+    ],
+    "aliases": [
+      "natur uld",
+      "hjertegarn natur uld"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Hjertegarn",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://hjertegarn.dk/shop/157-natur-uld/",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100
+        }
+      ],
+      "gramsPerSkein": 100,
+      "metersPerSkein": 100,
+      "metersPer100g": 100,
+      "recommendedNeedleMm": [
+        6,
+        7
+      ],
+      "gaugeStitches10cm": [
+        14
+      ],
+      "gaugeRows10cm": null,
+      "superwash": false,
+      "sourceUrl": "https://hjertegarn.dk/shop/157-natur-uld/",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "isager-alpaca-1",
+    "name": "Alpaca 1",
+    "brand": "Isager",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 400,
+    "gauge": 28,
+    "needle": [
+      3,
+      3
+    ],
+    "weight": "lace",
+    "structure": "plied",
+    "texture": "soft",
+    "fibers": {
+      "alpaca": 100
+    },
+    "superwash": false,
+    "halo": 1,
+    "elasticity": 1,
+    "drape": 4,
+    "warmth": 4,
+    "softness": 5,
+    "firmness": 1,
+    "bestFor": [
+      "scarves",
+      "light-sweaters",
+      "held-together"
+    ],
+    "notes": [
+      "Ultratynn alpakka som ofte brukes sammen med en annen tråd.",
+      "Gir mykhet og dybde uten mye vekt."
+    ],
+    "aliases": [
+      "alpaca 1",
+      "isager alpaca 1"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Isager",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://isagerstrik.dk/en/product/alpaca-1/",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "alpaca",
+          "percent": 100
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 400,
+      "metersPer100g": 800,
+      "recommendedNeedleMm": [
+        3,
+        3
+      ],
+      "gaugeStitches10cm": [
+        28
+      ],
+      "gaugeRows10cm": [
+        34
+      ],
+      "superwash": false,
+      "sourceUrl": "https://isagerstrik.dk/en/product/alpaca-1/",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "isager-jensen-yarn",
+    "name": "Jensen Yarn",
+    "brand": "Isager",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 125,
+    "gauge": 22,
+    "needle": [
+      3,
+      3
+    ],
+    "weight": "sport",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 2,
+    "warmth": 4,
+    "softness": 2,
+    "firmness": 5,
+    "bestFor": [
+      "texture",
+      "outerwear",
+      "sweaters"
+    ],
+    "notes": [
+      "Fast tretrådet ullgarn som løfter struktur og mønster godt.",
+      "Slitesterk kvalitet til plagg som skal holde formen."
+    ],
+    "aliases": [
+      "jensen yarn",
+      "isager jensen",
+      "isager jensen yarn"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Isager",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://isagerstrik.dk/en/product/jensen-yarn/",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 125,
+      "metersPer100g": 250,
+      "recommendedNeedleMm": [
+        3,
+        3
+      ],
+      "gaugeStitches10cm": [
+        22
+      ],
+      "gaugeRows10cm": [
+        28
+      ],
+      "superwash": false,
+      "sourceUrl": "https://isagerstrik.dk/en/product/jensen-yarn/",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "jarbo-raggi",
+    "name": "Raggi",
+    "brand": "Järbo",
+    "gramsPerSkein": 100,
+    "metersPerSkein": 150,
+    "gauge": 18,
+    "needle": [
+      4.5,
+      4.5
+    ],
+    "weight": "worsted",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "wool": 70,
+      "polyamide": 30
+    },
+    "superwash": true,
+    "halo": 0,
+    "elasticity": 3,
+    "drape": 2,
+    "warmth": 4,
+    "softness": 3,
+    "firmness": 4,
+    "bestFor": [
+      "socks",
+      "winter",
+      "accessories"
+    ],
+    "notes": [
+      "Klassisk slitesterkt raggsokkgarn med superwash ull og polyamid.",
+      "Godt til sokker, votter og hverdagsplagg som skal tåle mye bruk."
+    ],
+    "aliases": [
+      "raggi",
+      "järbo raggi",
+      "jarbo raggi"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Järbo",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.jarbo.se/raggi-sockgarn-10000000250",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 70
+        },
+        {
+          "type": "polyamide",
+          "percent": 30
+        }
+      ],
+      "gramsPerSkein": 100,
+      "metersPerSkein": 150,
+      "metersPer100g": 150,
+      "recommendedNeedleMm": [
+        4.5,
+        4.5
+      ],
+      "gaugeStitches10cm": [
+        18
+      ],
+      "gaugeRows10cm": [
+        24
+      ],
+      "superwash": true,
+      "sourceUrl": "https://www.jarbo.se/raggi-sockgarn-10000000250",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "jarbo-svensk-ull-3-tr",
+    "name": "Svensk Ull 3 tr",
+    "brand": "Järbo",
+    "gramsPerSkein": 100,
+    "metersPerSkein": 180,
+    "gauge": 21,
+    "needle": [
+      4,
+      4
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "rustic",
+    "fibers": {
+      "wool": 100
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 4,
+    "drape": 2,
+    "warmth": 4,
+    "softness": 2,
+    "firmness": 4,
+    "bestFor": [
+      "sweaters",
+      "traditional",
+      "mittens"
+    ],
+    "notes": [
+      "Rustikk svensk ull med tydelig karakter og godt hold.",
+      "Passer godt der du vil ha varme og definisjon i strukturen."
+    ],
+    "aliases": [
+      "svensk ull 3 tr",
+      "jarbo svensk ull",
+      "järbo svensk ull"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Järbo",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://www.jarbo.se/svensk-ull-3-tr-ullgarn-10000000297",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 100
+        }
+      ],
+      "gramsPerSkein": 100,
+      "metersPerSkein": 180,
+      "metersPer100g": 180,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        21
+      ],
+      "gaugeRows10cm": [
+        26
+      ],
+      "superwash": false,
+      "sourceUrl": "https://www.jarbo.se/svensk-ull-3-tr-ullgarn-10000000297",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "novita-7-brothers",
+    "name": "7 Brothers",
+    "brand": "Novita",
+    "gramsPerSkein": 100,
+    "metersPerSkein": 200,
+    "gauge": 18,
+    "needle": [
+      4,
+      4
+    ],
+    "weight": "worsted",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "wool": 80,
+      "polyamide": 20
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 3,
+    "drape": 2,
+    "warmth": 4,
+    "softness": 3,
+    "firmness": 4,
+    "bestFor": [
+      "socks",
+      "sweaters",
+      "everyday"
+    ],
+    "notes": [
+      "Allsidig ullblanding kjent for sokker og robuste hverdagsplagg.",
+      "Gir et fastere og mer slitesterkt uttrykk enn rene merinokvaliteter."
+    ],
+    "aliases": [
+      "7 brothers",
+      "7 veljesta",
+      "novita 7 brothers",
+      "novita 7 veljesta"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Novita",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://novita.com/en/products/novita-7-veljesta-villasekoitelanka-1",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 80
+        },
+        {
+          "type": "polyamide",
+          "percent": 20
+        }
+      ],
+      "gramsPerSkein": 100,
+      "metersPerSkein": 200,
+      "metersPer100g": 200,
+      "recommendedNeedleMm": [
+        4,
+        4
+      ],
+      "gaugeStitches10cm": [
+        18
+      ],
+      "gaugeRows10cm": [
+        26
+      ],
+      "superwash": false,
+      "sourceUrl": "https://novita.com/en/products/novita-7-veljesta-villasekoitelanka-1",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "novita-nalle",
+    "name": "Nalle",
+    "brand": "Novita",
+    "gramsPerSkein": 100,
+    "metersPerSkein": 260,
+    "gauge": 22,
+    "needle": [
+      3.5,
+      3.5
+    ],
+    "weight": "sport",
+    "structure": "plied",
+    "texture": "smooth",
+    "fibers": {
+      "wool": 80,
+      "nylon": 20
+    },
+    "superwash": false,
+    "halo": 0,
+    "elasticity": 3,
+    "drape": 3,
+    "warmth": 3,
+    "softness": 3,
+    "firmness": 4,
+    "bestFor": [
+      "socks",
+      "baby",
+      "light-sweaters"
+    ],
+    "notes": [
+      "Klassisk allround-garn med ull og nylon som fungerer til både sokker og plagg.",
+      "Tynnere enn 7 Brothers og mer i sport/DK-land."
+    ],
+    "aliases": [
+      "nalle",
+      "novita nalle"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Novita",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://novita.com/en/products/novita-nalle-100-g-villasekoitelanka",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 80
+        },
+        {
+          "type": "nylon",
+          "percent": 20
+        }
+      ],
+      "gramsPerSkein": 100,
+      "metersPerSkein": 260,
+      "metersPer100g": 260,
+      "recommendedNeedleMm": [
+        3.5,
+        3.5
+      ],
+      "gaugeStitches10cm": [
+        22
+      ],
+      "gaugeRows10cm": [
+        32
+      ],
+      "superwash": false,
+      "sourceUrl": "https://novita.com/en/products/novita-nalle-100-g-villasekoitelanka",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "permin-bella",
+    "name": "Bella",
+    "brand": "Permin",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 145,
+    "gauge": 14,
+    "needle": [
+      6,
+      6
+    ],
+    "weight": "bulky",
+    "structure": "brushed",
+    "texture": "fluffy",
+    "fibers": {
+      "mohair": 75,
+      "wool": 20,
+      "polyamide": 5
+    },
+    "superwash": false,
+    "halo": 5,
+    "elasticity": 2,
+    "drape": 4,
+    "warmth": 4,
+    "softness": 5,
+    "firmness": 1,
+    "bestFor": [
+      "airy",
+      "sweaters",
+      "held-single"
+    ],
+    "notes": [
+      "Luftig mohairkvalitet med tydelig fluff og lav vekt.",
+      "Kan brukes alene eller sammen med andre garn for mer halo."
+    ],
+    "aliases": [
+      "bella",
+      "permin bella",
+      "bella by permin"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Permin",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://permin.dk/en/knit/yarn/quality/bella",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "mohair",
+          "percent": 75
+        },
+        {
+          "type": "wool",
+          "percent": 20
+        },
+        {
+          "type": "polyamide",
+          "percent": 5
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 145,
+      "metersPer100g": 290,
+      "recommendedNeedleMm": [
+        6,
+        6
+      ],
+      "gaugeStitches10cm": [
+        14
+      ],
+      "gaugeRows10cm": [
+        22
+      ],
+      "superwash": false,
+      "sourceUrl": "https://permin.dk/en/knit/yarn/quality/bella",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "rowan-felted-tweed",
+    "name": "Felted Tweed",
+    "brand": "Rowan",
+    "gramsPerSkein": 50,
+    "metersPerSkein": 175,
+    "gauge": 22,
+    "needle": [
+      3.75,
+      4
+    ],
+    "weight": "dk",
+    "structure": "plied",
+    "texture": "tweed",
+    "fibers": {
+      "wool": 50,
+      "viscose": 25,
+      "alpaca": 25
+    },
+    "superwash": false,
+    "halo": 1,
+    "elasticity": 3,
+    "drape": 4,
+    "warmth": 3,
+    "softness": 4,
+    "firmness": 2,
+    "bestFor": [
+      "fair-isle",
+      "sweaters",
+      "lace"
+    ],
+    "notes": [
+      "Lett DK-garn med tweedeffekt og godt fall.",
+      "Populært til flerfarget strikk og plagg som skal være lette men varme."
+    ],
+    "aliases": [
+      "felted tweed",
+      "rowan felted tweed"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Rowan",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://knitrowan.com/en/products/felted-tweed",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "wool",
+          "percent": 50
+        },
+        {
+          "type": "viscose",
+          "percent": 25
+        },
+        {
+          "type": "alpaca",
+          "percent": 25
+        }
+      ],
+      "gramsPerSkein": 50,
+      "metersPerSkein": 175,
+      "metersPer100g": 350,
+      "recommendedNeedleMm": [
+        3.75,
+        4
+      ],
+      "gaugeStitches10cm": [
+        22,
+        24
+      ],
+      "gaugeRows10cm": [
+        30,
+        32
+      ],
+      "superwash": false,
+      "sourceUrl": "https://knitrowan.com/en/products/felted-tweed",
+      "lastVerified": "2026-04-15"
+    }
+  },
+  {
+    "id": "rowan-kidsilk-haze",
+    "name": "Kidsilk Haze",
+    "brand": "Rowan",
+    "gramsPerSkein": 25,
+    "metersPerSkein": 210,
+    "gauge": 18,
+    "needle": [
+      3.25,
+      5
+    ],
+    "weight": "lace",
+    "structure": "brushed",
+    "texture": "fluffy",
+    "fibers": {
+      "mohair": 70,
+      "silk": 30
+    },
+    "superwash": false,
+    "halo": 5,
+    "elasticity": 1,
+    "drape": 4,
+    "warmth": 3,
+    "softness": 5,
+    "firmness": 1,
+    "bestFor": [
+      "lace",
+      "held-together",
+      "airy"
+    ],
+    "notes": [
+      "Klassisk silk/mohair-garn med høy halo og lett uttrykk.",
+      "Brukes ofte alene til lette plagg eller som følgetråd."
+    ],
+    "aliases": [
+      "kidsilk haze",
+      "rowan kidsilk haze"
+    ],
+    "availableInNorway": true,
+    "brandFamily": "Rowan",
+    "dataStatus": "official-verified",
+    "sourceUrl": "https://knitrowan.com/en/products/kidsilk-haze",
+    "lastVerified": "2026-04-15",
+    "documented": {
+      "fiberContent": [
+        {
+          "type": "mohair",
+          "percent": 70
+        },
+        {
+          "type": "silk",
+          "percent": 30
+        }
+      ],
+      "gramsPerSkein": 25,
+      "metersPerSkein": 210,
+      "metersPer100g": 840,
+      "recommendedNeedleMm": [
+        3.25,
+        5
+      ],
+      "gaugeStitches10cm": [
+        18,
+        25
+      ],
+      "gaugeRows10cm": [
+        23,
+        34
+      ],
+      "superwash": false,
+      "sourceUrl": "https://knitrowan.com/en/products/kidsilk-haze",
+      "lastVerified": "2026-04-15"
+    }
   }
 ];

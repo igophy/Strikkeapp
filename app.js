@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.8.8';
+const APP_VERSION = '1.8.9';
 
 // --- Tema (lys / mørk / auto) ---
 const THEME_MODE_KEY = 'inges-strikkehjelp-theme-mode';
