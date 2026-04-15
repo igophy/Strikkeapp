@@ -1,5 +1,5 @@
 // Inges strikkehjelp - app.js
-const APP_VERSION = '1.8.4';
+const APP_VERSION = '1.8.5';
 
 // --- Tema (lys / mørk / auto) ---
 const THEME_MODE_KEY = 'inges-strikkehjelp-theme-mode';
@@ -645,6 +645,14 @@ function prettyStructureLabel(structure) {
     return labels[structure] || structure;
 }
 
+
+function notesList(item) {
+    const value = item?.notes;
+    if (Array.isArray(value)) return value.filter(Boolean);
+    if (typeof value === 'string' && value.trim()) return [value.trim()];
+    return [];
+}
+
 const FILTER_IDS = [
     'filterNaturalOnly',
     'filterAvoidMohair',
@@ -879,7 +887,7 @@ function renderSelectedYarn(yarn) {
             <span class="garn-egenskap">Pinne ${needleText(yarn)}</span>
             <span class="garn-egenskap">Best til ${usage || 'mange plagg'}</span>
         </div>
-        <p class="selected-yarn-note">${(yarn.notes || [''])[0]}</p>
+        <p class="selected-yarn-note">${notesList(yarn)[0] || ''}</p>
     `;
     card.classList.remove('hidden');
 }
@@ -1036,7 +1044,7 @@ function buildResultCard(candidate, source, filters, originalSkeins) {
                 </div>
             ` : ''}
 
-            <p class="small-muted">${(candidate.notes || []).slice(0, 2).join(' ')}</p>
+            <p class="small-muted">${notesList(candidate).slice(0, 2).join(' ')}</p>
         </article>
     `;
 }

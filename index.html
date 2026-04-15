@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
-    <link rel="stylesheet" href="style.css?v=1.8.4">
-    <link rel="manifest" href="manifest.json?v=1.8.4">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.4">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.4">
+    <link rel="stylesheet" href="style.css?v=1.8.5">
+    <link rel="manifest" href="manifest.json?v=1.8.5">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.5">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.5">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
@@ -22,34 +22,34 @@
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.8.4</strong>
-            <p class="whats-new-intro">Denne oppdateringen retter stegflyten i Garnalternativ, skrur av automatisk resultatvisning og skiller tydeligere mellom søk og filtrerte treff.</p>
+            <strong id="whatsNewTitle">Nytt i v1.8.5</strong>
+            <p class="whats-new-intro">Denne oppdateringen retter en feil i Garnalternativ som kunne stoppe hele resultatvisningen når et garn hadde notater lagret i et annet format.</p>
 
             <div class="whats-new-list">
                 <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">🧪</div>
+                    <div class="whats-new-icon" aria-hidden="true">🧶</div>
                     <div>
-                        <h3>Korrigert stegflyt i Garnalternativ</h3>
-                        <p>Resultater vises nå først når du trykker på Vis resultater, og valgseksjonene åpnes først etter at du har valgt et garn.</p>
+                        <h3>Rettet visning av alternativer</h3>
+                        <p>Garnalternativ viser nå resultater igjen etter at du har valgt originalgarn og trykker på Vis resultater.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">⚙️</div>
                     <div>
-                        <h3>Tydeligere nulltreff</h3>
-                        <p>Søk uten treff viser Søket ga ingen treff, mens for strenge filtre får en egen melding om at ingen alternative garn passer.</p>
+                        <h3>Mer robust databehandling</h3>
+                        <p>Resultatkortene tåler nå både korte og lengre notater i databasen uten at hele listen stopper opp.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
-                    <div class="whats-new-icon" aria-hidden="true">🏠</div>
+                    <div class="whats-new-icon" aria-hidden="true">🔎</div>
                     <div>
-                        <h3>Renere reset og oppstart</h3>
-                        <p>Garnalternativ starter nå rent uten gjenopprettet tilstand, og nullstillingen går via en egen funksjon i stedet for simulert knappetrykk.</p>
+                        <h3>Fokus på Garnalternativ</h3>
+                        <p>Denne versjonen bygger direkte på forrige versjon og retter spesifikt feilen som hindret alternative garn i å vises.</p>
                     </div>
                 </article>
             </div>
 
-            <p class="whats-new-meta">Denne versjonen prioriterer stabilitet og forutsigbar flyt i Garnalternativ før videre utvidelse av databasen.</p>
+            <p class="whats-new-meta">Denne versjonen prioriterer en konkret feilretting i Garnalternativ før videre forbedringer av databasen og flyten.</p>
             <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
         </div>
     </div>
@@ -342,29 +342,29 @@
             <div class="settings-card">
                 <div class="settings-card-header">
                     <h3 class="section-title">Nytt i siste versjon</h3>
-                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.4</span>
+                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.5</span>
                 </div>
 
                 <div class="settings-whatsnew-list">
                     <div class="settings-whatsnew-item">
                         <span class="settings-whatsnew-icon" aria-hidden="true">🧪</span>
                         <div>
-                            <strong>Korrigert Garnalternativ-flyt</strong>
-                            <p>Du søker først, velger garn, setter eventuelle egenskaper og viser resultater til slutt. Resultatene hopper ikke frem automatisk lenger.</p>
+                            <strong>Rettet visning av alternativer</strong>
+                            <p>Garnalternativ viser nå forslag igjen etter at du har valgt et garn og trykket på Vis resultater.</p>
                         </div>
                     </div>
                     <div class="settings-whatsnew-item">
                         <span class="settings-whatsnew-icon" aria-hidden="true">⚙️</span>
                         <div>
-                            <strong>Bedre nulltreff</strong>
-                            <p>Søk uten treff og for strenge filtervalg får nå hver sin tydelige melding, så det er lettere å forstå hva som må endres.</p>
+                            <strong>Mer robust resultatvisning</strong>
+                            <p>Resultatkortene tåler nå ulike typer notater i databasen uten at hele resultatlisten stopper.</p>
                         </div>
                     </div>
                     <div class="settings-whatsnew-item">
                         <span class="settings-whatsnew-icon" aria-hidden="true">🏠</span>
                         <div>
-                            <strong>Renere reset av Garnalternativ</strong>
-                            <p>Garnalternativ nullstilles nå via en egen reset-funksjon og starter uten lagret state fra tidligere bruk.</p>
+                            <strong>Fokusert feilretting</strong>
+                            <p>Denne versjonen bygger på nyeste utgave og retter spesifikt feilen som gjorde at alternativer ikke kom frem.</p>
                         </div>
                     </div>
                 </div>
@@ -381,7 +381,7 @@
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.8.4</p>
+            <p class="version" id="versionText">v1.8.5</p>
         </div>
     </footer>
 
@@ -398,10 +398,10 @@
         <button id="updateBtn" class="update-btn">Oppdater</button>
     </div>
 
-    <script src="yarn-data.js?v=1.8.4"></script>
-    <script src="app.js?v=1.8.4"></script>
+    <script src="yarn-data.js?v=1.8.5"></script>
+    <script src="app.js?v=1.8.5"></script>
     <script>
-    const APP_VERSION = '1.8.4';
+    const APP_VERSION = '1.8.5';
     let deferredInstallPrompt = null;
     let refreshingFromController = false;
 
