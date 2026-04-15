@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
-    <link rel="stylesheet" href="style.css?v=1.8.0">
-    <link rel="manifest" href="manifest.json?v=1.8.0">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.0">
+    <link rel="stylesheet" href="style.css?v=1.8.1">
+    <link rel="manifest" href="manifest.json?v=1.8.1">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.1">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
@@ -22,7 +22,7 @@
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.8.0</strong>
+            <strong id="whatsNewTitle">Nytt i v1.8.1</strong>
             <p class="whats-new-intro">Denne oppdateringen gjør Garnalternativ enklere å bruke og bygger ut den norske garnbasen videre.</p>
 
             <div class="whats-new-list">
@@ -251,6 +251,7 @@
         <section id="garnalternativ" class="page">
             <button class="btn-back" data-page="hjem">Tilbake</button>
             <h2>Garnalternativ <span class="beta-label">(Beta)</span></h2>
+            <div class="feature-pill-row"><span class="feature-pill">Smartere treff</span><span class="feature-pill">Større base</span><span class="feature-pill">Bedre forklaringer</span></div>
             <p class="description">Finn smarte og praktiske garnbytter med forklaring, advarsler og nøsteberegning.</p>
 
             <div class="garnalt-layout">
@@ -292,6 +293,7 @@
                             <label class="check-chip"><input type="checkbox" id="filterSofter"> Mykere alternativ</label>
                             <label class="check-chip"><input type="checkbox" id="filterSummer"> Passer til sommerplagg</label>
                             <label class="check-chip"><input type="checkbox" id="filterBaby"> Babyvennlig</label>
+                            <label class="check-chip"><input type="checkbox" id="filterSameExpression"> Samme uttrykk</label>
                         </div>
                     </div>
                 </div>
@@ -357,7 +359,7 @@
             <div class="settings-card">
                 <div class="settings-card-header">
                     <h3 class="section-title">Nytt i siste versjon</h3>
-                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.0</span>
+                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.1</span>
                 </div>
 
                 <div class="settings-whatsnew-list">
@@ -396,7 +398,7 @@
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.8.0</p>
+            <p class="version" id="versionText">v1.8.1</p>
         </div>
     </footer>
 
@@ -413,10 +415,10 @@
         <button id="updateBtn" class="update-btn">Oppdater</button>
     </div>
 
-    <script src="yarn-data.js?v=1.8.0"></script>
-    <script src="app.js?v=1.8.0"></script>
+    <script src="yarn-data.js?v=1.8.1"></script>
+    <script src="app.js?v=1.8.1"></script>
     <script>
-    const APP_VERSION = '1.8.0';
+    const APP_VERSION = '1.8.1';
     let deferredInstallPrompt = null;
     let refreshingFromController = false;
 

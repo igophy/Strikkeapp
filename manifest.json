@@ -2,7 +2,7 @@
     "name": "Inges strikkehjelp",
     "short_name": "Strikkehjelp",
     "description": "Din digitale strikkeassistent for telling, beregning og strikkehjelp",
-    "start_url": "./?v=1.8.0",
+    "start_url": "./?v=1.8.1",
     "display": "standalone",
     "background_color": "#faf5f0",
     "theme_color": "#6f4336",

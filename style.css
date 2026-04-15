@@ -2132,3 +2132,42 @@ body.dark .beta-label {
 body.dark .quick-search-chip { background:#2d2724; color:#f5ebe4; border-color:#5e4e45; }
 body.dark .garnalt-summary-card { background:#2b2522; border-color:#4e4139; color:#f3e8df; }
 body.dark .garn-search-meta { color:#f2b59e !important; }
+
+
+.feature-pill-row {
+    display:flex;
+    gap:0.5rem;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:0.85rem;
+}
+.feature-pill {
+    background: rgba(255,255,255,0.18);
+    color: #fff6f2;
+    border: 1px solid rgba(255,255,255,0.26);
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+}
+.strength-badges {
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.45rem;
+    margin:0.85rem 0 0.5rem;
+}
+.strength-chip {
+    background:#f3e1da;
+    color:#7a4b3b;
+    border-radius:999px;
+    padding:0.3rem 0.65rem;
+    font-size:0.82rem;
+    font-weight:600;
+}
+body.dark .strength-chip {
+    background:#3a302d;
+    color:#f1d8cf;
+}
+body.dark .feature-pill {
+    background: rgba(255,255,255,0.08);
+    color: #f6e6e0;
+}
