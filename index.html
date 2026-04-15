@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inges strikkehjelp</title>
     <meta name="theme-color" content="#6f4336">
-    <link rel="stylesheet" href="style.css?v=1.8.2">
-    <link rel="manifest" href="manifest.json?v=1.8.2">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.2">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.2">
+    <link rel="stylesheet" href="style.css?v=1.8.3">
+    <link rel="manifest" href="manifest.json?v=1.8.3">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1.8.3">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1.8.3">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
@@ -22,34 +22,34 @@
     <div id="whatsNewOverlay" class="whats-new-overlay hidden">
         <div class="whats-new-box app-store-card">
             <div class="whats-new-topline">Oppdatert app</div>
-            <strong id="whatsNewTitle">Nytt i v1.8.2</strong>
-            <p class="whats-new-intro">Denne oppdateringen rydder opp i Garnalternativ og gjør søket tydeligere når du ikke får treff.</p>
+            <strong id="whatsNewTitle">Nytt i v1.8.3</strong>
+            <p class="whats-new-intro">Denne oppdateringen gjør Garnalternativ mer stegvis, rydder opp i toppen og sikrer at resultatene vises igjen.</p>
 
             <div class="whats-new-list">
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">🧪</div>
                     <div>
                         <h3>Bedre start på Garnalternativ</h3>
-                        <p>Søket er gjort enklere med populære hurtigvalg, tydeligere treff og en mer trinnvis flyt.</p>
+                        <p>Flyten er gjort tydeligere: søk, velg garn, velg egenskaper og se resultater.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">⚙️</div>
                     <div>
                         <h3>Større garnbase</h3>
-                        <p>Flere vanlige garn i Norge er lagt inn, så det er lettere å finne gode praktiske alternativer.</p>
+                        <p>Populære søk er fjernet for å gi mer plass til det som faktisk hjelper i valget av alternativgarn.</p>
                     </div>
                 </article>
                 <article class="whats-new-item">
                     <div class="whats-new-icon" aria-hidden="true">🏠</div>
                     <div>
                         <h3>Bedre resultatkort</h3>
-                        <p>Resultatene forklarer tydeligere hvorfor et garn passer, og viser raskere hva du bør være obs på.</p>
+                        <p>Resultatene vises igjen og nulltreff er tydeligere både i søk og i filtrerte alternativer.</p>
                     </div>
                 </article>
             </div>
 
-            <p class="whats-new-meta">Denne versjonen rydder opp i flyten for Garnalternativ og gjør det tydeligere når søket ikke finner noe.</p>
+            <p class="whats-new-meta">Denne versjonen prioriterer roligere oppsett, riktig stegflyt og mer stabil resultatvisning i Garnalternativ.</p>
             <button id="closeWhatsNew" class="whats-new-close">Lukk</button>
         </div>
     </div>
@@ -261,19 +261,12 @@
                         <input type="text" id="garnSearch" autocomplete="off" placeholder="f.eks. Peer Gynt, Drops Air, Sunday">
                     </div>
                     <p class="small-muted search-help">Du kan skrive både merke, garnnavn eller deler av navnet. Prøv for eksempel Air, Sunday eller Nepal.</p>
-                    <div class="popular-searches">
-                        <span class="popular-searches-label">Populære søk:</span>
-                        <button type="button" class="quick-search-chip" data-query="Peer Gynt">Peer Gynt</button>
-                        <button type="button" class="quick-search-chip" data-query="Drops Air">Drops Air</button>
-                        <button type="button" class="quick-search-chip" data-query="Sunday">Sunday</button>
-                        <button type="button" class="quick-search-chip" data-query="Alpakka Ull">Alpakka Ull</button>
-                    </div>
-                    <div id="garnSearchResults" class="garn-search-results hidden"></div>
+<div id="garnSearchResults" class="garn-search-results hidden"></div>
                     <div id="selectedYarnCard" class="selected-yarn-card hidden"></div>
                 </div>
 
                 <div id="garnaltFiltersCard" class="garnalt-card hidden">
-                    <h3 class="section-title">2. Velg egenskaper for alternativ garn</h3>
+                    <h3 class="section-title">2. Velg egenskaper for alternativt garn</h3>
 
                     <div class="filter-grid">
                         <label class="check-chip"><input type="checkbox" id="filterNaturalOnly"> Kun naturfiber</label>
@@ -288,7 +281,7 @@
                     </div>
                 </div>
 
-                <div class="garnalt-card">
+                <div id="garnaltAmountCard" class="garnalt-card hidden">
                     <h3 class="section-title">3. Beregn garnmengde</h3>
                     <div class="form-group">
                         <label for="antallNoster">Antall nøster i oppskriften:</label>
@@ -297,8 +290,8 @@
                     <p class="small-muted">Hvis du fyller inn antall nøster, regner appen ut ca. hvor mange nøster du trenger av alternativet.</p>
                 </div>
 
-                <div class="garnalt-actions">
-                    <button class="btn-calculate" id="beregnGarnalt">Finn smarte garnalternativer</button>
+                <div id="garnaltActions" class="garnalt-actions hidden">
+                    <button class="btn-calculate" id="beregnGarnalt">4. Vis resultater</button>
                     <button class="btn-secondary" id="nullstillGarnalt" type="button">Nullstill</button>
                 </div>
             </div>
@@ -349,7 +342,7 @@
             <div class="settings-card">
                 <div class="settings-card-header">
                     <h3 class="section-title">Nytt i siste versjon</h3>
-                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.2</span>
+                    <span id="settingsVersionPill" class="settings-version-pill">v1.8.3</span>
                 </div>
 
                 <div class="settings-whatsnew-list">
@@ -357,7 +350,7 @@
                         <span class="settings-whatsnew-icon" aria-hidden="true">🧪</span>
                         <div>
                             <strong>Beta-merking på utvalgte verktøy</strong>
-                            <p>Garnalternativ og Strikkeekspert er nå merket som Beta for å sette riktige forventninger mens de videreutvikles.</p>
+                            <p>Garnalternativ er ryddet opp med tydeligere stegflyt og resultatene er tilbake etter søk og valg.</p>
                         </div>
                     </div>
                     <div class="settings-whatsnew-item">
@@ -388,7 +381,7 @@
     <footer>
         <p>Inges strikkehjelp &mdash; God strikking!</p>
         <div class="footer-meta">
-            <p class="version" id="versionText">v1.8.2</p>
+            <p class="version" id="versionText">v1.8.3</p>
         </div>
     </footer>
 
