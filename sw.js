@@ -1,19 +1,19 @@
-const APP_VERSION = '1.8.6';
+const APP_VERSION = '1.8.7';
 const STATIC_CACHE = `inges-strikkehjelp-static-v${APP_VERSION}`;
 const PAGE_CACHE = `inges-strikkehjelp-pages-v${APP_VERSION}`;
 const ASSETS = [
     './',
     './index.html',
-    './style.css?v=1.8.6',
-    './app.js?v=1.8.6',
+    './style.css?v=1.8.7',
+    './app.js?v=1.8.7',
     './strikketips.json',
     './logo.svg',
-    './manifest.json?v=1.8.6',
-    './yarn-data.js?v=1.8.6',
+    './manifest.json?v=1.8.7',
+    './yarn-data.js?v=1.8.7',
     './icon-192.png',
     './icon-512.png',
-    './apple-touch-icon.png?v=1.8.6',
-    './favicon-64.png?v=1.8.6'
+    './apple-touch-icon.png?v=1.8.7',
+    './favicon-64.png?v=1.8.7'
 ];
 
 self.addEventListener('install', (event) => {
